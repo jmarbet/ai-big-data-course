@@ -1,0 +1,16 @@
+name: ai-big-data-cemfi
+dependencies:
+  - python
+  - jupyter
+  - numpy
+  - pandas
+  - scikit-learn
+  - xgboost
+  - matplotlib
+  - seaborn
+  - pytorch
+  - xlrd
+  - pip
+  - pip:
+      - sdmx1
+      - pyfredapi
