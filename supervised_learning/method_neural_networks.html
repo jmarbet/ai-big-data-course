@@ -382,7 +382,7 @@ window.Quarto = {
   <li><a href="#python-implementation" id="toc-python-implementation" class="nav-link" data-scroll-target="#python-implementation"><span class="header-section-number">5.11</span> Python Implementation</a>
   <ul class="collapse">
   <li><a href="#implementing-the-feedforward-part-of-a-neural-network" id="toc-implementing-the-feedforward-part-of-a-neural-network" class="nav-link" data-scroll-target="#implementing-the-feedforward-part-of-a-neural-network"><span class="header-section-number">5.11.1</span> Implementing the Feedforward Part of a Neural Network</a></li>
-  <li><a href="#using-neural-networks-in-sci-kit-learn" id="toc-using-neural-networks-in-sci-kit-learn" class="nav-link" data-scroll-target="#using-neural-networks-in-sci-kit-learn"><span class="header-section-number">5.11.2</span> Using Neural Networks in Sci-Kit Learn</a></li>
+  <li><a href="#using-neural-networks-in-scikit-learn" id="toc-using-neural-networks-in-scikit-learn" class="nav-link" data-scroll-target="#using-neural-networks-in-scikit-learn"><span class="header-section-number">5.11.2</span> Using Neural Networks in scikit-learn</a></li>
   <li><a href="#using-neural-networks-in-pytorch" id="toc-using-neural-networks-in-pytorch" class="nav-link" data-scroll-target="#using-neural-networks-in-pytorch"><span class="header-section-number">5.11.3</span> Using Neural Networks in PyTorch</a></li>
   <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions"><span class="header-section-number">5.11.4</span> Conclusions</a></li>
   </ul></li>
@@ -429,11 +429,11 @@ window.Quarto = {
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-basic-neural-network-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5.1: A Single-Layer Feedforward Neural Network
+Figure&nbsp;5.1: A Feedforward Neural Network with One Hidden Layer
 </figcaption>
 </figure>
 </div>
-<p>It is common to represent neural networks as directed graphs. <a href="#fig-basic-neural-network" class="quarto-xref">Figure&nbsp;<span>5.1</span></a> shows a single-layer feedforward neural network with <span class="math inline">\(N=2\)</span> inputs, <span class="math inline">\(M=3\)</span> neurons in the hidden layer, and a single output. The input layer is connected to the hidden layer, which is connected to the output layer. For simplicity, we will only consider neural networks that are feedforward (i.e.&nbsp;their graphs are acyclical), with dense layers (i.e.&nbsp;each layer is fully connected to the previous), and without connections that skip layers.</p>
+<p>It is common to represent neural networks as directed graphs. <a href="#fig-basic-neural-network" class="quarto-xref">Figure&nbsp;<span>5.1</span></a> shows a feedforward neural network with one hidden layer, <span class="math inline">\(N=2\)</span> inputs, <span class="math inline">\(M=3\)</span> neurons in the hidden layer, and a single output. The input layer is connected to the hidden layer, which is connected to the output layer. For simplicity, we will mainly work with neural networks that are feedforward (i.e.&nbsp;their graphs are acyclical), with dense layers (i.e.&nbsp;each layer is fully connected to the previous), and without connections that skip layers.</p>
 <p>As we will see later on, under certain (relatively weak) conditions</p>
 <ul>
 <li>Neural networks are <strong>universal approximators</strong> (can approximate any (Borel measurable) function)</li>
@@ -452,7 +452,7 @@ Figure&nbsp;5.2: A biological neuron (Source: Wikipedia)
 </figcaption>
 </figure>
 </div>
-<p>The term “neural network” originates in attempts to find mathematical representations of information processing in biological systems <span class="citation" data-cites="Bishop2006">(<a href="../references.html#ref-Bishop2006" role="doc-biblioref">Bishop 2006</a>)</span>. The biological interpretation <strong>not very important for research</strong> anymore and one should not get too hung up on it. However, the interpretation can be useful when starting to learn about neural networks. <a href="#fig-biological-neuron" class="quarto-xref">Figure&nbsp;<span>5.2</span></a> shows a biological neuron.</p>
+<p>The term “neural network” originates in attempts to find mathematical representations of information processing in biological systems <span class="citation" data-cites="Bishop2006">(<a href="../references.html#ref-Bishop2006" role="doc-biblioref">Bishop 2006</a>)</span>. Although biological neurons provided the initial inspiration, the artificial neurons used in modern machine learning bear only a superficial resemblance to their biological counterparts. The biological analogy can be helpful when first learning about neural networks, but it should not be taken too literally. <a href="#fig-biological-neuron" class="quarto-xref">Figure&nbsp;<span>5.2</span></a> shows a biological neuron for reference.</p>
 </section>
 </section>
 <section id="an-artificial-neuron" class="level2" data-number="5.2">
@@ -505,7 +505,7 @@ Figure&nbsp;5.4: Activation Functions
 <p>Common activation functions include</p>
 <ul>
 <li>Sigmoid: <span class="math inline">\(\phi(z) = \frac{1}{1+e^{-z}}\)</span></li>
-<li>Hyperbolic tangent: <span class="math inline">\(\phi(z) = tanh(z)\)</span></li>
+<li>Hyperbolic tangent: <span class="math inline">\(\phi(z) = \tanh(z)\)</span></li>
 <li>Rectified linear unit (ReLU): <span class="math inline">\(\phi(z) = \max(0,z)\)</span></li>
 <li>Softplus: <span class="math inline">\(\phi(z) =\log(1+e^{z})\)</span></li>
 </ul>
@@ -536,12 +536,12 @@ Figure&nbsp;5.4: Activation Functions
 </section>
 <section id="building-a-neural-network-from-artificial-neurons" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="building-a-neural-network-from-artificial-neurons"><span class="header-section-number">5.3</span> Building a Neural Network from Artificial Neurons</h2>
-<p>We can build a neural network by stacking multiple artificial neurons. For this reason, it is sometimes also called a <strong>multilayer perceptron</strong> (MLP). A <strong>single-layer neural network</strong> is a linear combination of <span class="math inline">\(M\)</span> artificial neurons <span class="math inline">\(a_j\)</span></p>
+<p>We can build a neural network by stacking multiple artificial neurons. For this reason, it is sometimes also called a <strong>multilayer perceptron</strong> (MLP). A neural network with a <strong>single hidden layer</strong> is a linear combination of <span class="math inline">\(M\)</span> artificial neurons <span class="math inline">\(a_j\)</span></p>
 <p><span class="math display">\[ a_j = \phi(z_j) = \phi\left( b_{j}^{1} + \sum_{i=1}^N w_{ji}^{1} x_i \right)\]</span></p>
 <p>with the output defined as</p>
 <p><span class="math display">\[ g(x ; w) = b^{2}+\sum_{j=1}^{M} w_{j}^{2} a_j\]</span></p>
 <p>where <span class="math inline">\(N\)</span> is the number of inputs, <span class="math inline">\(M\)</span> is the number of neurons in the hidden layer, and <span class="math inline">\(w\)</span> are the weights and biases of the network. The width of the neural network is <span class="math inline">\(M\)</span>.</p>
-<p><a href="#fig-basic-neural-network-with-weights" class="quarto-xref">Figure&nbsp;<span>5.5</span></a> shows a single-layer feedforward neural network with <span class="math inline">\(N=2\)</span> inputs, <span class="math inline">\(M=3\)</span> neurons in the hidden layer, and a single output. Note that the biases can be thought of as additional weights that are multiplied by a constant input of 1.</p>
+<p><a href="#fig-basic-neural-network-with-weights" class="quarto-xref">Figure&nbsp;<span>5.5</span></a> shows a feedforward neural network with a single hidden layer, <span class="math inline">\(N=2\)</span> inputs, <span class="math inline">\(M=3\)</span> neurons in the hidden layer, and a single output. Note that the biases can be thought of as additional weights that are multiplied by a constant input of 1.</p>
 <div id="fig-basic-neural-network-with-weights" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-basic-neural-network-with-weights-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -556,7 +556,7 @@ Figure&nbsp;5.4: Activation Functions
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-basic-neural-network-with-weights-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5.5: A Single-Layer Feedforward Neural Network with Biases shown explicitly
+Figure&nbsp;5.5: A Feedforward Neural Network with One Hidden Layer (Biases shown explicitly)
 </figcaption>
 </figure>
 </div>
@@ -570,13 +570,13 @@ Figure&nbsp;5.5: A Single-Layer Feedforward Neural Network with Biases shown exp
 </section>
 <section id="a-simple-example" class="level2" data-number="5.5">
 <h2 data-number="5.5" class="anchored" data-anchor-id="a-simple-example"><span class="header-section-number">5.5</span> A Simple Example</h2>
-<p>Suppose we want to approximate <span class="math inline">\(f(x)=exp(x)-x^3\)</span> with 3 neurons. The approximation might be</p>
+<p>Suppose we want to approximate <span class="math inline">\(f(x)=\exp(x)-x^3\)</span> with 3 neurons. The approximation might be</p>
 <p><span class="math display">\[\hat{f}(x)=a_1+a_2-a_3\]</span></p>
 <p>where</p>
 <p><span class="math display">\[a_1=max(0,-3x-1.5)\]</span></p>
 <p><span class="math display">\[a_2=max(0,x+1)\]</span></p>
 <p><span class="math display">\[a_3=max(0,3x-3)\]</span></p>
-<p>Our neural network in this case uses ReLU activation functions and has all weights equal to one in the output layer. <a href="#fig-neural-network-approximation" class="quarto-xref">Figure&nbsp;<span>5.6</span></a> shows the admittedly poor approximation of <span class="math inline">\(f(x)\)</span> by <span class="math inline">\(\hat{f}(x)\)</span> using this neural network. Given the piecewise linear nature of the ReLU activation function, the approximation is not very good. However, with more neurons, we could get a better approximation.</p>
+<p>Our neural network in this case uses ReLU activation functions and has all weights equal to one in the output layer. <a href="#fig-neural-network-approximation" class="quarto-xref">Figure&nbsp;<span>5.6</span></a> shows the admittedly poor approximation of <span class="math inline">\(f(x)\)</span> by <span class="math inline">\(\hat{f}(x)\)</span> using this neural network. Given the piecewise linear nature of the ReLU activation function and the low number of neurons, the approximation is not very good. However, with more neurons, we could get a better approximation.</p>
 <div id="fig-neural-network-approximation" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-neural-network-approximation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -778,7 +778,7 @@ Figure&nbsp;5.7: Interactive Neural Network Approximation
 <img src="figures/tensorflow_playground.png" class="img-fluid figure-img" style="width:60.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tensorflow-playground-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5.8: Tesorflow Playground
+Figure&nbsp;5.8: TensorFlow Playground
 </figcaption>
 </figure>
 </div>
@@ -805,7 +805,7 @@ Figure&nbsp;5.9: Deep Neural Network
 </figcaption>
 </figure>
 </div>
-<p><strong>Deep neural networks</strong> have more than one hidden layer. The number of hidden layers is also called the <strong>depth</strong> of the neural network. Deep neural networks can learn more complicated things. For simple function approximation, a single hidden layer is sufficient. <a href="#fig-deep-neural-network" class="quarto-xref">Figure&nbsp;<span>5.9</span></a> shows a deep neural network with two hidden layers.</p>
+<p><strong>Deep neural networks</strong> have more than one hidden layer. The number of hidden layers is also called the <strong>depth</strong> of the neural network. Deep neural networks can model more complex relationships. For simple function approximation, a single hidden layer is sufficient. <a href="#fig-deep-neural-network" class="quarto-xref">Figure&nbsp;<span>5.9</span></a> shows a deep neural network with two hidden layers.</p>
 <p>The first hidden layer consists of <span class="math inline">\(M_1\)</span> artificial neurons with inputs <span class="math inline">\(x_1,x_2,\ldots,x_N\)</span></p>
 <p><span class="math display">\[a_j^{1} = \phi\left( b_{j}^{1} + \sum_{i=1}^N w_{ji}^{1} x_i \right)\]</span></p>
 <p>The second hidden layer consists of <span class="math inline">\(M_2\)</span> artificial neurons with inputs <span class="math inline">\(a_1^{1},a_2^{1},\ldots,a_{M_1}^{1}\)</span></p>
@@ -982,7 +982,7 @@ Figure&nbsp;5.12: Backpropagation Algorithm
 <ul>
 <li><em>Input/output normalization:</em> (e.g.&nbsp;to have unit variance and mean zero) can improve the performance of the NN</li>
 <li><em>Check for overfitting:</em> by splitting the dataset into a <em>training dataset</em> and a <em>test dataset</em></li>
-<li><em>Regularization:</em> to avoid overfitting (e.g.&nbsp;add a term to lose function that penalizes large weights)</li>
+<li><em>Regularization:</em> to avoid overfitting (e.g., add a term to loss function that penalizes large weights)</li>
 <li><em>Adjust the learning rate:</em> <span class="math inline">\(\eta\)</span> during training</li>
 </ul>
 <p>We have already discussed some of these topics in the context of other machine learning algorithms.</p>
@@ -1054,9 +1054,9 @@ Figure&nbsp;5.12: Backpropagation Algorithm
 </div>
 <p>To operationalize this, we would also need to define a loss function and an optimization algorithm to update the weights and biases. However, this is beyond the scope of this course.</p>
 </section>
-<section id="using-neural-networks-in-sci-kit-learn" class="level3" data-number="5.11.2">
-<h3 data-number="5.11.2" class="anchored" data-anchor-id="using-neural-networks-in-sci-kit-learn"><span class="header-section-number">5.11.2</span> Using Neural Networks in Sci-Kit Learn</h3>
-<p>Sci-kit learn provides a simple interface to use neural networks. However, it is not as flexible as the more commonly used PyTorch or TensorFlow. We can reuse the <strong>dataset of credit card transactions</strong> from <a href="https://www.kaggle.com/datasets/dhanushnarayananr/credit-card-fraud/data">Kaggle.com</a> to demonstrate how to use neural networks in scikit-learn.</p>
+<section id="using-neural-networks-in-scikit-learn" class="level3" data-number="5.11.2">
+<h3 data-number="5.11.2" class="anchored" data-anchor-id="using-neural-networks-in-scikit-learn"><span class="header-section-number">5.11.2</span> Using Neural Networks in scikit-learn</h3>
+<p>Scikit-learn provides a simple interface to use neural networks. However, it is not as flexible as the more commonly used PyTorch or TensorFlow. We can reuse the <strong>dataset of credit card transactions</strong> from <a href="https://www.kaggle.com/datasets/dhanushnarayananr/credit-card-fraud/data">Kaggle.com</a> to demonstrate how to use neural networks in scikit-learn.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1277,17 +1277,17 @@ Figure&nbsp;5.12: Backpropagation Algorithm
 <span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> epoch <span class="op">%</span> <span class="dv">10</span> <span class="op">==</span> <span class="dv">9</span>:</span>
 <span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Epoch </span><span class="sc">{</span>epoch<span class="sc">}</span><span class="ss"> loss: </span><span class="sc">{</span>loss<span class="sc">.</span>item()<span class="sc">:&gt;7f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Epoch 9 loss: 0.010676
-Epoch 19 loss: 0.010075
-Epoch 29 loss: 0.002729
-Epoch 39 loss: 0.007369
-Epoch 49 loss: 0.004184
-Epoch 59 loss: 0.004319
-Epoch 69 loss: 0.006457
-Epoch 79 loss: 0.005283</code></pre>
+<pre><code>Epoch 9 loss: 0.008226
+Epoch 19 loss: 0.008079
+Epoch 29 loss: 0.011419
+Epoch 39 loss: 0.014697
+Epoch 49 loss: 0.004180
+Epoch 59 loss: 0.004695
+Epoch 69 loss: 0.002156
+Epoch 79 loss: 0.000761</code></pre>
 </div>
 </div>
-<p>Note that here we are updating the model weights for each mini-batch in the dataset and go over the whole dataset 80 times (epochs). We print the loss every epoch to see how the loss decreases over time.</p>
+<p>Note that here we are updating the model weights for each mini-batch in the dataset and go over the whole dataset 80 times (epochs). We print the loss every 10 epochs to see how the loss decreases over time.</p>
 <p>The following snippet shows how to use full-batch gradient descent instead of mini-batch gradient descent</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2000</span>):</span>
@@ -1318,23 +1318,23 @@ Epoch 79 loss: 0.005283</code></pre>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Accuracy: </span><span class="sc">{</span>accuracy_score(y_test, y_pred)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Accuracy: 0.9986033333333333</code></pre>
+<pre><code>Accuracy: 0.99863</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Precision: </span><span class="sc">{</span>precision_score(y_test, y_pred)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Precision: 0.9918789080372121</code></pre>
+<pre><code>Precision: 0.9909457505896675</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Recall: </span><span class="sc">{</span>recall_score(y_test, y_pred)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Recall: 0.9921437016132107</code></pre>
+<pre><code>Recall: 0.9934022348499294</code></pre>
 </div>
 </div>
-<p>Note that for simplicity we are reusing the sci-kit learn metrics to evaluate the model.</p>
+<p>Note that for simplicity we are reusing the scikit-learn metrics to evaluate the model.</p>
 <p>However, our neural network trained in PyTorch does not perform exactly the same as the neural network trained in scikit-learn. This is likely because of different hyperparameters or different initializations of the weights. In practice, it is common to experiment with different hyperparameters to find the best model or to use grid search and cross-validation to try many values and find the best-performing ones.</p>
 </section>
 <section id="conclusions" class="level3" data-number="5.11.4">
 <h3 data-number="5.11.4" class="anchored" data-anchor-id="conclusions"><span class="header-section-number">5.11.4</span> Conclusions</h3>
-<p>In this chapter, we have learned about neural networks, which are the foundation of deep learning. We have seen how to implement parts of a simple neural network from scratch and how to use neural networks in scikit-learn and PyTorch.</p>
+<p>In this section, we have learned about neural networks, which are the foundation of deep learning. We have seen how to implement parts of a simple neural network from scratch and how to use neural networks in scikit-learn and PyTorch.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">

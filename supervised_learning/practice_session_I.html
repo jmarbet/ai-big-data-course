@@ -415,14 +415,14 @@ window.Quarto = {
 <section id="dataset" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="dataset"><span class="header-section-number">6.2</span> Dataset</h2>
 <p>Let’s download the dataset automatically, unzip it, and place it in a folder called <code>data</code> if you haven’t done so already</p>
-<div id="661b2621" class="cell" data-execution_count="2">
+<div id="28194133" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> io <span class="im">import</span> BytesIO</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> urllib.request <span class="im">import</span> urlopen</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> zipfile <span class="im">import</span> ZipFile</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os.path</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if the file exists</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> os.path.isfile(<span class="st">'data/Data Dictionary.xl'</span>) <span class="kw">or</span> <span class="kw">not</span> os.path.isfile(<span class="st">'data/cs-training.csv'</span>):</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> os.path.isfile(<span class="st">'data/Data Dictionary.xls'</span>) <span class="kw">or</span> <span class="kw">not</span> os.path.isfile(<span class="st">'data/cs-training.csv'</span>):</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'Downloading dataset...'</span>)</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
@@ -440,12 +440,11 @@ window.Quarto = {
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'Dataset already downloaded!'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Downloading dataset...
-DONE!</code></pre>
+<pre><code>Dataset already downloaded!</code></pre>
 </div>
 </div>
 <p>Then, we can have a look at the data dictionary that is provided with the dataset. This will give us an idea of the variables that are available in the dataset and what they represent</p>
-<div id="341da14f" class="cell" data-execution_count="3">
+<div id="6135c5f1" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>data_dict <span class="op">=</span> pd.read_excel(<span class="st">'data/Data Dictionary.xls'</span>, header<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>data_dict.style.hide()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -453,75 +452,75 @@ DONE!</code></pre>
 <style type="text/css">
 </style>
 
-<table id="T_5ecb6" class="caption-top table table-sm table-striped small">
+<table id="T_aea7f" class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
-<th id="T_5ecb6_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Variable Name</th>
-<th id="T_5ecb6_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">Description</th>
-<th id="T_5ecb6_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">Type</th>
+<th id="T_aea7f_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Variable Name</th>
+<th id="T_aea7f_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">Description</th>
+<th id="T_aea7f_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">Type</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td id="T_5ecb6_row0_col0" class="data row0 col0">SeriousDlqin2yrs</td>
-<td id="T_5ecb6_row0_col1" class="data row0 col1">Person experienced 90 days past due delinquency or worse</td>
-<td id="T_5ecb6_row0_col2" class="data row0 col2">Y/N</td>
+<td id="T_aea7f_row0_col0" class="data row0 col0">SeriousDlqin2yrs</td>
+<td id="T_aea7f_row0_col1" class="data row0 col1">Person experienced 90 days past due delinquency or worse</td>
+<td id="T_aea7f_row0_col2" class="data row0 col2">Y/N</td>
 </tr>
 <tr class="even">
-<td id="T_5ecb6_row1_col0" class="data row1 col0">RevolvingUtilizationOfUnsecuredLines</td>
-<td id="T_5ecb6_row1_col1" class="data row1 col1">Total balance on credit cards and personal lines of credit except real estate and no installment debt like car loans divided by the sum of credit limits</td>
-<td id="T_5ecb6_row1_col2" class="data row1 col2">percentage</td>
+<td id="T_aea7f_row1_col0" class="data row1 col0">RevolvingUtilizationOfUnsecuredLines</td>
+<td id="T_aea7f_row1_col1" class="data row1 col1">Total balance on credit cards and personal lines of credit except real estate and no installment debt like car loans divided by the sum of credit limits</td>
+<td id="T_aea7f_row1_col2" class="data row1 col2">percentage</td>
 </tr>
 <tr class="odd">
-<td id="T_5ecb6_row2_col0" class="data row2 col0">age</td>
-<td id="T_5ecb6_row2_col1" class="data row2 col1">Age of borrower in years</td>
-<td id="T_5ecb6_row2_col2" class="data row2 col2">integer</td>
+<td id="T_aea7f_row2_col0" class="data row2 col0">age</td>
+<td id="T_aea7f_row2_col1" class="data row2 col1">Age of borrower in years</td>
+<td id="T_aea7f_row2_col2" class="data row2 col2">integer</td>
 </tr>
 <tr class="even">
-<td id="T_5ecb6_row3_col0" class="data row3 col0">NumberOfTime30-59DaysPastDueNotWorse</td>
-<td id="T_5ecb6_row3_col1" class="data row3 col1">Number of times borrower has been 30-59 days past due but no worse in the last 2 years.</td>
-<td id="T_5ecb6_row3_col2" class="data row3 col2">integer</td>
+<td id="T_aea7f_row3_col0" class="data row3 col0">NumberOfTime30-59DaysPastDueNotWorse</td>
+<td id="T_aea7f_row3_col1" class="data row3 col1">Number of times borrower has been 30-59 days past due but no worse in the last 2 years.</td>
+<td id="T_aea7f_row3_col2" class="data row3 col2">integer</td>
 </tr>
 <tr class="odd">
-<td id="T_5ecb6_row4_col0" class="data row4 col0">DebtRatio</td>
-<td id="T_5ecb6_row4_col1" class="data row4 col1">Monthly debt payments, alimony,living costs divided by monthy gross income</td>
-<td id="T_5ecb6_row4_col2" class="data row4 col2">percentage</td>
+<td id="T_aea7f_row4_col0" class="data row4 col0">DebtRatio</td>
+<td id="T_aea7f_row4_col1" class="data row4 col1">Monthly debt payments, alimony,living costs divided by monthy gross income</td>
+<td id="T_aea7f_row4_col2" class="data row4 col2">percentage</td>
 </tr>
 <tr class="even">
-<td id="T_5ecb6_row5_col0" class="data row5 col0">MonthlyIncome</td>
-<td id="T_5ecb6_row5_col1" class="data row5 col1">Monthly income</td>
-<td id="T_5ecb6_row5_col2" class="data row5 col2">real</td>
+<td id="T_aea7f_row5_col0" class="data row5 col0">MonthlyIncome</td>
+<td id="T_aea7f_row5_col1" class="data row5 col1">Monthly income</td>
+<td id="T_aea7f_row5_col2" class="data row5 col2">real</td>
 </tr>
 <tr class="odd">
-<td id="T_5ecb6_row6_col0" class="data row6 col0">NumberOfOpenCreditLinesAndLoans</td>
-<td id="T_5ecb6_row6_col1" class="data row6 col1">Number of Open loans (installment like car loan or mortgage) and Lines of credit (e.g. credit cards)</td>
-<td id="T_5ecb6_row6_col2" class="data row6 col2">integer</td>
+<td id="T_aea7f_row6_col0" class="data row6 col0">NumberOfOpenCreditLinesAndLoans</td>
+<td id="T_aea7f_row6_col1" class="data row6 col1">Number of Open loans (installment like car loan or mortgage) and Lines of credit (e.g. credit cards)</td>
+<td id="T_aea7f_row6_col2" class="data row6 col2">integer</td>
 </tr>
 <tr class="even">
-<td id="T_5ecb6_row7_col0" class="data row7 col0">NumberOfTimes90DaysLate</td>
-<td id="T_5ecb6_row7_col1" class="data row7 col1">Number of times borrower has been 90 days or more past due.</td>
-<td id="T_5ecb6_row7_col2" class="data row7 col2">integer</td>
+<td id="T_aea7f_row7_col0" class="data row7 col0">NumberOfTimes90DaysLate</td>
+<td id="T_aea7f_row7_col1" class="data row7 col1">Number of times borrower has been 90 days or more past due.</td>
+<td id="T_aea7f_row7_col2" class="data row7 col2">integer</td>
 </tr>
 <tr class="odd">
-<td id="T_5ecb6_row8_col0" class="data row8 col0">NumberRealEstateLoansOrLines</td>
-<td id="T_5ecb6_row8_col1" class="data row8 col1">Number of mortgage and real estate loans including home equity lines of credit</td>
-<td id="T_5ecb6_row8_col2" class="data row8 col2">integer</td>
+<td id="T_aea7f_row8_col0" class="data row8 col0">NumberRealEstateLoansOrLines</td>
+<td id="T_aea7f_row8_col1" class="data row8 col1">Number of mortgage and real estate loans including home equity lines of credit</td>
+<td id="T_aea7f_row8_col2" class="data row8 col2">integer</td>
 </tr>
 <tr class="even">
-<td id="T_5ecb6_row9_col0" class="data row9 col0">NumberOfTime60-89DaysPastDueNotWorse</td>
-<td id="T_5ecb6_row9_col1" class="data row9 col1">Number of times borrower has been 60-89 days past due but no worse in the last 2 years.</td>
-<td id="T_5ecb6_row9_col2" class="data row9 col2">integer</td>
+<td id="T_aea7f_row9_col0" class="data row9 col0">NumberOfTime60-89DaysPastDueNotWorse</td>
+<td id="T_aea7f_row9_col1" class="data row9 col1">Number of times borrower has been 60-89 days past due but no worse in the last 2 years.</td>
+<td id="T_aea7f_row9_col2" class="data row9 col2">integer</td>
 </tr>
 <tr class="odd">
-<td id="T_5ecb6_row10_col0" class="data row10 col0">NumberOfDependents</td>
-<td id="T_5ecb6_row10_col1" class="data row10 col1">Number of dependents in family excluding themselves (spouse, children etc.)</td>
-<td id="T_5ecb6_row10_col2" class="data row10 col2">integer</td>
+<td id="T_aea7f_row10_col0" class="data row10 col0">NumberOfDependents</td>
+<td id="T_aea7f_row10_col1" class="data row10 col1">Number of dependents in family excluding themselves (spouse, children etc.)</td>
+<td id="T_aea7f_row10_col2" class="data row10 col2">integer</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<p>The variable <span class="math inline">\(y\)</span> that we want to predict is <code>SeriousDlqin2yrs</code> which indicates whether a person has been 90 days past due on a loan payment (serious delinquency) in the past two years. This target variable is <span class="math inline">\(1\)</span> if the loan defaults (i.e., serious delinquency occured) and <span class="math inline">\(0\)</span> if the loan does not default (i.e., no serious delinquency occured) . The other variables are features that we can use to predict this target variable such as the age of the borrower and the monthly income of the borrower.</p>
+<p>The variable <span class="math inline">\(y\)</span> that we want to predict is <code>SeriousDlqin2yrs</code> which indicates whether a person has been 90 days past due on a loan payment (serious delinquency) in the past two years. This target variable is <span class="math inline">\(1\)</span> if the loan defaults (i.e., serious delinquency occurred) and <span class="math inline">\(0\)</span> if the loan does not default (i.e., no serious delinquency occurred). The other variables are features that we can use to predict this target variable such as the age of the borrower and the monthly income of the borrower.</p>
 </section>
 <section id="putting-the-problem-into-the-context-of-the-course" class="level2" data-number="6.3">
 <h2 data-number="6.3" class="anchored" data-anchor-id="putting-the-problem-into-the-context-of-the-course"><span class="header-section-number">6.3</span> Putting the Problem into the Context of the Course</h2>
@@ -530,14 +529,14 @@ DONE!</code></pre>
 <section id="setting-up-the-environment" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="setting-up-the-environment"><span class="header-section-number">6.4</span> Setting up the Environment</h2>
 <p>We will start by setting up the environment by importing the necessary libraries</p>
-<div id="0ca53de6" class="cell" data-execution_count="4">
+<div id="0386d181" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>and loading the dataset</p>
-<div id="a2e3e0c8" class="cell" data-execution_count="5">
+<div id="002cfbda" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'data/cs-training.csv'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -558,7 +557,7 @@ DONE!</code></pre>
 <li>Look for columns that seem to duplicate the index</li>
 <li>The <code>axis</code> parameter in <code>.drop()</code> specifies whether you’re dropping rows or columns</li>
 </ul>
-<div id="615e5bf2" class="cell" data-execution_count="6">
+<div id="599c28d6" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -575,7 +574,7 @@ DONE!</code></pre>
 <li>The target variable is <code>SeriousDlqin2yrs</code></li>
 <li>Think about what accuracy would be if a model just predicted the majority class</li>
 </ul>
-<div id="ff75d308" class="cell" data-execution_count="7">
+<div id="5cedc11a" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -607,7 +606,7 @@ Note
 <p>Note that in a real application, you would want to carefully consider how to handle missing data rather than just dropping rows. Imputation methods or models that can handle missing data directly might be more appropriate depending on the context. Furthermore, in this specific dataset, dropping some of the missing values also removes some of the other data quality issues by chance. In practice, you would want to investigate and address these issues separately.</p>
 </div>
 </div>
-<div id="5be9b414" class="cell" data-execution_count="8">
+<div id="1d0cf674" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -628,7 +627,7 @@ Note
 <li><code>sns.heatmap()</code> can visualize correlation matrices</li>
 <li>Use <code>np.triu()</code> to create a mask for the upper triangle</li>
 </ul>
-<div id="edb97332" class="cell" data-execution_count="9">
+<div id="e5469889" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -647,7 +646,7 @@ Note
 <li>Fitting on test data causes “data leakage” - avoid this!</li>
 <li>Create a helper function for scaling if you want cleaner code</li>
 </ul>
-<div id="ce55cd6a" class="cell" data-execution_count="10">
+<div id="70e1013f" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -672,7 +671,7 @@ Note
 <li>Add a diagonal reference line for the ROC plot</li>
 <li>Use <code>label</code> parameter to differentiate models in outputs, e.g., <code>label='Logistic Regression'</code></li>
 </ul>
-<div id="1b8694ff" class="cell" data-execution_count="11">
+<div id="e9403d17" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -700,7 +699,7 @@ Note
 <li>Watch for signs of overfitting (training &gt;&gt; test performance)</li>
 <li>Training the neural network may take several minutes</li>
 </ul>
-<div id="60b02461" class="cell" data-execution_count="12">
+<div id="a5ba90b5" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -717,7 +716,7 @@ Note
 <li>Use <code>pd.DataFrame()</code> with a dictionary</li>
 <li>The gap between train/test performance indicates overfitting</li>
 </ul>
-<div id="fdd67e06" class="cell" data-execution_count="13">
+<div id="1adeb8ec" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -737,7 +736,7 @@ Note
 <li>Remember to fit a new scaler on the new training data</li>
 <li>LASSO can help with feature selection when you have many features</li>
 </ul>
-<div id="93af0c5a" class="cell" data-execution_count="14">
+<div id="1fe169cd" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>

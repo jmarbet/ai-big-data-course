@@ -376,7 +376,7 @@ window.Quarto = {
   <li><a href="#implementing-a-random-forest-classifier" id="toc-implementing-a-random-forest-classifier" class="nav-link" data-scroll-target="#implementing-a-random-forest-classifier"><span class="header-section-number">4.6.3</span> Implementing a Random Forest Classifier</a></li>
   <li><a href="#implementing-a-xgboost-classifier" id="toc-implementing-a-xgboost-classifier" class="nav-link" data-scroll-target="#implementing-a-xgboost-classifier"><span class="header-section-number">4.6.4</span> Implementing a XGBoost Classifier</a></li>
   <li><a href="#feature-importance" id="toc-feature-importance" class="nav-link" data-scroll-target="#feature-importance"><span class="header-section-number">4.6.5</span> Feature Importance</a></li>
-  <li><a href="#permuation-importance" id="toc-permuation-importance" class="nav-link" data-scroll-target="#permuation-importance"><span class="header-section-number">4.6.6</span> Permuation Importance</a></li>
+  <li><a href="#permutation-importance" id="toc-permutation-importance" class="nav-link" data-scroll-target="#permutation-importance"><span class="header-section-number">4.6.6</span> Permutation Importance</a></li>
   <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions"><span class="header-section-number">4.6.7</span> Conclusions</a></li>
   </ul></li>
   </ul>
@@ -445,7 +445,7 @@ Figure&nbsp;4.2: Regression Tree - Prediction of <span class="math inline">\(y\)
 </figcaption>
 </figure>
 </div>
-<p><a href="#fig-regression-tree" class="quarto-xref">Figure&nbsp;<span>4.2</span></a> shows an example of a decision tree for a regression problem, i.e., a <strong>regression tree</strong>. In this case, the decision tree is used to predict some continuous variable <span class="math inline">\(y\)</span> (e.g., a house price) based on features <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> (e.g., number of rooms and size of the property). As <a href="#fig-regression-tree-plot" class="quarto-xref">Figure&nbsp;<span>4.7</span></a> shows, the regression tree partitions the <span class="math inline">\((x_1,x_2)\)</span>-space into different regions that are associated with a predicted value <span class="math inline">\(y\)</span>. Mathematically, the prediction of a regression tree can be expressed as</p>
+<p><a href="#fig-regression-tree" class="quarto-xref">Figure&nbsp;<span>4.2</span></a> shows an example of a decision tree for a regression problem, i.e., a <strong>regression tree</strong>. In this case, the decision tree is used to predict some continuous variable <span class="math inline">\(y\)</span> (e.g., a house price) based on features <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> (e.g., number of rooms and size of the property). As <a href="#fig-regression-tree-plot" class="quarto-xref">Figure&nbsp;<span>4.3</span></a> shows, the regression tree partitions the <span class="math inline">\((x_1,x_2)\)</span>-space into different regions that are associated with a predicted value <span class="math inline">\(y\)</span>. Mathematically, the prediction of a regression tree can be expressed as</p>
 <p><span class="math display">\[\hat{y} = \sum_{m=1}^{M} c_m \mathbb{1}(x \in R_m)\]</span></p>
 <p>where <span class="math inline">\(R_m\)</span> are the regions of the feature space, <span class="math inline">\(c_m\)</span> are the predicted (i.e., average) values in the regions, <span class="math inline">\(\mathbb{1}(x \in R_m)\)</span> is an indicator function that is 1 if <span class="math inline">\(x\)</span> is in region <span class="math inline">\(R_m\)</span> and 0 otherwise, and <span class="math inline">\(M\)</span> is the number of regions.</p>
 <div id="fig-regression-tree-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -518,7 +518,7 @@ Figure&nbsp;4.4: Decision Tree - Terminology
 </figcaption>
 </figure>
 </div>
-<p><a href="#fig-decision-tree-terminology" class="quarto-xref">Figure&nbsp;<span>4.4</span></a> shows some of the terminology that you might encounter in decision trees. The <strong>root node</strong> is the first node in the tree. The root node is split into <strong>decision nodes</strong> (or leaf nodes) based on the values of the features. The decision nodes are further split into decision nodes or <strong>leaf nodes</strong>. The leaf nodes represent the final prediction of the model. A <strong>subtree</strong> or <strong>branch</strong> is a part of the tree that starts at a decision node and ends at a leaf node. The <strong>depth</strong> of a tree is the length of the longest path from the root node to a leaf node.</p>
+<p><a href="#fig-decision-tree-terminology" class="quarto-xref">Figure&nbsp;<span>4.4</span></a> shows some of the terminology that you might encounter in decision trees. The <strong>root node</strong> is the first node in the tree. The root node is split into child nodes, which can be either <strong>decision nodes</strong> or <strong>leaf nodes</strong>. The decision nodes are further split into decision nodes or leaf nodes. The leaf nodes represent the final prediction of the model. A <strong>subtree</strong> or <strong>branch</strong> is a part of the tree that starts at a decision node and ends at a leaf node. The <strong>depth</strong> of a tree is the length of the longest path from the root node to a leaf node.</p>
 <p>Furthermore, one can also differentiate between <strong>child</strong> and <strong>parent nodes</strong>. A child node is a node that results from a split (e.g., the first (reading from the top) decision node and leaf node in <a href="#fig-decision-tree-terminology" class="quarto-xref">Figure&nbsp;<span>4.4</span></a> are child nodes of the root node). The parent node is the node that is split to create the child nodes (e.g., the root node in <a href="#fig-decision-tree-terminology" class="quarto-xref">Figure&nbsp;<span>4.4</span></a> is the parent node of the first decision node and leaf node).</p>
 </section>
 <section id="how-to-grow-a-tree" class="level2" data-number="4.3">
@@ -681,7 +681,7 @@ Table&nbsp;4.2: Gini Impurities for Different CET1 Thresholds
 </figure>
 </div>
 </div>
-<p>According to <a href="#tbl-decision-tree-classification-example-impurity" class="quarto-xref">Table&nbsp;<span>4.2</span></a>, the best split is at a CET1 ratio of 7.0%. The Gini impurity for <span class="math inline">\(\text{CET1}\leq 11\%\)</span> is 0.38, the Gini impurity of <span class="math inline">\(\text{CET1}&gt;11\%\)</span> is 0, and the total impurity is 0.21. However, we could also split based on whether a bank would be systemically important. In this case, the Gini impurity of the split is 0.40. This means that the best split is based on the CET1 ratio. We split the data into two regions: one with a CET1 ratio of 11.0% or less and one with a CET1 ratio of more than 11.0%.</p>
+<p>According to <a href="#tbl-decision-tree-classification-example-impurity" class="quarto-xref">Table&nbsp;<span>4.2</span></a>, the best split is at a CET1 ratio of 11.0%. The Gini impurity for <span class="math inline">\(\text{CET1}\leq 11\%\)</span> is 0.38, the Gini impurity of <span class="math inline">\(\text{CET1}&gt;11\%\)</span> is 0, and the total impurity is 0.21. However, we could also split based on whether a bank would be systemically important. In this case, the Gini impurity of the split is 0.40. This means that the best split is based on the CET1 ratio. We split the data into two regions: one with a CET1 ratio of 11.0% or less and one with a CET1 ratio of more than 11.0%.</p>
 <p>Note that the child node for a CET1 ratio of more than <span class="math inline">\(11.0\%\)</span> is already pure, i.e., all banks in this region are not defaulting. However, the child node for a CET1 ratio of <span class="math inline">\(11.0\%\)</span> or less is not pure meaning that we can do additional splits as shown in <a href="#fig-decision-tree-classification-example" class="quarto-xref">Figure&nbsp;<span>4.6</span></a>. In particular, both, the split at a CET1 ratio of 8.8% and the split based on whether a bank is systemically important yield a Gini impurity of 0.25. We choose the split based on whether a bank is systemically important as the next split, which means we can do the final split based on the CET1 ratio.</p>
 <div id="fig-decision-tree-classification-example" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -713,10 +713,10 @@ Figure&nbsp;4.6: Classification Tree for <a href="#tbl-decision-tree-classificat
 <li>A maximum number of leaf nodes,</li>
 </ul>
 <p>which will prevent the tree from growing too large and all the nodes from becoming pure. We can also use a combination of these criteria. In the Python applications, we will see how to set some of these stopping criteria.</p>
-<p><a href="#fig-regression-tree-plot" class="quarto-xref">Figure&nbsp;<span>4.7</span></a> shows an example of how stopping criteria affect the fit of a decision tree. Note that without any stopping criteria, the tree fits the data perfectly but is likely to overfit. By setting a maximum depth or a minimum number of data points in a leaf node, we can prevent the tree from overfitting the data.</p>
-<div id="fig-regression-tree-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<p><a href="#fig-regression-tree-stoppping-criteria" class="quarto-xref">Figure&nbsp;<span>4.7</span></a> shows an example of how stopping criteria affect the fit of a decision tree. Note that without any stopping criteria, the tree fits the data perfectly but is likely to overfit. By setting a maximum depth or a minimum number of data points in a leaf node, we can prevent the tree from overfitting the data.</p>
+<div id="fig-regression-tree-stoppping-criteria" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-regression-tree-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div aria-describedby="fig-regression-tree-stoppping-criteria-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -727,7 +727,7 @@ Figure&nbsp;4.6: Classification Tree for <a href="#tbl-decision-tree-classificat
 </div>
 </div>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-regression-tree-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-regression-tree-stoppping-criteria-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.7: Regression Tree - Effect of Stopping Criteria
 </figcaption>
 </figure>
@@ -778,7 +778,7 @@ Figure&nbsp;4.7: Regression Tree - Effect of Stopping Criteria
 <p>Decision trees are powerful models, but they can be unstable. To address these issues, we can use <strong>ensemble methods</strong> that combine multiple decision trees to improve the performance of the model. The two most popular ensemble methods are <strong>Random Forests</strong> and <strong>Boosting</strong>.</p>
 <section id="random-forests" class="level3" data-number="4.5.1">
 <h3 data-number="4.5.1" class="anchored" data-anchor-id="random-forests"><span class="header-section-number">4.5.1</span> Random Forests</h3>
-<p>The idea of <strong>Random Forests</strong> is to build a <strong>large number of trees</strong> (also called weak learners in this context), each of which is <strong>trained on a random subset of the data</strong>. The predictions of the trees are then averaged in regression tasks or determined through majority voting in the case of classification tasks to make the final prediction. Training multiple trees on random subsets of the data is also called <strong>bagging</strong> (short for <strong>bootstrap aggregating</strong>). Random Forests adds an additional layer of randomness by selecting a random subset of features for each tree. This means that each tree is trained on a different subset of the data and a different subset of features.</p>
+<p>The idea of <strong>Random Forests</strong> is to build a <strong>large number of trees</strong> (also called weak learners in this context), each of which is <strong>trained on a random subset of the data</strong>. The predictions of the trees are then averaged in regression tasks or determined through majority voting in the case of classification tasks to make the final prediction. Training multiple trees on random subsets of the data is also called <strong>bagging</strong> (short for <strong>bootstrap aggregating</strong>). Random Forests adds an additional layer of randomness by selecting a random subset of features at each split. This means that each tree is trained on a different subset of the data and considers different features at each decision node.</p>
 <div id="fig-random-forest" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-random-forest-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -804,11 +804,11 @@ Figure&nbsp;4.8: Random Forests - Ensemble of Decision Trees with Majority Decis
 <li><strong>Repeat</strong>: Repeat steps 1 and 2 <span class="math inline">\(B\)</span> times to grow <span class="math inline">\(B\)</span> trees.</li>
 <li><strong>Prediction</strong>: To get the prediction for a new data point, average the predictions of all trees in the case of regression or use a majority vote in the case of classification.</li>
 </ol>
-<p>Note that because we draw samples with replacement, some samples will not be included in the bootstrap sample. These samples are called <strong>out-of-bag (OOB) samples</strong>. The OOB samples can be used to estimate the performance of the model without the need for cross-validation since it is “performed along the way” (<span class="citation" data-cites="Hastie2009">Hastie, Tibshirani, and Friedman (<a href="../references.html#ref-Hastie2009" role="doc-biblioref">2009</a>)</span>). The OOB error is almost identical to the error obtained through N-fold cross-validation.</p>
+<p>Note that because we draw samples with replacement, some samples will not be included in the bootstrap sample. These samples are called <strong>out-of-bag (OOB) samples</strong>. The OOB samples can be used to estimate the performance of the model without the need for cross-validation since it is “performed along the way” (<span class="citation" data-cites="Hastie2009">Hastie, Tibshirani, and Friedman (<a href="../references.html#ref-Hastie2009" role="doc-biblioref">2009</a>)</span>). The OOB error is almost identical to the error obtained through k-fold cross-validation.</p>
 </section>
 <section id="boosting" class="level3" data-number="4.5.2">
 <h3 data-number="4.5.2" class="anchored" data-anchor-id="boosting"><span class="header-section-number">4.5.2</span> Boosting</h3>
-<p>Another popular ensemble method is <strong>Boosting</strong>. The idea behind boosting is to train a sequence of weak learners (e.g., decision trees), each of which tries to correct the mistakes of the previous one. The predictions of the weak learners are then combined to make the final prediction. Note how this differs from Random Forests where the trees are trained independently of each other in parallel, while here we sequentially train the trees to fix the mistakes of the previous ones. The basic steps can be roughly summarized as follows:</p>
+<p>Another popular ensemble method is <strong>Boosting</strong>. The idea behind boosting is to train a sequence of weak learners (e.g., decision trees), each of which tries to correct the mistakes of the previous one. The predictions of the weak learners are then combined to make the final prediction. Note how this differs from Random Forests where the trees are trained independently of each other in parallel, while in boosting we sequentially train the trees to fix the mistakes of the previous ones. The basic steps can be roughly summarized as follows:</p>
 <ol type="1">
 <li><strong>Initialize the model</strong>: Construct a base tree with just a root node. In the case of a regression problem, the prediction could be the mean of the target variable. In the case of a classification problem, the prediction could be the log odds of the target variable.</li>
 <li><strong>Train a weak learner</strong>: Train a weak learner on the data. The weak learner tries to correct the mistakes of the previous model.</li>
@@ -1012,7 +1012,7 @@ memory usage: 61.0 MB</code></pre>
 </div>
 <section id="data-preprocessing" class="level3" data-number="4.6.1">
 <h3 data-number="4.6.1" class="anchored" data-anchor-id="data-preprocessing"><span class="header-section-number">4.6.1</span> Data Preprocessing</h3>
-<p>Since we have already explored the dataset in the previous notebook, we can skip that part and move directly to the data preprocessing.</p>
+<p>Since we have already explored the dataset in the previous section, we can skip that part and move directly to the data preprocessing.</p>
 <p>We will again split the data into training and test sets using the <code>train_test_split</code> function</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df.drop(<span class="st">'fraud'</span>, axis<span class="op">=</span><span class="dv">1</span>) <span class="co"># All variables except `fraud`</span></span>
@@ -1284,8 +1284,8 @@ memory usage: 61.0 MB</code></pre>
 </div>
 </div>
 </section>
-<section id="permuation-importance" class="level3" data-number="4.6.6">
-<h3 data-number="4.6.6" class="anchored" data-anchor-id="permuation-importance"><span class="header-section-number">4.6.6</span> Permuation Importance</h3>
+<section id="permutation-importance" class="level3" data-number="4.6.6">
+<h3 data-number="4.6.6" class="anchored" data-anchor-id="permutation-importance"><span class="header-section-number">4.6.6</span> Permutation Importance</h3>
 <p>We can also look at the permutation importance of each model. The permutation importance is a measure of how much each feature contributes to the model’s predictions. The permutation importance is calculated by permuting the values of each feature and measuring how much the model’s performance decreases. Let’s start with the Decision Tree model</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the permutation importance</span></span>
@@ -1359,7 +1359,7 @@ memory usage: 61.0 MB</code></pre>
 </section>
 <section id="conclusions" class="level3" data-number="4.6.7">
 <h3 data-number="4.6.7" class="anchored" data-anchor-id="conclusions"><span class="header-section-number">4.6.7</span> Conclusions</h3>
-<p>In this notebook, we have seen how to implement decision trees, random forests, and XGBoost classifiers in Python. We have also seen how to evaluate the performance of these models using metrics such as accuracy, precision, recall, and ROC AUC. We have seen that the Random Forest and XGBoost models perform better than the Decision Tree model. Furthermore, we looked at the feature and permutation importance of each model to see which features are most important for determining whether a transaction is fraudulent or not.</p>
+<p>In this section, we have seen how to implement decision trees, random forests, and XGBoost classifiers in Python. We have also seen how to evaluate the performance of these models using metrics such as accuracy, precision, recall, and ROC AUC. We have seen that the Random Forest and XGBoost models perform better than the Decision Tree model. Furthermore, we looked at the feature and permutation importance of each model to see which features are most important for determining whether a transaction is fraudulent or not.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
