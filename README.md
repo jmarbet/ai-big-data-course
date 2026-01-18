@@ -23,21 +23,21 @@ By the end of this course, you will be able to:
 This course is divided into four parts, each focusing on different aspects of AI and big data:
 
 - **Part I: Foundations**
-    1. Introduction to Artificial Intelligence and Big Data
-    2. Introduction to Python
+    - Introduction to Artificial Intelligence and Big Data
+    - Introduction to Python
 - **Part II: Supervised Machine Learning**
-    3. Overview of Supervised Learning
-    4. Decision Trees
-    5. Neural Networks
-    6. Practice Session I
+    - Overview of Supervised Learning
+    - Decision Trees
+    - Neural Networks
+    - Practice Session I
 - **Part III: Natural Language Processing**
-    7. Overview of Natural Language Processing (NLP)
-    8. Classical NLP Approaches
-    9. Practice Session II
+    - Overview of Natural Language Processing (NLP)
+    - Classical NLP Approaches
+    - Practice Session II
 - **Part IV: Generative AI**
-    10. Overview of Generative AI
-    11. Large Language Models (LLMs)
-    12. Practice Session III
+    - Overview of Generative AI
+    - Large Language Models (LLMs)
+    - Practice Session III
 
 ## Prerequisites
 
