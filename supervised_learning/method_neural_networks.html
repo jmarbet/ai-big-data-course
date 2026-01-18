@@ -387,7 +387,7 @@ window.Quarto = {
   <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions"><span class="header-section-number">5.11.4</span> Conclusions</a></li>
   </ul></li>
   </ul>
-<div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPClassifier.html"><i class="bi bi-link-45deg"></i>Scikit-Learn: MLP Classifier</a></li><li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html"><i class="bi bi-link-45deg"></i>Scikit-Learn: MLP Regressor</a></li><li><a href="https://pytorch.org/"><i class="bi bi-link-45deg"></i>PyTorch</a></li><li><a href="https://playground.tensorflow.org"><i class="bi bi-link-45deg"></i>TensorFlow Playground</a></li></ul></div><div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="/notebooks/sl_neural_networks.ipynb" target="_blank"><i class="bi bi-file-code"></i>Notebook: Neural Networks</a></li></ul></div></nav>
+<div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPClassifier.html"><i class="bi bi-link-45deg"></i>Scikit-Learn: MLP Classifier</a></li><li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html"><i class="bi bi-link-45deg"></i>Scikit-Learn: MLP Regressor</a></li><li><a href="https://pytorch.org/"><i class="bi bi-link-45deg"></i>PyTorch</a></li><li><a href="https://playground.tensorflow.org"><i class="bi bi-link-45deg"></i>TensorFlow Playground</a></li></ul></div><div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="/notebooks/sl_neural_networks.ipynb" target="_blank"><i class="bi bi-file-code"></i>Notebook: Neural Networks</a></li><li><a href="https://colab.research.google.com/github/jmarbet/ai-big-data-course/blob/main/notebooks/sl_neural_networks.ipynb"><i class="bi bi-file-code"></i>Google Colab: Neural Networks</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -1277,14 +1277,14 @@ Figure&nbsp;5.12: Backpropagation Algorithm
 <span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> epoch <span class="op">%</span> <span class="dv">10</span> <span class="op">==</span> <span class="dv">9</span>:</span>
 <span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Epoch </span><span class="sc">{</span>epoch<span class="sc">}</span><span class="ss"> loss: </span><span class="sc">{</span>loss<span class="sc">.</span>item()<span class="sc">:&gt;7f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Epoch 9 loss: 0.008226
-Epoch 19 loss: 0.008079
-Epoch 29 loss: 0.011419
-Epoch 39 loss: 0.014697
-Epoch 49 loss: 0.004180
-Epoch 59 loss: 0.004695
-Epoch 69 loss: 0.002156
-Epoch 79 loss: 0.000761</code></pre>
+<pre><code>Epoch 9 loss: 0.007481
+Epoch 19 loss: 0.002453
+Epoch 29 loss: 0.012941
+Epoch 39 loss: 0.002605
+Epoch 49 loss: 0.003482
+Epoch 59 loss: 0.000202
+Epoch 69 loss: 0.006084
+Epoch 79 loss: 0.000243</code></pre>
 </div>
 </div>
 <p>Note that here we are updating the model weights for each mini-batch in the dataset and go over the whole dataset 80 times (epochs). We print the loss every 10 epochs to see how the loss decreases over time.</p>
@@ -1318,15 +1318,15 @@ Epoch 79 loss: 0.000761</code></pre>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Accuracy: </span><span class="sc">{</span>accuracy_score(y_test, y_pred)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Accuracy: 0.99863</code></pre>
+<pre><code>Accuracy: 0.99864</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Precision: </span><span class="sc">{</span>precision_score(y_test, y_pred)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Precision: 0.9909457505896675</code></pre>
+<pre><code>Precision: 0.9924453432027166</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Recall: </span><span class="sc">{</span>recall_score(y_test, y_pred)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Recall: 0.9934022348499294</code></pre>
+<pre><code>Recall: 0.9919911521299721</code></pre>
 </div>
 </div>
 <p>Note that for simplicity we are reusing the scikit-learn metrics to evaluate the model.</p>

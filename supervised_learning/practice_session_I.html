@@ -376,7 +376,7 @@ window.Quarto = {
   <li><a href="#exercise-10-reflection-and-discussion" id="toc-exercise-10-reflection-and-discussion" class="nav-link" data-scroll-target="#exercise-10-reflection-and-discussion"><span class="header-section-number">6.5.10</span> Exercise 10: Reflection and Discussion</a></li>
   </ul></li>
   </ul>
-<div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="/notebooks/practice_session_I.ipynb" target="_blank"><i class="bi bi-file-code"></i>Notebook: Practice Session I</a></li></ul></div></nav>
+<div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="/notebooks/practice_session_I.ipynb" target="_blank"><i class="bi bi-file-code"></i>Notebook: Practice Session I</a></li><li><a href="https://colab.research.google.com/github/jmarbet/ai-big-data-course/blob/main/notebooks/practice_session_I.ipynb"><i class="bi bi-file-code"></i>Google Colab: Practice Session I</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -415,7 +415,7 @@ window.Quarto = {
 <section id="dataset" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="dataset"><span class="header-section-number">6.2</span> Dataset</h2>
 <p>Let’s download the dataset automatically, unzip it, and place it in a folder called <code>data</code> if you haven’t done so already</p>
-<div id="28194133" class="cell" data-execution_count="1">
+<div id="dba37722" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> io <span class="im">import</span> BytesIO</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> urllib.request <span class="im">import</span> urlopen</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> zipfile <span class="im">import</span> ZipFile</span>
@@ -444,7 +444,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Then, we can have a look at the data dictionary that is provided with the dataset. This will give us an idea of the variables that are available in the dataset and what they represent</p>
-<div id="6135c5f1" class="cell" data-execution_count="2">
+<div id="cbb8cb70" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>data_dict <span class="op">=</span> pd.read_excel(<span class="st">'data/Data Dictionary.xls'</span>, header<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>data_dict.style.hide()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -452,69 +452,69 @@ window.Quarto = {
 <style type="text/css">
 </style>
 
-<table id="T_aea7f" class="caption-top table table-sm table-striped small">
+<table id="T_0254a" class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
-<th id="T_aea7f_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Variable Name</th>
-<th id="T_aea7f_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">Description</th>
-<th id="T_aea7f_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">Type</th>
+<th id="T_0254a_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Variable Name</th>
+<th id="T_0254a_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">Description</th>
+<th id="T_0254a_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">Type</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td id="T_aea7f_row0_col0" class="data row0 col0">SeriousDlqin2yrs</td>
-<td id="T_aea7f_row0_col1" class="data row0 col1">Person experienced 90 days past due delinquency or worse</td>
-<td id="T_aea7f_row0_col2" class="data row0 col2">Y/N</td>
+<td id="T_0254a_row0_col0" class="data row0 col0">SeriousDlqin2yrs</td>
+<td id="T_0254a_row0_col1" class="data row0 col1">Person experienced 90 days past due delinquency or worse</td>
+<td id="T_0254a_row0_col2" class="data row0 col2">Y/N</td>
 </tr>
 <tr class="even">
-<td id="T_aea7f_row1_col0" class="data row1 col0">RevolvingUtilizationOfUnsecuredLines</td>
-<td id="T_aea7f_row1_col1" class="data row1 col1">Total balance on credit cards and personal lines of credit except real estate and no installment debt like car loans divided by the sum of credit limits</td>
-<td id="T_aea7f_row1_col2" class="data row1 col2">percentage</td>
+<td id="T_0254a_row1_col0" class="data row1 col0">RevolvingUtilizationOfUnsecuredLines</td>
+<td id="T_0254a_row1_col1" class="data row1 col1">Total balance on credit cards and personal lines of credit except real estate and no installment debt like car loans divided by the sum of credit limits</td>
+<td id="T_0254a_row1_col2" class="data row1 col2">percentage</td>
 </tr>
 <tr class="odd">
-<td id="T_aea7f_row2_col0" class="data row2 col0">age</td>
-<td id="T_aea7f_row2_col1" class="data row2 col1">Age of borrower in years</td>
-<td id="T_aea7f_row2_col2" class="data row2 col2">integer</td>
+<td id="T_0254a_row2_col0" class="data row2 col0">age</td>
+<td id="T_0254a_row2_col1" class="data row2 col1">Age of borrower in years</td>
+<td id="T_0254a_row2_col2" class="data row2 col2">integer</td>
 </tr>
 <tr class="even">
-<td id="T_aea7f_row3_col0" class="data row3 col0">NumberOfTime30-59DaysPastDueNotWorse</td>
-<td id="T_aea7f_row3_col1" class="data row3 col1">Number of times borrower has been 30-59 days past due but no worse in the last 2 years.</td>
-<td id="T_aea7f_row3_col2" class="data row3 col2">integer</td>
+<td id="T_0254a_row3_col0" class="data row3 col0">NumberOfTime30-59DaysPastDueNotWorse</td>
+<td id="T_0254a_row3_col1" class="data row3 col1">Number of times borrower has been 30-59 days past due but no worse in the last 2 years.</td>
+<td id="T_0254a_row3_col2" class="data row3 col2">integer</td>
 </tr>
 <tr class="odd">
-<td id="T_aea7f_row4_col0" class="data row4 col0">DebtRatio</td>
-<td id="T_aea7f_row4_col1" class="data row4 col1">Monthly debt payments, alimony,living costs divided by monthy gross income</td>
-<td id="T_aea7f_row4_col2" class="data row4 col2">percentage</td>
+<td id="T_0254a_row4_col0" class="data row4 col0">DebtRatio</td>
+<td id="T_0254a_row4_col1" class="data row4 col1">Monthly debt payments, alimony,living costs divided by monthy gross income</td>
+<td id="T_0254a_row4_col2" class="data row4 col2">percentage</td>
 </tr>
 <tr class="even">
-<td id="T_aea7f_row5_col0" class="data row5 col0">MonthlyIncome</td>
-<td id="T_aea7f_row5_col1" class="data row5 col1">Monthly income</td>
-<td id="T_aea7f_row5_col2" class="data row5 col2">real</td>
+<td id="T_0254a_row5_col0" class="data row5 col0">MonthlyIncome</td>
+<td id="T_0254a_row5_col1" class="data row5 col1">Monthly income</td>
+<td id="T_0254a_row5_col2" class="data row5 col2">real</td>
 </tr>
 <tr class="odd">
-<td id="T_aea7f_row6_col0" class="data row6 col0">NumberOfOpenCreditLinesAndLoans</td>
-<td id="T_aea7f_row6_col1" class="data row6 col1">Number of Open loans (installment like car loan or mortgage) and Lines of credit (e.g. credit cards)</td>
-<td id="T_aea7f_row6_col2" class="data row6 col2">integer</td>
+<td id="T_0254a_row6_col0" class="data row6 col0">NumberOfOpenCreditLinesAndLoans</td>
+<td id="T_0254a_row6_col1" class="data row6 col1">Number of Open loans (installment like car loan or mortgage) and Lines of credit (e.g. credit cards)</td>
+<td id="T_0254a_row6_col2" class="data row6 col2">integer</td>
 </tr>
 <tr class="even">
-<td id="T_aea7f_row7_col0" class="data row7 col0">NumberOfTimes90DaysLate</td>
-<td id="T_aea7f_row7_col1" class="data row7 col1">Number of times borrower has been 90 days or more past due.</td>
-<td id="T_aea7f_row7_col2" class="data row7 col2">integer</td>
+<td id="T_0254a_row7_col0" class="data row7 col0">NumberOfTimes90DaysLate</td>
+<td id="T_0254a_row7_col1" class="data row7 col1">Number of times borrower has been 90 days or more past due.</td>
+<td id="T_0254a_row7_col2" class="data row7 col2">integer</td>
 </tr>
 <tr class="odd">
-<td id="T_aea7f_row8_col0" class="data row8 col0">NumberRealEstateLoansOrLines</td>
-<td id="T_aea7f_row8_col1" class="data row8 col1">Number of mortgage and real estate loans including home equity lines of credit</td>
-<td id="T_aea7f_row8_col2" class="data row8 col2">integer</td>
+<td id="T_0254a_row8_col0" class="data row8 col0">NumberRealEstateLoansOrLines</td>
+<td id="T_0254a_row8_col1" class="data row8 col1">Number of mortgage and real estate loans including home equity lines of credit</td>
+<td id="T_0254a_row8_col2" class="data row8 col2">integer</td>
 </tr>
 <tr class="even">
-<td id="T_aea7f_row9_col0" class="data row9 col0">NumberOfTime60-89DaysPastDueNotWorse</td>
-<td id="T_aea7f_row9_col1" class="data row9 col1">Number of times borrower has been 60-89 days past due but no worse in the last 2 years.</td>
-<td id="T_aea7f_row9_col2" class="data row9 col2">integer</td>
+<td id="T_0254a_row9_col0" class="data row9 col0">NumberOfTime60-89DaysPastDueNotWorse</td>
+<td id="T_0254a_row9_col1" class="data row9 col1">Number of times borrower has been 60-89 days past due but no worse in the last 2 years.</td>
+<td id="T_0254a_row9_col2" class="data row9 col2">integer</td>
 </tr>
 <tr class="odd">
-<td id="T_aea7f_row10_col0" class="data row10 col0">NumberOfDependents</td>
-<td id="T_aea7f_row10_col1" class="data row10 col1">Number of dependents in family excluding themselves (spouse, children etc.)</td>
-<td id="T_aea7f_row10_col2" class="data row10 col2">integer</td>
+<td id="T_0254a_row10_col0" class="data row10 col0">NumberOfDependents</td>
+<td id="T_0254a_row10_col1" class="data row10 col1">Number of dependents in family excluding themselves (spouse, children etc.)</td>
+<td id="T_0254a_row10_col2" class="data row10 col2">integer</td>
 </tr>
 </tbody>
 </table>
@@ -529,14 +529,14 @@ window.Quarto = {
 <section id="setting-up-the-environment" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="setting-up-the-environment"><span class="header-section-number">6.4</span> Setting up the Environment</h2>
 <p>We will start by setting up the environment by importing the necessary libraries</p>
-<div id="0386d181" class="cell" data-execution_count="3">
+<div id="52dab86a" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>and loading the dataset</p>
-<div id="002cfbda" class="cell" data-execution_count="4">
+<div id="4db5b8ff" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'data/cs-training.csv'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -557,7 +557,7 @@ window.Quarto = {
 <li>Look for columns that seem to duplicate the index</li>
 <li>The <code>axis</code> parameter in <code>.drop()</code> specifies whether you’re dropping rows or columns</li>
 </ul>
-<div id="599c28d6" class="cell" data-execution_count="5">
+<div id="b05f6f79" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -574,7 +574,7 @@ window.Quarto = {
 <li>The target variable is <code>SeriousDlqin2yrs</code></li>
 <li>Think about what accuracy would be if a model just predicted the majority class</li>
 </ul>
-<div id="5cedc11a" class="cell" data-execution_count="6">
+<div id="e15645c7" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -606,7 +606,7 @@ Note
 <p>Note that in a real application, you would want to carefully consider how to handle missing data rather than just dropping rows. Imputation methods or models that can handle missing data directly might be more appropriate depending on the context. Furthermore, in this specific dataset, dropping some of the missing values also removes some of the other data quality issues by chance. In practice, you would want to investigate and address these issues separately.</p>
 </div>
 </div>
-<div id="1d0cf674" class="cell" data-execution_count="7">
+<div id="26003ef2" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -627,7 +627,7 @@ Note
 <li><code>sns.heatmap()</code> can visualize correlation matrices</li>
 <li>Use <code>np.triu()</code> to create a mask for the upper triangle</li>
 </ul>
-<div id="e5469889" class="cell" data-execution_count="8">
+<div id="13ac5f98" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -646,7 +646,7 @@ Note
 <li>Fitting on test data causes “data leakage” - avoid this!</li>
 <li>Create a helper function for scaling if you want cleaner code</li>
 </ul>
-<div id="70e1013f" class="cell" data-execution_count="9">
+<div id="de4a298e" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -671,7 +671,7 @@ Note
 <li>Add a diagonal reference line for the ROC plot</li>
 <li>Use <code>label</code> parameter to differentiate models in outputs, e.g., <code>label='Logistic Regression'</code></li>
 </ul>
-<div id="e9403d17" class="cell" data-execution_count="10">
+<div id="60508826" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -699,7 +699,7 @@ Note
 <li>Watch for signs of overfitting (training &gt;&gt; test performance)</li>
 <li>Training the neural network may take several minutes</li>
 </ul>
-<div id="a5ba90b5" class="cell" data-execution_count="11">
+<div id="f72e511d" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -716,7 +716,7 @@ Note
 <li>Use <code>pd.DataFrame()</code> with a dictionary</li>
 <li>The gap between train/test performance indicates overfitting</li>
 </ul>
-<div id="1adeb8ec" class="cell" data-execution_count="12">
+<div id="4790f19f" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -736,7 +736,7 @@ Note
 <li>Remember to fit a new scaler on the new training data</li>
 <li>LASSO can help with feature selection when you have many features</li>
 </ul>
-<div id="1fe169cd" class="cell" data-execution_count="13">
+<div id="49d5ab24" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
