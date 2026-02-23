@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>7&nbsp; Overview of Natural Language Processing (NLP) – Artificial Intelligence and Big Data</title>
+<title>7&nbsp; Overview of Natural Language Processing – Artificial Intelligence and Big Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -42,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-44c4dd5b65e43a7a30145c4f63b8d911.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-504e8940ed4094e617457e906eda6e48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -104,7 +104,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="sidebar-title mb-0 py-0">
       <a href="../">AI and Big Data</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://github.com/jmarbet/ai-big-data-course" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
     <a href="../Artificial-Intelligence-and-Big-Data.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
 </div>
     </div>
@@ -198,7 +198,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../nlp/nlp_methods.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Classical NLP Approaches</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">NLP Methods</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -266,15 +266,25 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#what-is-natural-language-processing-nlp" id="toc-what-is-natural-language-processing-nlp" class="nav-link active" data-scroll-target="#what-is-natural-language-processing-nlp"><span class="header-section-number">7.1</span> What is Natural Language Processing (NLP)?</a></li>
+  <li><a href="#what-makes-nlp-difficult" id="toc-what-makes-nlp-difficult" class="nav-link" data-scroll-target="#what-makes-nlp-difficult"><span class="header-section-number">7.2</span> What makes NLP difficult?</a></li>
+  <li><a href="#applications" id="toc-applications" class="nav-link" data-scroll-target="#applications"><span class="header-section-number">7.3</span> Applications</a></li>
+  <li><a href="#brief-history" id="toc-brief-history" class="nav-link" data-scroll-target="#brief-history"><span class="header-section-number">7.4</span> Brief History</a></li>
+  <li><a href="#basic-concepts" id="toc-basic-concepts" class="nav-link" data-scroll-target="#basic-concepts"><span class="header-section-number">7.5</span> Basic Concepts</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../nlp/intro_nlp.html">Natural Language Processing</a></li><li class="breadcrumb-item"><a href="../nlp/intro_nlp.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Overview</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Overview of Natural Language Processing (NLP)</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Overview of Natural Language Processing</span></h1>
 </div>
 
 
@@ -291,8 +301,132 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>In previous chapters, we have dealt with structured or <strong>tabular data</strong>, where each observation is represented by a fixed set of features (columns). However, a significant portion of the data generated today is <strong>unstructured text data</strong>, such as emails, news articles, social media posts, or policy reports. Industry estimates suggest that around 80% of enterprise data is unstructured (e.g., text, images, videos, etc.),<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> highlighting the importance of being able to process and analyze such data effectively.</p>
+<p>In this part of the course, we will explore the fundamental concepts and techniques of Natural Language Processing (NLP), which will enable us to extract meaningful information from unstructured text data.</p>
+<section id="what-is-natural-language-processing-nlp" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="what-is-natural-language-processing-nlp"><span class="header-section-number">7.1</span> What is Natural Language Processing (NLP)?</h2>
+<p><strong>Natural Language Processing (NLP)</strong> is the branch of artificial intelligence concerned with enabling computers to understand, interpret, and generate human language. As we saw in <a href="../foundations/intro_ai.html" class="quarto-xref"><span>Chapter 1</span></a>, NLP is one of the core application areas of machine learning, powering technologies like chatbots, translation systems, and sentiment analysis tools.</p>
+<p>NLP is often divided into two broad categories:</p>
+<ul>
+<li><p><strong>Natural Language Understanding (NLU)</strong>: The task of <em>comprehending</em> text. This includes extracting meaning, identifying entities, determining sentiment, or classifying documents. It is what allows a search engine to understand your query or a spam filter to recognize unwanted emails.</p></li>
+<li><p><strong>Natural Language Generation (NLG)</strong>: The task of <em>producing</em> text. This includes generating summaries, writing responses, or translating between languages. It is what powers chatbots like ChatGPT and machine translation systems.</p></li>
+</ul>
+<p>In this part of the course, we will primarily focus on NLU tasks: transforming raw text into structured representations that machine learning models can analyze. The generative side of NLP will be covered in more depth in the final part of the course on generative AI.</p>
+</section>
+<section id="what-makes-nlp-difficult" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="what-makes-nlp-difficult"><span class="header-section-number">7.2</span> What makes NLP difficult?</h2>
+<p>Natural language is inherently complex and ambiguous, making it challenging for computers to process. Unlike programming languages, which have strict syntax and unambiguous meanings, human language is full of nuances that we navigate effortlessly but that pose significant hurdles for machines. Here are some examples:</p>
+<ul>
+<li><p><strong>Lexical Ambiguity</strong>: A single word can have multiple meanings. “Bank” could refer to a financial institution or the side of a river. We can only infer through context which one is meant.</p></li>
+<li><p><strong>Syntactic Ambiguity</strong>: A sentence can be parsed in multiple ways. “I saw the man with the telescope” leaves unclear whether you used the telescope or he was holding it.</p></li>
+<li><p><strong>Referential Ambiguity</strong>: Pronouns like “it” or “they” require understanding what was mentioned earlier. In “The trophy didn’t fit in the suitcase because it was too big,” humans use physics to know “it” is the trophy.</p></li>
+<li><p><strong>Figurative Language</strong>: Literal meanings fail entirely. “Kick the bucket” has nothing to do with buckets, and “this is the shit” means the opposite of “this is shit.”</p></li>
+<li><p><strong>Sarcasm and Irony</strong>: “Oh great, another meeting” probably doesn’t mean what it literally says.</p></li>
+</ul>
+<p>Humans resolve these ambiguities unconsciously using world knowledge, common sense, and social context. These are capabilities that are difficult to encode in algorithms.</p>
+<p>While we focus on text data in this course, speech recognition adds further challenges such as accents, background noise, homophones (“there” vs.&nbsp;“their”), and intonation (e.g., the same words can be a statement or question depending on tone).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>More Examples of Ambiguous Language
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Leslie Nielsen’s comedy films are a treasure trove of examples, as much of their humor relies on deliberately misinterpreting ambiguous language.</p>
+<p><strong>Syntactic Ambiguity</strong> (from <em>“Police Squad!”</em> - <a href="https://www.youtube.com/watch?v=ywpfM9hV5Ow">watch clip</a>)</p>
+<blockquote class="blockquote">
+<div class="line-block"><strong>Frank Drebin:</strong> Now do you think you can beat The Champ?<br>
+<strong>Buddy:</strong> I can take him blindfolded.<br>
+<strong>Frank Drebin:</strong> What if he’s not blindfolded?<br>
+<strong>Buddy:</strong> I can still beat him.</div>
+</blockquote>
+<p>The modifier “blindfolded” could attach to either “I” or “him.”</p>
+<p><strong>Lexical Ambiguity</strong> (from <em>“Airplane!”</em> - <a href="https://www.youtube.com/watch?v=bLpBtDRkuD8">watch clip</a>)</p>
+<blockquote class="blockquote">
+<div class="line-block"><strong>Rumack:</strong> You’d better tell the Captain we’ve got to land as soon as we can. This woman has to be gotten to a hospital.<br>
+<strong>Elaine Dickinson:</strong> A hospital? What is it?<br>
+<strong>Rumack:</strong> It’s a big building with patients, but that’s not important right now.</div>
+</blockquote>
+<p>“What is it?” asks about the situation, but Rumack interprets “it” as asking for a definition.</p>
+<p><strong>Phonetic Ambiguity</strong> (from <em>“Police Squad!”</em> - <a href="https://www.youtube.com/watch?v=het1kl-A8qw">watch clip</a>)</p>
+<blockquote class="blockquote">
+<div class="line-block"><em>[Frank and Ed are interviewing a witness to a shooting]</em><br>
+<strong>Sally:</strong> Well, I first heard the shot, and as I turned, Jim fell.<br>
+<strong>Frank:</strong> Jim Fell’s the teller?<br>
+<strong>Sally:</strong> No, Jim Johnson.<br>
+<strong>Frank:</strong> Who’s Jim Fell?<br>
+<strong>Ed:</strong> He’s the auditor, Frank.<br>
+<strong>Sally:</strong> He had the flu, so Jim… filled in.<br>
+<strong>Frank:</strong> Phil who?<br>
+<strong>Ed:</strong> Phil Din. He’s the night watchman.<br>
+<strong>Sally:</strong> Oh, if only Phil had been here…</div>
+</blockquote>
+<p>“Jim fell” sounds like “Jim Fell” (a name), and “filled in” sounds like “Phil Din.”</p>
+</div>
+</div>
+<p>We will not attempt to dive deeply into all the linguistic challenges of natural language in this course. But it is important to be aware that these difficulties exist. Recent advances in NLP, particularly with transformer-based models like BERT and GPT, have made significant advances in handling some of these complexities.</p>
+</section>
+<section id="applications" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="applications"><span class="header-section-number">7.3</span> Applications</h2>
+<p>NLP powers a wide range of real-world applications that we encounter daily. Here are some of the most common:</p>
+<ul>
+<li><p><strong>Text Classification</strong> assigns predefined categories to documents. Spam detection is a classic example: your email provider uses NLP to automatically filter unwanted messages into your spam folder. Other examples include routing customer support tickets to the appropriate department or categorizing news articles by topic.</p></li>
+<li><p><strong>Sentiment Analysis</strong> determines the emotional tone of text, such as whether a review is positive, negative, or neutral. Companies use this to monitor brand perception on social media, analyze customer feedback at scale, or gauge public opinion on policy issues. For economists, sentiment analysis of news articles or earnings calls can serve as indicators for market movements or economic confidence.</p></li>
+<li><p><strong>Machine Translation</strong> automatically converts text from one language to another. Services like Google Translate and DeepL have made it possible to read content in languages we don’t speak. While not perfect, modern neural machine translation has dramatically improved quality, making cross-language communication more accessible than ever.</p></li>
+<li><p><strong>Information Retrieval</strong> powers search engines. When you type a query into Google, NLP techniques help match your question to relevant documents, even when the exact words don’t appear in the text. This involves understanding synonyms, query intent, and document relevance.</p></li>
+<li><p><strong>Text Summarization</strong> condenses long documents into shorter versions while preserving key information. This can be <em>extractive</em> (selecting the most important sentences) or <em>abstractive</em> (generating new sentences that capture the main points). Applications range from summarizing news articles to condensing legal documents or research papers.</p></li>
+<li><p><strong>Named Entity Recognition (NER)</strong> identifies and classifies entities in text, such as people, organizations, locations, dates, and monetary values. For example, given the sentence “Apple announced new products in Cupertino on Tuesday,” NER would identify “Apple” as an organization, “Cupertino” as a location, and “Tuesday” as a date. This is invaluable for extracting structured information from unstructured text.</p></li>
+<li><p><strong>Part-of-Speech Tagging</strong> labels each word in a sentence with its grammatical role (noun, verb, adjective, etc.). While this may seem like a purely linguistic exercise, it’s a fundamental building block for many higher-level NLP tasks and helps models understand sentence structure.</p></li>
+<li><p><strong>Topic Modeling</strong> discovers abstract themes that occur across a collection of documents. Given thousands of news articles, topic modeling might automatically identify clusters around politics, sports, technology, and entertainment, without being told these categories exist in advance.</p></li>
+<li><p><strong>Chatbots and Virtual Assistants</strong> combine multiple NLP capabilities to understand user requests and generate appropriate responses. From customer service bots that answer FAQs to virtual assistants like Siri and Alexa, these systems rely on intent recognition, entity extraction, and natural language generation.</p></li>
+<li><p><strong>Keyword Extraction</strong> automatically identifies the most important terms in a document. This is useful for tagging content, generating metadata, or quickly understanding what a document is about without reading it in full.</p></li>
+</ul>
+<p>In this course, we will focus on text classification, sentiment analysis, topic modeling, and named entity recognition, as these tasks provide an excellent foundation for understanding NLP concepts while being directly applicable in economics and finance.</p>
+</section>
+<section id="brief-history" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="brief-history"><span class="header-section-number">7.4</span> Brief History</h2>
+<p>The history of NLP can be broadly divided into three eras, each defined by the dominant approach to processing language.</p>
+<ul>
+<li><p><strong>Rule-based systems (1950s-1980s)</strong> relied on hand-crafted linguistic rules and pattern matching. One famous example is ELIZA, created by Joseph Weizenbaum at MIT in 1966. ELIZA simulated a Rogerian psychotherapist by using simple pattern-matching rules to transform user input into questions. Despite its simplicity, users often attributed human-like understanding to the program. Here is an excerpt from Weizenbaum’s original paper:</p>
+<blockquote class="blockquote">
+<div class="line-block"><strong>User:</strong> Men are all alike.<br>
+<strong>ELIZA:</strong> IN WHAT WAY<br>
+<strong>User:</strong> They’re always bugging us about something or other.<br>
+<strong>ELIZA:</strong> CAN YOU THINK OF A SPECIFIC EXAMPLE<br>
+<strong>User:</strong> Well, my boyfriend made me come here.<br>
+<strong>ELIZA:</strong> YOUR BOYFRIEND MADE YOU COME HERE<br>
+<strong>User:</strong> He says I’m depressed much of the time.<br>
+<strong>ELIZA:</strong> I AM SORRY TO HEAR YOU ARE DEPRESSED</div>
+</blockquote>
+<p>ELIZA had no actual understanding of language; it simply matched patterns like “my boyfriend” and reflected them back as “your boyfriend.” Yet this was enough to create the illusion of comprehension, a phenomenon now known as the “ELIZA effect.”</p></li>
+<li><p><strong>Statistical approaches (1990s-2000s)</strong> shifted focus from hand-written rules to learning patterns from data. Techniques like n-gram language models, hidden Markov models, and later support vector machines allowed systems to learn from large text corpora. This era saw major advances in machine translation, speech recognition, and information retrieval.</p></li>
+<li><p><strong>Neural approaches (2010s-present)</strong> use deep learning to automatically learn representations of language. Word embeddings (Word2Vec, GloVe) captured semantic relationships, recurrent neural networks handled sequential data, and most recently, transformer architectures (BERT, GPT) have achieved state-of-the-art results across virtually all NLP tasks.</p></li>
+</ul>
+</section>
+<section id="basic-concepts" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="basic-concepts"><span class="header-section-number">7.5</span> Basic Concepts</h2>
+<p>Before diving into NLP methods, it helps to establish some core terminology that you will encounter throughout these chapters.</p>
+<ul>
+<li><p><strong>Corpus</strong> (plural: corpora): A collection of texts used for analysis, such as news articles, tweets, or legal documents.</p></li>
+<li><p><strong>Document</strong>: A single text unit within a corpus. Depending on context, this could be a sentence, paragraph, article, or entire book.</p></li>
+<li><p><strong>Token</strong>: The basic unit of text after splitting. Usually words, but can also be subwords, characters, or punctuation.</p></li>
+<li><p><strong>Tokenization</strong>: The process of splitting text into tokens. For example, “I can’t wait!” might become <code>["I", "can't", "wait", "!"]</code> or <code>["I", "can", "'t", "wait", "!"]</code> depending on the tokenizer.</p></li>
+<li><p><strong>Vocabulary</strong>: The set of unique tokens in a corpus.</p></li>
+<li><p><strong>Metadata</strong>: Information about documents that is not part of the text itself, such as author, publication date, source, or category. Metadata is often used alongside text for filtering, grouping, or as additional features in analysis.</p></li>
+</ul>
+<p>The central challenge of NLP is turning raw text into something a machine learning model can work with. Unlike tabular data, where each feature is already a number, text must first be transformed into numerical representations. In the next chapter, we will walk through a typical NLP pipeline: preprocessing text (tokenization, normalization, stopword removal), representing it numerically using methods ranging from simple bag-of-words and TF-IDF to dense word embeddings like Word2Vec and BERT, and then applying these representations to tasks such as text classification, named entity recognition, and topic modeling.</p>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>The extent to which this figure is accurate can be debated, but it is widely accepted that unstructured data constitutes a large majority of all data.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -702,8 +836,8 @@ ul.task-list li input[type="checkbox"] {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../nlp/nlp_methods.html" class="pagination-link" aria-label="Classical NLP Approaches">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Classical NLP Approaches</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../nlp/nlp_methods.html" class="pagination-link" aria-label="NLP Methods">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">NLP Methods</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

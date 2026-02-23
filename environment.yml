@@ -1,4 +1,6 @@
 name: ai-big-data-cemfi
+channels:
+  - conda-forge
 dependencies:
   - python
   - jupyter
@@ -10,7 +12,21 @@ dependencies:
   - seaborn
   - pytorch
   - xlrd
+  - spacy
+  - wordcloud
+  - gensim
+  - pyldavis
+  - huggingface_hub
+  - transformers
+  - sentence-transformers
+  - ollama
+  - openai
+  - pydantic
   - pip
   - pip:
       - sdmx1
       - pyfredapi
+      - setuptools
+      - wheel
+      - spacytextblob
+      - 'markitdown[all]'

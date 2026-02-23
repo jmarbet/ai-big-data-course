@@ -20,7 +20,62 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -42,7 +97,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-44c4dd5b65e43a7a30145c4f63b8d911.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-504e8940ed4094e617457e906eda6e48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -104,7 +159,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="sidebar-title mb-0 py-0">
       <a href="../">AI and Big Data</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://github.com/jmarbet/ai-big-data-course" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
     <a href="../Artificial-Intelligence-and-Big-Data.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
 </div>
     </div>
@@ -198,7 +253,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../nlp/nlp_methods.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Classical NLP Approaches</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">NLP Methods</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -266,8 +321,30 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#problem-setup" id="toc-problem-setup" class="nav-link active" data-scroll-target="#problem-setup"><span class="header-section-number">9.1</span> Problem Setup</a></li>
+  <li><a href="#dataset" id="toc-dataset" class="nav-link" data-scroll-target="#dataset"><span class="header-section-number">9.2</span> Dataset</a></li>
+  <li><a href="#putting-the-problem-into-the-context-of-the-course" id="toc-putting-the-problem-into-the-context-of-the-course" class="nav-link" data-scroll-target="#putting-the-problem-into-the-context-of-the-course"><span class="header-section-number">9.3</span> Putting the Problem into the Context of the Course</a></li>
+  <li><a href="#setting-up-the-environment" id="toc-setting-up-the-environment" class="nav-link" data-scroll-target="#setting-up-the-environment"><span class="header-section-number">9.4</span> Setting up the Environment</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">9.5</span> Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-familiarization-with-the-dataset" id="toc-exercise-1-familiarization-with-the-dataset" class="nav-link" data-scroll-target="#exercise-1-familiarization-with-the-dataset"><span class="header-section-number">9.5.1</span> Exercise 1: Familiarization with the Dataset</a></li>
+  <li><a href="#exercise-2-understanding-the-target-variable" id="toc-exercise-2-understanding-the-target-variable" class="nav-link" data-scroll-target="#exercise-2-understanding-the-target-variable"><span class="header-section-number">9.5.2</span> Exercise 2: Understanding the Target Variable</a></li>
+  <li><a href="#exercise-3-text-preprocessing" id="toc-exercise-3-text-preprocessing" class="nav-link" data-scroll-target="#exercise-3-text-preprocessing"><span class="header-section-number">9.5.3</span> Exercise 3: Text Preprocessing</a></li>
+  <li><a href="#exercise-4-text-vectorization---count-vectorizer" id="toc-exercise-4-text-vectorization---count-vectorizer" class="nav-link" data-scroll-target="#exercise-4-text-vectorization---count-vectorizer"><span class="header-section-number">9.5.4</span> Exercise 4: Text Vectorization - Count Vectorizer</a></li>
+  <li><a href="#exercise-5-training-a-logistic-regression-model" id="toc-exercise-5-training-a-logistic-regression-model" class="nav-link" data-scroll-target="#exercise-5-training-a-logistic-regression-model"><span class="header-section-number">9.5.5</span> Exercise 5: Training a Logistic Regression Model</a></li>
+  <li><a href="#exercise-6-training-a-decision-tree-model" id="toc-exercise-6-training-a-decision-tree-model" class="nav-link" data-scroll-target="#exercise-6-training-a-decision-tree-model"><span class="header-section-number">9.5.6</span> Exercise 6: Training a Decision Tree Model</a></li>
+  <li><a href="#exercise-7-training-a-random-forest-model" id="toc-exercise-7-training-a-random-forest-model" class="nav-link" data-scroll-target="#exercise-7-training-a-random-forest-model"><span class="header-section-number">9.5.7</span> Exercise 7: Training a Random Forest Model</a></li>
+  <li><a href="#exercise-8-tf-idf-vectorization-and-model-retraining" id="toc-exercise-8-tf-idf-vectorization-and-model-retraining" class="nav-link" data-scroll-target="#exercise-8-tf-idf-vectorization-and-model-retraining"><span class="header-section-number">9.5.8</span> Exercise 8: TF-IDF Vectorization and Model Retraining</a></li>
+  <li><a href="#exercise-9-model-comparison-and-analysis" id="toc-exercise-9-model-comparison-and-analysis" class="nav-link" data-scroll-target="#exercise-9-model-comparison-and-analysis"><span class="header-section-number">9.5.9</span> Exercise 9: Model Comparison and Analysis</a></li>
+  <li><a href="#exercise-10-reflection-and-discussion" id="toc-exercise-10-reflection-and-discussion" class="nav-link" data-scroll-target="#exercise-10-reflection-and-discussion"><span class="header-section-number">9.5.10</span> Exercise 10: Reflection and Discussion</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="/notebooks/practice_session_II.ipynb" target="_blank"><i class="bi bi-file-code"></i>Notebook: Practice Session II</a></li><li><a href="https://colab.research.google.com/github/jmarbet/ai-big-data-course/blob/main/notebooks/practice_session_II.ipynb"><i class="bi bi-file-code"></i>Google Colab: Practice Session II</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -291,8 +368,278 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>This practice session builds on the sentiment analysis exercise discussed in class. We will use the same dataset of labelled sentences from ECB, FED, and BIS speeches.</p>
+<section id="problem-setup" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="problem-setup"><span class="header-section-number">9.1</span> Problem Setup</h2>
+<p>We want to build a machine learning model that can predict the sentiment of a sentence from a FED speech. The sentiment can be either positive (1) or negative (0). We will use the text of the sentences as features to train our model.</p>
+</section>
+<section id="dataset" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="dataset"><span class="header-section-number">9.2</span> Dataset</h2>
+<p>We will use a pre-labeled dataset for sentence-level sentiment analysis of central bank speeches <span class="citation" data-cites="Pfeifer2023">(<a href="../references.html#ref-Pfeifer2023" role="doc-biblioref">Pfeifer and Marohl 2023</a>)</span>, which is available on Hugging Face (<a href="https://huggingface.co/datasets/Moritz-Pfeifer/CentralBankCommunication">Central Bank Communication Dataset</a>). The dataset contains sentences from ECB, FED, and BIS speeches that have been labeled as positive or negative in terms of sentiment.</p>
+</section>
+<section id="putting-the-problem-into-the-context-of-the-course" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="putting-the-problem-into-the-context-of-the-course"><span class="header-section-number">9.3</span> Putting the Problem into the Context of the Course</h2>
+<p>Given the description of the dataset, we can see that this is a <strong>supervised learning problem</strong>. We have a target variable that we want to predict, and we have features that we can use to predict this target variable. The target variable is binary, i.e., it can take two values: 0 or 1. The value 0 indicates that the sentiment is negative, while the value 1 indicates that the sentiment is positive. Thus, this is a <strong>binary classification problem</strong>.</p>
+</section>
+<section id="setting-up-the-environment" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="setting-up-the-environment"><span class="header-section-number">9.4</span> Setting up the Environment</h2>
+<p>Let’s initialize our environment by importing the necessary libraries</p>
+<div id="9d5896c5" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> huggingface_hub <span class="im">import</span> login</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> spacy</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Let’s load the dataset for this practice session. You can change the <code>central_bank</code> variable to load the dataset for FED or BIS speeches instead of ECB speeches if you want to work with a different central bank</p>
+<div id="7c0d20b7" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>central_bank <span class="op">=</span> <span class="st">"FED"</span> <span class="co"># Change this to "FED" or "BIS" if you want to use the dataset for FED or BIS speeches instead</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="ss">f"hf://datasets/Moritz-Pfeifer/CentralBankCommunication/Sentiment/</span><span class="sc">{</span>central_bank<span class="sc">}</span><span class="ss">_prelabelled_sent.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="exercises" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="exercises"><span class="header-section-number">9.5</span> Exercises</h2>
+<p>Note that the exercises build on each other. You can sometimes skip exercises but the results for later exercises will depend on the previous ones. If you get stuck, you can skip to the next exercise and try to come back to the previous one later.</p>
+<section id="exercise-1-familiarization-with-the-dataset" class="level3" data-number="9.5.1">
+<h3 data-number="9.5.1" class="anchored" data-anchor-id="exercise-1-familiarization-with-the-dataset"><span class="header-section-number">9.5.1</span> Exercise 1: Familiarization with the Dataset</h3>
+<p><strong>Tasks:</strong></p>
+<ol type="1">
+<li>Display the first 10 rows of the dataset. What columns does it contain?</li>
+<li>Use <code>.info()</code> to check the data types and see if there are any missing values</li>
+<li>Print a few sample sentences (5-10) along with their sentiment labels to get a feel for the data</li>
+<li>How many sentences are in the dataset in total?</li>
+</ol>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>Use <code>.head(10)</code> to display the first rows</li>
+<li><code>.info()</code> shows column types and non-null counts</li>
+<li>Use <code>.sample(n)</code> to randomly select a few rows for inspection</li>
+</ul>
+<div id="de7fdd8a" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="exercise-2-understanding-the-target-variable" class="level3" data-number="9.5.2">
+<h3 data-number="9.5.2" class="anchored" data-anchor-id="exercise-2-understanding-the-target-variable"><span class="header-section-number">9.5.2</span> Exercise 2: Understanding the Target Variable</h3>
+<p><strong>Tasks:</strong></p>
+<ol type="1">
+<li>What is the proportion of positive vs negative sentences? Use <code>value_counts(normalize=True)</code> on the sentiment column</li>
+<li>Create a bar chart showing the distribution of sentiment labels</li>
+<li>Based on this distribution, would you say the dataset is balanced or imbalanced?</li>
+<li>Why is understanding class balance important for sentiment analysis?</li>
+</ol>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>The target variable is <code>sentiment</code> (0 = negative, 1 = positive)</li>
+<li>Use <code>df['sentiment'].value_counts()</code> and plot with <code>.plot(kind='bar')</code></li>
+<li>Consider what would happen if 90% of sentences were positive</li>
+</ul>
+<div id="1f77a0f9" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="exercise-3-text-preprocessing" class="level3" data-number="9.5.3">
+<h3 data-number="9.5.3" class="anchored" data-anchor-id="exercise-3-text-preprocessing"><span class="header-section-number">9.5.3</span> Exercise 3: Text Preprocessing</h3>
+<p><strong>Tasks:</strong></p>
+<ol type="1">
+<li>Load the spaCy English model: <code>nlp = spacy.load('en_core_web_sm')</code></li>
+<li>Create a preprocessing function that:
+<ul>
+<li>Takes a list/Series of texts as input</li>
+<li>Uses <code>nlp.pipe()</code> to process texts efficiently</li>
+<li>Disables unnecessary components: <code>["tok2vec", "tagger", "parser", "attribute_ruler", "ner"]</code></li>
+<li>Returns lemmatized, lowercase tokens while removing stopwords, punctuation, whitespace, and numbers</li>
+<li>Returns a list of preprocessed texts (strings joined with spaces)</li>
+</ul></li>
+<li>Apply your function to the entire dataset and create a new column called <code>processed_text</code></li>
+<li>Compare an original text with its preprocessed version. What changed?</li>
+</ol>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>Look at the <code>preprocess_texts()</code> function in the lecture notes as reference</li>
+<li>Use <code>token.lemma_.lower()</code> for lemmatization and lowercasing</li>
+<li>Filter tokens with: <code>not token.is_stop and not token.is_punct and not token.is_space and not token.like_num</code></li>
+<li>Join tokens back: <code>" ".join(tokens)</code></li>
+</ul>
+<div id="6ec9910e" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="exercise-4-text-vectorization---count-vectorizer" class="level3" data-number="9.5.4">
+<h3 data-number="9.5.4" class="anchored" data-anchor-id="exercise-4-text-vectorization---count-vectorizer"><span class="header-section-number">9.5.4</span> Exercise 4: Text Vectorization - Count Vectorizer</h3>
+<p><strong>Tasks:</strong></p>
+<ol type="1">
+<li>Split your data into features (<code>X</code>) and target (<code>y</code>)</li>
+<li>Create train/test splits (80/20) using <code>train_test_split</code> with <code>random_state=42</code> and <code>stratify=y</code></li>
+<li>Import and create a <code>CountVectorizer</code> with <code>max_features=1000</code></li>
+<li>Fit the vectorizer on the <strong>training data only</strong> and transform both train and test sets</li>
+<li>Print the shape of the resulting feature matrices. What do the dimensions represent?</li>
+</ol>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>Use <code>from sklearn.feature_extraction.text import CountVectorizer</code></li>
+<li>Use <code>from sklearn.model_selection import train_test_split</code></li>
+<li>Fit only on training data: <code>vectorizer.fit(X_train)</code>, then transform: <code>X_train_vec = vectorizer.transform(X_train)</code></li>
+<li>Never fit on test data (data leakage!)</li>
+</ul>
+<div id="a46180a5" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="exercise-5-training-a-logistic-regression-model" class="level3" data-number="9.5.5">
+<h3 data-number="9.5.5" class="anchored" data-anchor-id="exercise-5-training-a-logistic-regression-model"><span class="header-section-number">9.5.5</span> Exercise 5: Training a Logistic Regression Model</h3>
+<p><strong>Tasks:</strong></p>
+<ol type="1">
+<li>Import <code>LogisticRegression</code> from sklearn</li>
+<li>Train a logistic regression model with <code>max_iter=1000</code> and <code>random_state=42</code></li>
+<li>Make predictions on both train and test sets</li>
+<li>Calculate and print the following metrics for both sets:
+<ul>
+<li>Accuracy</li>
+<li>Precision</li>
+<li>Recall</li>
+<li>ROC AUC score</li>
+</ul></li>
+<li>Create a confusion matrix for the test set predictions using <code>confusion_matrix</code> and visualize it with seaborn’s <code>heatmap</code></li>
+</ol>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>Import from: <code>sklearn.linear_model</code>, <code>sklearn.metrics</code></li>
+<li>Use <code>clf.predict()</code> for predictions and <code>clf.predict_proba()</code> for probabilities</li>
+<li>For ROC AUC with binary classification, use the probability of the positive class: <code>y_proba[:, 1]</code></li>
+<li>Transpose the confusion matrix if needed to match lecture conventions</li>
+</ul>
+<div id="1ca14bc3" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="exercise-6-training-a-decision-tree-model" class="level3" data-number="9.5.6">
+<h3 data-number="9.5.6" class="anchored" data-anchor-id="exercise-6-training-a-decision-tree-model"><span class="header-section-number">9.5.6</span> Exercise 6: Training a Decision Tree Model</h3>
+<p><strong>Tasks:</strong></p>
+<ol type="1">
+<li>Train a Decision Tree classifier with <code>random_state=42</code></li>
+<li>Evaluate using the same metrics as Exercise 5 (accuracy, precision, recall, ROC AUC)</li>
+<li>Print and visualize the confusion matrix</li>
+<li>How does the Decision Tree compare to Logistic Regression? Look at both training and test performance</li>
+<li>Is there evidence of overfitting? How can you tell?</li>
+</ol>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>Import <code>DecisionTreeClassifier</code> from <code>sklearn.tree</code></li>
+<li>Compare train vs test metrics - large gaps suggest overfitting</li>
+<li>Decision trees tend to overfit without constraints</li>
+</ul>
+<div id="2ce0028d" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="exercise-7-training-a-random-forest-model" class="level3" data-number="9.5.7">
+<h3 data-number="9.5.7" class="anchored" data-anchor-id="exercise-7-training-a-random-forest-model"><span class="header-section-number">9.5.7</span> Exercise 7: Training a Random Forest Model</h3>
+<p><strong>Tasks:</strong></p>
+<ol type="1">
+<li>Import and train a Random Forest classifier with <code>n_estimators=100</code> and <code>random_state=42</code></li>
+<li>Evaluate using the same metrics as previous exercises (accuracy, precision, recall, ROC AUC)</li>
+<li>Print and visualize the confusion matrix</li>
+<li>How does Random Forest compare to Logistic Regression and Decision Tree? Look at both training and test performance</li>
+<li>Does Random Forest show less overfitting than a single Decision Tree? Why might this be?</li>
+</ol>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>Import <code>RandomForestClassifier</code> from <code>sklearn.ensemble</code></li>
+<li>Random Forest is an ensemble method that combines multiple decision trees</li>
+<li>Ensemble methods typically reduce overfitting compared to single models</li>
+<li>Compare the gap between train and test metrics across all three models</li>
+</ul>
+<div id="67c6520d" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="exercise-8-tf-idf-vectorization-and-model-retraining" class="level3" data-number="9.5.8">
+<h3 data-number="9.5.8" class="anchored" data-anchor-id="exercise-8-tf-idf-vectorization-and-model-retraining"><span class="header-section-number">9.5.8</span> Exercise 8: TF-IDF Vectorization and Model Retraining</h3>
+<p><strong>Tasks:</strong></p>
+<ol type="1">
+<li>Import and create a <code>TfidfVectorizer</code> with <code>max_features=1000</code></li>
+<li>Fit the vectorizer on the <strong>training data only</strong> and transform both train and test sets</li>
+<li>Retrain all three models (Logistic Regression, Decision Tree, Random Forest) using the TF-IDF features</li>
+<li>Evaluate each model and print metrics for test sets</li>
+<li>How does TF-IDF compare to Count Vectorizer? Which vectorization method works better for each model?</li>
+</ol>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>Import <code>TfidfVectorizer</code> from <code>sklearn.feature_extraction.text</code></li>
+<li>TF-IDF weights terms by their importance across documents</li>
+<li>You should end up with 6 total model-vectorizer combinations (3 models × 2 vectorizers)</li>
+<li>TF-IDF often performs better than counts for text classification</li>
+</ul>
+<div id="07749e86" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="exercise-9-model-comparison-and-analysis" class="level3" data-number="9.5.9">
+<h3 data-number="9.5.9" class="anchored" data-anchor-id="exercise-9-model-comparison-and-analysis"><span class="header-section-number">9.5.9</span> Exercise 9: Model Comparison and Analysis</h3>
+<p><strong>Tasks:</strong></p>
+<ol type="1">
+<li>Create a comparison DataFrame with columns: Model, Vectorizer, Accuracy (Test), Precision (Test), Recall (Test), ROC AUC (Test)</li>
+<li>Include all model-vectorizer combinations you tested</li>
+<li>Which model performed best overall? Which metric did you use to decide?</li>
+<li>Test your best model on a few custom sentences:
+<ul>
+<li>“The economic outlook is very positive and growth is strong.”</li>
+<li>“The central bank faces significant challenges and uncertainty.”</li>
+<li>“Inflation remains stable and within target.”</li>
+</ul></li>
+<li>Do the predictions make sense?</li>
+</ol>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>Use <code>pd.DataFrame()</code> to create the comparison table</li>
+<li>To predict on new sentences: preprocess → vectorize → predict</li>
+<li>Create a small function to make prediction testing easier</li>
+</ul>
+<div id="b5228b93" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="exercise-10-reflection-and-discussion" class="level3" data-number="9.5.10">
+<h3 data-number="9.5.10" class="anchored" data-anchor-id="exercise-10-reflection-and-discussion"><span class="header-section-number">9.5.10</span> Exercise 10: Reflection and Discussion</h3>
+<p><strong>Tasks:</strong></p>
+<ol type="1">
+<li>How did the different vectorization methods (Count vs TF-IDF) affect model performance? Why do you think this is?</li>
+<li>Which model architecture (Logistic Regression, Decision Tree, Random Forest) seems most suitable for this sentiment analysis task? Consider both performance and interpretability</li>
+<li>What are some potential issues with using this model in practice? Think about:
+<ul>
+<li>Domain specificity (trained on central bank speeches)</li>
+<li>Temporal aspects (language changes over time)</li>
+<li>Neutral sentences (the model only predicts positive/negative)</li>
+</ul></li>
+<li>How could you improve the model further? Consider:
+<ul>
+<li>More sophisticated preprocessing (n-grams, domain-specific stopwords)</li>
+<li>Handling negations better</li>
+<li>Using pre-trained language models (BERT, etc.)</li>
+<li>Collecting more training data</li>
+</ul></li>
+</ol>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>No code required; reflect on practical and methodological aspects</li>
+<li>Think about the trade-offs between model complexity and interpretability</li>
+<li>Consider real-world deployment challenges</li>
+</ul>
+<div id="8c786f95" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your reflections here (as comments or markdown)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-Pfeifer2023" class="csl-entry" role="listitem">
+Pfeifer, Moritz, and Vincent P. Marohl. 2023. <span>“CentralBankRoBERTa: A Fine-Tuned Large Language Model for Central Bank Communications.”</span> <em>The Journal of Finance and Data Science</em> 9: 100114. https://doi.org/<a href="https://doi.org/10.1016/j.jfds.2023.100114">https://doi.org/10.1016/j.jfds.2023.100114</a>.
+</div>
+</div>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -697,8 +1044,8 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../nlp/nlp_methods.html" class="pagination-link" aria-label="Classical NLP Approaches">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Classical NLP Approaches</span></span>
+      <a href="../nlp/nlp_methods.html" class="pagination-link" aria-label="NLP Methods">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">NLP Methods</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

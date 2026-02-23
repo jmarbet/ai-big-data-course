@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -42,7 +62,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-44c4dd5b65e43a7a30145c4f63b8d911.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-504e8940ed4094e617457e906eda6e48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -71,6 +91,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -104,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="sidebar-title mb-0 py-0">
       <a href="../">AI and Big Data</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://github.com/jmarbet/ai-big-data-course" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
     <a href="../Artificial-Intelligence-and-Big-Data.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
 </div>
     </div>
@@ -198,7 +247,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../nlp/nlp_methods.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Classical NLP Approaches</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">NLP Methods</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -266,8 +315,16 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#what-is-generative-ai" id="toc-what-is-generative-ai" class="nav-link active" data-scroll-target="#what-is-generative-ai"><span class="header-section-number">10.1</span> What is Generative AI?</a></li>
+  <li><a href="#from-task-specific-models-to-foundation-models" id="toc-from-task-specific-models-to-foundation-models" class="nav-link" data-scroll-target="#from-task-specific-models-to-foundation-models"><span class="header-section-number">10.2</span> From Task-Specific Models to Foundation Models</a></li>
+  <li><a href="#applications-of-generative-ai" id="toc-applications-of-generative-ai" class="nav-link" data-scroll-target="#applications-of-generative-ai"><span class="header-section-number">10.3</span> Applications of Generative AI</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -291,8 +348,67 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>In previous chapters, we have learned about various machine learning techniques and their applications. In this chapter, we will focus on a specific subset of artificial intelligence known as Generative AI, which has been a primary driver of the recent surge in interest in artificial intelligence. We will explore what Generative AI is, how it differs from other types of AI, and some of its applications.</p>
+<section id="what-is-generative-ai" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="what-is-generative-ai"><span class="header-section-number">10.1</span> What is Generative AI?</h2>
+<p>Generative AI refers to a class of artificial intelligence models that are designed to generate new content, such as text, images, audio, or even video. These models learn from existing data and can create new data that is similar in style and content to the training data. Generative AI has been used in various applications, including natural language processing, computer vision, and creative arts.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Generative vs.&nbsp;Discriminative Models
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In machine learning, one typically distinguishes between <strong>discriminative</strong> and <strong>generative</strong> models. All of the models we have seen so far (e.g., logistic regression, decision trees, random forests, and feedforward neural networks) are <em>discriminative</em>. They learn the <strong>conditional distribution</strong> <span class="math inline">\(P(y \mid x)\)</span>, i.e.&nbsp;the mapping from inputs to outputs. A discriminative model can tell you whether an email is spam or not, but it cannot write you a new email.</p>
+<p><em>Generative</em> models, by contrast, learn the <strong>joint distribution</strong> of the data, <span class="math inline">\(P(x, y)\)</span>, or simply <span class="math inline">\(P(x)\)</span> when there are no labels. Because they capture how the data itself is structured, they can <strong>produce new samples</strong> that resemble the training data. A generative language model, for instance, learns how words and sentences are distributed in natural language, which enables it to generate coherent new text.</p>
+</div>
+</div>
+</section>
+<section id="from-task-specific-models-to-foundation-models" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="from-task-specific-models-to-foundation-models"><span class="header-section-number">10.2</span> From Task-Specific Models to Foundation Models</h2>
+<p>In the <strong>previous chapters</strong>, we followed a common workflow: for each new task such as credit-default prediction or sentiment analysis, we <strong>trained a dedicated model from scratch</strong> on a task-specific dataset. This <strong>task-specific</strong> paradigm works well when labeled data is plentiful, but it has limitations. For example, every new task requires its own large labeled dataset. Since we are starting from scratch each time, the model has no prior knowledge and must learn everything from the task-specific data, which might be inefficient if we have another related task with a similar structure (e.g., predicting loan defaults in a different sector or country). Moreover, training a new model for every task can be computationally expensive and time-consuming.</p>
+<p>Recent years have seen a fundamental shift. Instead of training small, task-specific models, the idea is to first train a single, very large model on a massive, general-purpose dataset and then <em>adapt</em> it to specific tasks. These broadly capable models are known as <strong>foundation models</strong> <span class="citation" data-cites="Bommasani2021">(<a href="../references.html#ref-Bommasani2021" role="doc-biblioref">Bommasani et al. 2021</a>)</span>. The training process is typically divided into two stages:</p>
+<ul>
+<li><p><strong>Pre-training</strong>: The model learns from a large, diverse dataset (e.g., all of Wikipedia, or a large portion of the internet) using a self-supervised learning objective (e.g., predicting the next word in a sentence). This allows the model to acquire a broad understanding of language, concepts, and even some reasoning abilities.</p></li>
+<li><p><strong>Fine-tuning</strong>: The pre-trained model is further trained on a smaller, task-specific dataset to adapt it to a particular application (e.g., sentiment analysis, question answering).</p></li>
+</ul>
+<p>This is enabled by what is called <strong>transfer learning</strong>: the knowledge acquired during pre-training can be transferred to new tasks, often with much less data and computational resources than training from scratch. In some cases, the pre-trained model can perform well on new tasks with little or no fine-tuning (e.g., just by providing the right prompts), which is known as <strong>zero-shot</strong> or <strong>few-shot learning</strong>.</p>
+<p>The same three factors we discussed in the introductory chapter (see <a href="../foundations/intro_ai.html#sec-why-has-ai-become-so-popular-recently" class="quarto-xref"><span>Section 1.5.2</span></a>) have converged to make foundation models possible: the scale of available data, advances in compute (GPUs, TPUs), and improvements in model architectures, in particular the Transformer. Because pre-training is extremely computationally expensive, it is typically carried out by large technology companies or research labs. The resulting models are then released, either as commercial APIs or as openly available model weights, so that the broader community can fine-tune and deploy them without bearing the cost of training from scratch.</p>
+<p>Well-known examples include BERT (Google, 2018), the GPT series (OpenAI, 2018–), Claude (Anthropic, 2023–), LLaMA (Meta, 2023–), and Gemini (Google, 2023–). The pace of development has been remarkable: within just a few years, these models have gone from research prototypes to widely deployed products. In the next chapter, we will take a closer look at <strong>large language models</strong> (LLMs) which are the family of foundation models specialized in generating and understanding text, and arguably the most impactful class of foundation models to date.</p>
+</section>
+<section id="applications-of-generative-ai" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="applications-of-generative-ai"><span class="header-section-number">10.3</span> Applications of Generative AI</h2>
+<p>Generative AI has found applications across a wide range of domains. While large language models have received the most public attention, generative models for images, audio, video, and structured data are equally transformative. Below we highlight some broad application areas.</p>
+<ul>
+<li><p><strong>Text generation and analysis.</strong> LLMs can summarize documents, translate between languages, classify text, extract structured information, and draft new content. In economics and central banking, this includes tasks like condensing policy reports, analyzing the sentiment of central bank communication, or assisting with literature reviews.</p></li>
+<li><p><strong>Image and video generation.</strong> Models such as DALL-E, Midjourney, and Stable Diffusion can generate realistic images from text descriptions. Video generation models (e.g., Sora) extend this to moving images. Applications range from creative industries and marketing to generating synthetic training data for computer vision systems.</p></li>
+<li><p><strong>Code generation.</strong> Specialized models (e.g., GitHub Copilot) and general-purpose LLMs can write, explain, and debug code. This has transformed software development workflows, enabling faster prototyping, automated testing, and making programming more accessible to domain experts who are not professional software engineers.</p></li>
+<li><p><strong>Audio and speech.</strong> Generative models can synthesize realistic speech from text (text-to-speech), transcribe audio recordings (speech-to-text), and even generate music. These capabilities are used in virtual assistants, accessibility tools, and media production.</p></li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Limitations
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>While these applications are promising, generative AI models have important limitations. They can produce <strong>confident-sounding but factually incorrect outputs</strong> (known as <strong>hallucinations</strong>), and they <strong>may reflect biases present in their training data</strong>. In high-stakes domains such as central banking and financial regulation, human oversight remains essential.</p>
+</div>
+</div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-Bommasani2021" class="csl-entry" role="listitem">
+Bommasani, Rishi, Drew A Hudson, Ehsan Adeli, Russ Altman, Simran Arora, Sydney von Arx, Michael S Bernstein, et al. 2021. <span>“<span class="nocase">On the Opportunities and Risks of Foundation Models</span>.”</span> arXiv:2108.07258. <a href="https://arxiv.org/pdf/2108.07258">https://arxiv.org/pdf/2108.07258</a>.
+</div>
+</div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

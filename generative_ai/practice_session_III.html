@@ -20,7 +20,62 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -42,7 +97,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-44c4dd5b65e43a7a30145c4f63b8d911.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-504e8940ed4094e617457e906eda6e48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -104,7 +159,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="sidebar-title mb-0 py-0">
       <a href="../">AI and Big Data</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://github.com/jmarbet/ai-big-data-course" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
     <a href="../Artificial-Intelligence-and-Big-Data.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
 </div>
     </div>
@@ -198,7 +253,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../nlp/nlp_methods.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Classical NLP Approaches</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">NLP Methods</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -266,8 +321,24 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#problem-setup" id="toc-problem-setup" class="nav-link active" data-scroll-target="#problem-setup"><span class="header-section-number">12.1</span> Problem Setup</a></li>
+  <li><a href="#dataset" id="toc-dataset" class="nav-link" data-scroll-target="#dataset"><span class="header-section-number">12.2</span> Dataset</a></li>
+  <li><a href="#setting-up-the-environment" id="toc-setting-up-the-environment" class="nav-link" data-scroll-target="#setting-up-the-environment"><span class="header-section-number">12.3</span> Setting up the Environment</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">12.4</span> Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-sentence-embeddings" id="toc-exercise-1-sentence-embeddings" class="nav-link" data-scroll-target="#exercise-1-sentence-embeddings"><span class="header-section-number">12.4.1</span> Exercise 1: Sentence Embeddings</a></li>
+  <li><a href="#exercise-2-sentiment-classification-with-embeddings" id="toc-exercise-2-sentiment-classification-with-embeddings" class="nav-link" data-scroll-target="#exercise-2-sentiment-classification-with-embeddings"><span class="header-section-number">12.4.2</span> Exercise 2: Sentiment Classification with Embeddings</a></li>
+  <li><a href="#exercise-3-pre-trained-sentiment-analysis-pipeline" id="toc-exercise-3-pre-trained-sentiment-analysis-pipeline" class="nav-link" data-scroll-target="#exercise-3-pre-trained-sentiment-analysis-pipeline"><span class="header-section-number">12.4.3</span> Exercise 3: Pre-trained Sentiment Analysis Pipeline</a></li>
+  <li><a href="#exercise-4-zero-shot-classification-with-hugging-face" id="toc-exercise-4-zero-shot-classification-with-hugging-face" class="nav-link" data-scroll-target="#exercise-4-zero-shot-classification-with-hugging-face"><span class="header-section-number">12.4.4</span> Exercise 4: Zero-Shot Classification with Hugging Face</a></li>
+  <li><a href="#exercise-5-llm-based-classification-via-ollama-optional" id="toc-exercise-5-llm-based-classification-via-ollama-optional" class="nav-link" data-scroll-target="#exercise-5-llm-based-classification-via-ollama-optional"><span class="header-section-number">12.4.5</span> Exercise 5: LLM-Based Classification via Ollama [Optional]</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="/notebooks/practice_session_III.ipynb" target="_blank"><i class="bi bi-file-code"></i>Notebook: Practice Session III</a></li><li><a href="https://colab.research.google.com/github/jmarbet/ai-big-data-course/blob/main/notebooks/practice_session_III.ipynb" target="_blank"><i class="bi bi-file-code"></i>Google Colab: Practice Session III</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -291,8 +362,178 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>This practice session builds on the sentiment analysis exercises from Practice Session II. We will use the same dataset of labelled sentences from central bank speeches but now apply methods from the Generative AI chapter, including sentence embeddings, pre-trained Hugging Face pipelines, and LLM-based classification via the Ollama API.</p>
+<section id="problem-setup" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="problem-setup"><span class="header-section-number">12.1</span> Problem Setup</h2>
+<p>We want to classify the sentiment of sentences from central bank speeches as positive (1) or negative (0). In Practice Session II, we used hand-crafted text features like TF-IDF as input for machine learning models. Now, we will use pre-trained language models to encode sentences and classify sentiment.</p>
+</section>
+<section id="dataset" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="dataset"><span class="header-section-number">12.2</span> Dataset</h2>
+<p>We will use a pre-labeled dataset for sentence-level sentiment analysis of central bank speeches <span class="citation" data-cites="Pfeifer2023">(<a href="../references.html#ref-Pfeifer2023" role="doc-biblioref">Pfeifer and Marohl 2023</a>)</span>, which is available on Hugging Face (<a href="https://huggingface.co/datasets/Moritz-Pfeifer/CentralBankCommunication">Central Bank Communication Dataset</a>). The dataset contains sentences from ECB, FED, and BIS speeches that have been labeled as positive or negative in terms of sentiment.</p>
+</section>
+<section id="setting-up-the-environment" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="setting-up-the-environment"><span class="header-section-number">12.3</span> Setting up the Environment</h2>
+<p>Let’s initialize our environment by importing the necessary libraries</p>
+<div id="3fc9ac31" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> huggingface_hub <span class="im">import</span> login</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sentence_transformers <span class="im">import</span> SentenceTransformer</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> pipeline</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix, accuracy_score, roc_auc_score, recall_score, precision_score</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Let’s load the dataset for this practice session</p>
+<div id="68d8c940" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>central_bank <span class="op">=</span> <span class="st">"FED"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="ss">f"hf://datasets/Moritz-Pfeifer/CentralBankCommunication/Sentiment/</span><span class="sc">{</span>central_bank<span class="sc">}</span><span class="ss">_prelabelled_sent.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="exercises" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">12.4</span> Exercises</h2>
+<p>Note that the exercises build on each other. You can sometimes skip exercises but the results for later exercises will depend on the previous ones. If you get stuck, you can skip to the next exercise and try to come back to the previous one later.</p>
+<section id="exercise-1-sentence-embeddings" class="level3" data-number="12.4.1">
+<h3 data-number="12.4.1" class="anchored" data-anchor-id="exercise-1-sentence-embeddings"><span class="header-section-number">12.4.1</span> Exercise 1: Sentence Embeddings</h3>
+<p>In Practice Session II, we used TF-IDF to represent sentences as numerical vectors. Now we will use a pre-trained sentence transformer model to generate dense vector representations (embeddings) of our sentences.</p>
+<p><strong>Tasks:</strong></p>
+<ol type="1">
+<li>Load the pre-trained sentence transformer model <code>"all-MiniLM-L6-v2"</code> using <code>SentenceTransformer</code></li>
+<li>Pick two sentences from the dataset that you would expect to have similar sentiment and two that you would expect to have different sentiment. Encode all four sentences using <code>model.encode()</code></li>
+<li>Compute the pairwise cosine similarity between the four sentences using <code>model.similarity()</code>. Do the results match your expectations?</li>
+<li>Encode all sentences in the dataset using the sentence transformer model and store the resulting embeddings in a new column called <code>"embedding"</code></li>
+</ol>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>Use <code>SentenceTransformer("all-MiniLM-L6-v2")</code> to load the model</li>
+<li>Use <code>model.encode(list_of_sentences)</code> to get embeddings</li>
+<li>Use <code>model.similarity(embeddings, embeddings)</code> to compute pairwise cosine similarity</li>
+<li>To encode the full dataset: <code>df["embedding"] = list(model.encode(df["text"].tolist()))</code></li>
+<li>The embeddings have 384 dimensions, which is much smaller than a typical TF-IDF vocabulary</li>
+</ul>
+<div id="3edfe0b4" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="exercise-2-sentiment-classification-with-embeddings" class="level3" data-number="12.4.2">
+<h3 data-number="12.4.2" class="anchored" data-anchor-id="exercise-2-sentiment-classification-with-embeddings"><span class="header-section-number">12.4.2</span> Exercise 2: Sentiment Classification with Embeddings</h3>
+<p>Now that we have sentence embeddings, we can use them as input features for a machine learning model instead of TF-IDF vectors.</p>
+<p><strong>Tasks:</strong></p>
+<ol type="1">
+<li>Split the data into training (80%) and test (20%) sets using <code>train_test_split</code> with <code>random_state=42</code> and <code>stratify=y</code>. Use the embeddings as features (<code>X</code>) and the sentiment column as the target (<code>y</code>)</li>
+<li>Train a Logistic Regression model with <code>max_iter=1000</code> and <code>random_state=42</code> on the training data</li>
+<li>Train a Random Forest classifier with <code>n_estimators=100</code> and <code>random_state=42</code> on the training data</li>
+<li>Evaluate both models on the test set using accuracy, precision, recall, and ROC AUC</li>
+<li>How do these results compare to the TF-IDF-based models from Practice Session II? Why might embeddings perform differently?</li>
+</ol>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>Convert embeddings to a list for sklearn: <code>X = df["embedding"].to_list()</code></li>
+<li>Use <code>clf.predict()</code> for class predictions and <code>clf.predict_proba()[:, 1]</code> for ROC AUC</li>
+<li>Sentence embeddings capture semantic meaning, while TF-IDF captures word frequency patterns</li>
+<li>Think about what information each representation preserves and what it loses</li>
+</ul>
+<div id="d1c7f8c1" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="exercise-3-pre-trained-sentiment-analysis-pipeline" class="level3" data-number="12.4.3">
+<h3 data-number="12.4.3" class="anchored" data-anchor-id="exercise-3-pre-trained-sentiment-analysis-pipeline"><span class="header-section-number">12.4.3</span> Exercise 3: Pre-trained Sentiment Analysis Pipeline</h3>
+<p>Instead of training our own classifier, we can use a pre-trained model from Hugging Face that is already fine-tuned for sentiment analysis.</p>
+<p><strong>Tasks:</strong></p>
+<ol type="1">
+<li>Create a sentiment analysis pipeline using <code>pipeline("sentiment-analysis")</code></li>
+<li>Test the pipeline on the following two sentences and inspect the output format:
+<ul>
+<li>“The economy is growing at a strong and sustainable pace.”</li>
+<li>“Inflation risks remain elevated and economic uncertainty persists.”</li>
+</ul></li>
+<li>Apply the pipeline to all sentences in the test set (from Exercise 2) using <code>batch_size=32</code>. Map the output labels to match our dataset format: <code>POSITIVE</code> = 1, <code>NEGATIVE</code> = 0</li>
+<li>Evaluate the pre-trained model on the test set using accuracy, precision, recall, and ROC AUC. For ROC AUC, use the model’s confidence score as the predicted probability (use <code>1 - score</code> when the label is <code>NEGATIVE</code>)</li>
+<li>How does this pre-trained model compare to the classifiers you trained in Exercise 2? What might explain the differences?</li>
+</ol>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>The pipeline returns a list of dictionaries with <code>label</code> and <code>score</code> keys</li>
+<li>Map labels: <code>int(r['label'] == 'POSITIVE')</code> for predicted sentiment</li>
+<li>For the probability score: <code>r['score'] if r['label'] == 'POSITIVE' else 1 - r['score']</code></li>
+<li>The default model is DistilBERT fine-tuned on SST-2 (movie reviews), not central bank speeches</li>
+</ul>
+<div id="22300955" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="exercise-4-zero-shot-classification-with-hugging-face" class="level3" data-number="12.4.4">
+<h3 data-number="12.4.4" class="anchored" data-anchor-id="exercise-4-zero-shot-classification-with-hugging-face"><span class="header-section-number">12.4.4</span> Exercise 4: Zero-Shot Classification with Hugging Face</h3>
+<p>Zero-shot classification allows us to classify text into categories without any task-specific training data. The model uses its general language understanding to match text to candidate labels.</p>
+<p><strong>Tasks:</strong></p>
+<ol type="1">
+<li>Create a zero-shot classification pipeline using <code>pipeline("zero-shot-classification", model="facebook/bart-large-mnli")</code></li>
+<li>Test the pipeline on a few example sentences from the dataset. Use <code>["positive", "negative"]</code> as candidate labels</li>
+<li>Apply the zero-shot classifier to the test set. Map the predictions to our dataset format: <code>positive</code> = 1, <code>negative</code> = 0. Since zero-shot classification can be slow, you may want to test on a smaller subset first (e.g., the first 100 sentences of the test set)</li>
+<li>Evaluate the zero-shot classifier using accuracy, precision, recall, and ROC AUC</li>
+<li>Try different candidate labels (e.g., <code>["optimistic", "pessimistic"]</code>). Does the choice of labels affect the results?</li>
+</ol>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>The classifier returns a dictionary with <code>labels</code> (sorted by score) and <code>scores</code></li>
+<li>The top label is <code>result['labels'][0]</code> and its score is <code>result['scores'][0]</code></li>
+<li>For ROC AUC, use the score for the “positive” label as the predicted probability</li>
+<li>Careful phrasing of candidate labels can significantly improve zero-shot performance</li>
+<li>If applying to many sentences, consider using a loop with progress tracking</li>
+</ul>
+<div id="052c55a4" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="exercise-5-llm-based-classification-via-ollama-optional" class="level3" data-number="12.4.5">
+<h3 data-number="12.4.5" class="anchored" data-anchor-id="exercise-5-llm-based-classification-via-ollama-optional"><span class="header-section-number">12.4.5</span> Exercise 5: LLM-Based Classification via Ollama [Optional]</h3>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Note on Computational Resources
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This exercise is optional since the models you can run through Nuvolos may not be powerful enough to achieve good performance on this task. If you run this on a personal computer with a GPU, you are likely to see much better results.</p>
+</div>
+</div>
+<p>We can also use a locally hosted LLM via Ollama and the OpenAI-compatible API to perform sentiment classification using prompt engineering.</p>
+<p>Before starting, make sure Ollama is running (<code>ollama serve</code> in the terminal) and that you have pulled a model (e.g., <code>ollama pull gemma3:1b</code>).</p>
+<p><strong>Tasks:</strong></p>
+<ol type="1">
+<li>Set up the OpenAI client to connect to your local Ollama server at <code>http://localhost:11434/v1</code></li>
+<li>Write a function <code>classify_zero_shot(sentence)</code> that sends a prompt to the LLM asking it to classify the sentiment of a sentence as “positive” or “negative”. The function should return the model’s response as a lowercase string</li>
+<li>Write a function <code>classify_few_shot(sentence)</code> that includes 4-5 example sentences with their correct labels in the prompt before asking the model to classify the given sentence</li>
+<li>Apply both functions to a small subset of the test set (e.g., 20-30 sentences) and evaluate the results using accuracy. How do zero-shot and few-shot compare?</li>
+</ol>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>Use <code>OpenAI(base_url="http://localhost:11434/v1", api_key="")</code> to create the client</li>
+<li>Structure your prompt clearly: describe the task, provide the sentence, and specify the exact output format</li>
+<li>For few-shot, include examples in the prompt before the sentence to classify</li>
+<li>Use <code>response.choices[0].message.content.strip().lower()</code> to clean the output</li>
+<li>Small models may struggle with this task, so do not expect perfect results. Consider using a larger model (e.g., <code>gemma3:4b</code>) if available</li>
+</ul>
+<div id="9e37726d" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-Pfeifer2023" class="csl-entry" role="listitem">
+Pfeifer, Moritz, and Vincent P. Marohl. 2023. <span>“CentralBankRoBERTa: A Fine-Tuned Large Language Model for Central Bank Communications.”</span> <em>The Journal of Finance and Data Science</em> 9: 100114. https://doi.org/<a href="https://doi.org/10.1016/j.jfds.2023.100114">https://doi.org/10.1016/j.jfds.2023.100114</a>.
+</div>
+</div>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
