@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.9.30">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>12&nbsp; Practice Session III – Artificial Intelligence and Big Data</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -59,7 +62,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -89,15 +91,14 @@ div.csl-indent {
 <link href="../generative_ai/large_language_models.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-b6a8276bf55561bdbc268162d41bd1f7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-504e8940ed4094e617457e906eda6e48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-fc36a7dc8636c74dd87d83e9462854b0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -374,7 +375,7 @@ div.csl-indent {
 <section id="setting-up-the-environment" class="level2" data-number="12.3">
 <h2 data-number="12.3" class="anchored" data-anchor-id="setting-up-the-environment"><span class="header-section-number">12.3</span> Setting up the Environment</h2>
 <p>Let’s initialize our environment by importing the necessary libraries</p>
-<div id="b1ece129" class="cell" data-execution_count="1">
+<div id="79059bf3" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -388,7 +389,7 @@ div.csl-indent {
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix, accuracy_score, roc_auc_score, recall_score, precision_score</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Let’s load the dataset for this practice session</p>
-<div id="1b0ccd34" class="cell" data-execution_count="2">
+<div id="472c4b5b" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>central_bank <span class="op">=</span> <span class="st">"FED"</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="ss">f"hf://datasets/Moritz-Pfeifer/CentralBankCommunication/Sentiment/</span><span class="sc">{</span>central_bank<span class="sc">}</span><span class="ss">_prelabelled_sent.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -415,7 +416,7 @@ div.csl-indent {
 <li>To encode the full dataset: <code>df["embedding"] = list(model.encode(df["text"].tolist()))</code></li>
 <li>The embeddings have 384 dimensions, which is much smaller than a typical TF-IDF vocabulary</li>
 </ul>
-<div id="71e9de91" class="cell" data-execution_count="3">
+<div id="fd7778de" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -437,7 +438,7 @@ div.csl-indent {
 <li>Sentence embeddings capture semantic meaning, while TF-IDF captures word frequency patterns</li>
 <li>Think about what information each representation preserves and what it loses</li>
 </ul>
-<div id="114441f1" class="cell" data-execution_count="4">
+<div id="801d4e10" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -463,7 +464,7 @@ div.csl-indent {
 <li>For the probability score: <code>r['score'] if r['label'] == 'POSITIVE' else 1 - r['score']</code></li>
 <li>The default model is DistilBERT fine-tuned on SST-2 (movie reviews), not central bank speeches</li>
 </ul>
-<div id="d1d33303" class="cell" data-execution_count="5">
+<div id="60edd621" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -486,7 +487,7 @@ div.csl-indent {
 <li>Careful phrasing of candidate labels can significantly improve zero-shot performance</li>
 <li>If applying to many sentences, consider using a loop with progress tracking</li>
 </ul>
-<div id="ef08dbff" class="cell" data-execution_count="6">
+<div id="397ce59f" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -522,12 +523,12 @@ div.csl-indent {
 <li>Use <code>response.choices[0].message.content.strip().lower()</code> to clean the output</li>
 <li>Small models may struggle with this task, so do not expect perfect results. Consider using a larger model (e.g., <code>gemma3:4b</code>) if available</li>
 </ul>
-<div id="78e714f8" class="cell" data-execution_count="7">
+<div id="2c468d6f" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-Pfeifer2023" class="csl-entry" role="listitem">
 Pfeifer, Moritz, and Vincent P. Marohl. 2023. <span>“CentralBankRoBERTa: A Fine-Tuned Large Language Model for Central Bank Communications.”</span> <em>The Journal of Finance and Data Science</em> 9: 100114. https://doi.org/<a href="https://doi.org/10.1016/j.jfds.2023.100114">https://doi.org/10.1016/j.jfds.2023.100114</a>.
 </div>

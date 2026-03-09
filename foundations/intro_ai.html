@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.9.30">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>1&nbsp; Introduction to AI and Big Data – Artificial Intelligence and Big Data</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -24,7 +27,6 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -54,15 +56,14 @@ div.csl-indent {
 <link href="../index.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-b6a8276bf55561bdbc268162d41bd1f7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-504e8940ed4094e617457e906eda6e48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-fc36a7dc8636c74dd87d83e9462854b0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -92,7 +93,7 @@ div.csl-indent {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -395,10 +396,10 @@ window.Quarto = {
 <p>to just name a few examples. <span class="citation" data-cites="BIS2021e">Bank for International Settlements (<a href="../references.html#ref-BIS2021e" role="doc-biblioref">2021</a>)</span> and <span class="citation" data-cites="BIS2025">Bank for International Settlements (<a href="../references.html#ref-BIS2025" role="doc-biblioref">2025</a>)</span> provide an overview of how machine learning methods have been used at central banks in recent years.</p>
 <p>To give you a few more ideas from <strong>academic research</strong>, machine learning techniques have been used to, for example,</p>
 <ul>
-<li>Detect emotions in voices during press conferences after FOMC meetings <span class="citation" data-cites="Gorodnichenko2023">(<a href="../references.html#ref-Gorodnichenko2023" role="doc-biblioref">Gorodnichenko, Pham, and Talavera 2023</a>)</span>,</li>
+<li>Detect emotions in voices during press conferences after FOMC meetings <span class="citation" data-cites="Gorodnichenko2023">(<a href="../references.html#ref-Gorodnichenko2023" role="doc-biblioref">Gorodnichenko et al. 2023</a>)</span>,</li>
 <li>Identify Monetary Policy Shocks using Natural Language Processing <span class="citation" data-cites="Aruoba2022">(<a href="../references.html#ref-Aruoba2022" role="doc-biblioref">Aruoba and Drechsel 2022</a>)</span>,</li>
-<li>Solve macroeconomic models with heterogeneous agents <span class="citation" data-cites="Maliar2021 FernandezVillaverde2023 FernandezVillaverde2024 Kase2022">(<a href="../references.html#ref-Maliar2021" role="doc-biblioref">Maliar, Maliar, and Winant 2021</a>; <a href="../references.html#ref-FernandezVillaverde2023" role="doc-biblioref">Fernández-Villaverde, Hurtado, and Nuño 2023</a>; <a href="../references.html#ref-FernandezVillaverde2024" role="doc-biblioref">Fernández-Villaverde et al. 2024</a>; <a href="../references.html#ref-Kase2022" role="doc-biblioref">Kase, Melosi, and Rottner 2022</a>)</span>, or</li>
-<li>Estimate structural models with the help of neural networks <span class="citation" data-cites="Kaji2023">(<a href="../references.html#ref-Kaji2023" role="doc-biblioref">Kaji, Manresa, and Pouliot 2023</a>)</span>.</li>
+<li>Solve macroeconomic models with heterogeneous agents <span class="citation" data-cites="Maliar2021 FernandezVillaverde2023 FernandezVillaverde2024 Kase2022">(<a href="../references.html#ref-Maliar2021" role="doc-biblioref">Maliar et al. 2021</a>; <a href="../references.html#ref-FernandezVillaverde2023" role="doc-biblioref">Fernández-Villaverde et al. 2023</a>, <a href="../references.html#ref-FernandezVillaverde2024" role="doc-biblioref">2024</a>; <a href="../references.html#ref-Kase2022" role="doc-biblioref">Kase et al. 2022</a>)</span>, or</li>
+<li>Estimate structural models with the help of neural networks <span class="citation" data-cites="Kaji2023">(<a href="../references.html#ref-Kaji2023" role="doc-biblioref">Kaji et al. 2023</a>)</span>.</li>
 </ul>
 <p><span class="citation" data-cites="Varian2014">Varian (<a href="../references.html#ref-Varian2014" role="doc-biblioref">2014</a>)</span>, <span class="citation" data-cites="Athey2019">Athey and Imbens (<a href="../references.html#ref-Athey2019" role="doc-biblioref">2019</a>)</span>, <span class="citation" data-cites="Korinek2023">Korinek (<a href="../references.html#ref-Korinek2023" role="doc-biblioref">2023</a>)</span>, and <span class="citation" data-cites="Dell2025">Dell (<a href="../references.html#ref-Dell2025" role="doc-biblioref">2025</a>)</span> provide further examples and discuss how these methods complement traditional econometrics.</p>
 <p>Before diving into specific techniques, let’s clarify some terminology and understand where machine learning fits within the broader field of artificial intelligence.</p>
@@ -528,7 +529,7 @@ Figure&nbsp;1.2: Moore’s Law (Source: OurWorldinData.org)
 <img src="figures/data_set_sizes.png" class="img-fluid figure-img" style="width:60.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-set-sizes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.3: Data set sizes over time (Source: <span class="citation" data-cites="Goodfellow2016">Goodfellow, Bengio, and Courville (<a href="../references.html#ref-Goodfellow2016" role="doc-biblioref">2016</a>)</span>)
+Figure&nbsp;1.3: Data set sizes over time (Source: <span class="citation" data-cites="Goodfellow2016">Goodfellow et al. (<a href="../references.html#ref-Goodfellow2016" role="doc-biblioref">2016</a>)</span>)
 </figcaption>
 </figure>
 </div>
@@ -691,6 +692,18 @@ Figure&nbsp;1.7: Unsupervised Learning
 <div aria-describedby="fig-clustering-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell quarto-layout-panel" data-layout-align="center" data-layout-ncol="2">
 <div class="quarto-layout-row">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>/opt/anaconda3/envs/ai-big-data-cemfi-dev/lib/python3.13/site-packages/threadpoolctl.py:1226: RuntimeWarning: 
+Found Intel OpenMP ('libiomp') and LLVM OpenMP ('libomp') loaded at
+the same time. Both libraries are known to be incompatible and this
+can cause random crashes or deadlocks on Linux when loaded in the
+same Python program.
+Using threadpoolctl may cause crashes or deadlocks. For more
+information and possible workarounds, please see
+    https://github.com/joblib/threadpoolctl/blob/master/multiple_openmp.md
+
+  warnings.warn(msg, RuntimeWarning)</code></pre>
+</div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -698,6 +711,8 @@ Figure&nbsp;1.7: Unsupervised Learning
 </figure>
 </div>
 </div>
+</div>
+<div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -857,24 +872,24 @@ Figure&nbsp;1.11: MNIST (Source: <a href="https://commons.wikimedia.org/wiki/Fil
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-Aruoba2022" class="csl-entry" role="listitem">
-Aruoba, S. Boragan, and Thomas Drechsel. 2022. <span>“<span>Identifying Monetary Policy Shocks: A Natural Language Approach</span>.”</span> CEPR Discussion Paper DP17133. CEPR.
+Aruoba, S. Boragan, and Thomas Drechsel. 2022. <em><span>Identifying Monetary Policy Shocks: A Natural Language Approach</span></em>. CEPR Discussion Paper No. DP17133. CEPR.
 </div>
 <div id="ref-Athey2019" class="csl-entry" role="listitem">
 Athey, Susan, and Guido W. Imbens. 2019. <span>“<span>Machine Learning Methods That Economists Should Know About</span>.”</span> <em>Annual Review of Economics</em> 11: 685–725. <a href="https://doi.org/10.1146/annurev-economics-080217-053433">https://doi.org/10.1146/annurev-economics-080217-053433</a>.
 </div>
 <div id="ref-BIS2021e" class="csl-entry" role="listitem">
-Bank for International Settlements. 2021. <span>“<span class="nocase">Machine learning applications in central banking</span>.”</span> IFC Bulletin 57. <a href="https://www.bis.org/ifc/publ/ifcb57.pdf">https://www.bis.org/ifc/publ/ifcb57.pdf</a>.
+Bank for International Settlements. 2021. <em><span class="nocase">Machine learning applications in central banking</span></em>. IFC Bulletin No. 57. <a href="https://www.bis.org/ifc/publ/ifcb57.pdf">https://www.bis.org/ifc/publ/ifcb57.pdf</a>.
 </div>
 <div id="ref-BIS2025" class="csl-entry" role="listitem">
-———. 2025. <span>“<span class="nocase">Governance and implementation of artificial intelligence in central banks</span>.”</span> IFC Report 18. <a href="https://www.bis.org/ifc/publ/ifc_report_18.pdf">https://www.bis.org/ifc/publ/ifc_report_18.pdf</a>.
+Bank for International Settlements. 2025. <em><span class="nocase">Governance and implementation of artificial intelligence in central banks</span></em>. IFC Report No. 18. <a href="https://www.bis.org/ifc/publ/ifc_report_18.pdf">https://www.bis.org/ifc/publ/ifc_report_18.pdf</a>.
 </div>
 <div id="ref-Bishop2006" class="csl-entry" role="listitem">
 Bishop, Christopher M. 2006. <em><span class="nocase">Pattern Recognition and Machine Learning</span></em>. Edited by Michael Jordan, Jon Kleinberg, and Bernhard Schölkopf. Information Science and Statistics. Springer Science+Business Media, LLC. <a href="https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf">https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf</a>.
 </div>
 <div id="ref-Brown2020" class="csl-entry" role="listitem">
-Brown, Tom B., Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared Kaplan, Prafulla Dhariwal, Arvind Neelakantan, et al. 2020. <span>“<span class="nocase">Language Models are Few-Shot Learners</span>.”</span> Technical Report arXiv:2005.14165. <a href="https://doi.org/10.48550/arXiv.2005.14165">https://doi.org/10.48550/arXiv.2005.14165</a>.
+Brown, Tom B., Benjamin Mann, Nick Ryder, et al. 2020. <em><span class="nocase">Language Models are Few-Shot Learners</span></em>. Technical Report arXiv:2005.14165. <a href="https://doi.org/10.48550/arXiv.2005.14165">https://doi.org/10.48550/arXiv.2005.14165</a>.
 </div>
 <div id="ref-Dell2025" class="csl-entry" role="listitem">
 Dell, Melissa. 2025. <span>“<span class="nocase">Deep Learning for Economists</span>.”</span> <em>Journal of Economic Literature</em> 63 (1): 5–58. <a href="https://doi.org/10.1257/jel.20241733">https://doi.org/10.1257/jel.20241733</a>.
@@ -883,7 +898,7 @@ Dell, Melissa. 2025. <span>“<span class="nocase">Deep Learning for Economists<
 Fernández-Villaverde, Jesús, Samuel Hurtado, and Galo Nuño. 2023. <span>“<span class="nocase">Financial Frictions and the Wealth Distribution</span>.”</span> <em>Econometrica</em> 91 (3): 869–901. <a href="https://doi.org/10.3982/ecta18180">https://doi.org/10.3982/ecta18180</a>.
 </div>
 <div id="ref-FernandezVillaverde2024" class="csl-entry" role="listitem">
-Fernández-Villaverde, Jesús, Joël Marbet, Galo Nuño, and Omar Rachedi. 2024. <span>“<span class="nocase">Inequality and the Zero Lower Bound</span>.”</span> Working Paper 2407. Banco de España.
+Fernández-Villaverde, Jesús, Joël Marbet, Galo Nuño, and Omar Rachedi. 2024. <em><span class="nocase">Inequality and the Zero Lower Bound</span></em>. Working Paper No. 2407. Banco de España.
 </div>
 <div id="ref-Goodfellow2016" class="csl-entry" role="listitem">
 Goodfellow, Ian, Yoshua Bengio, and Aaron Courville. 2016. <em><span>Deep Learning</span></em>. MIT Press. <a href="http://www.deeplearningbook.org">http://www.deeplearningbook.org</a>.
@@ -895,13 +910,13 @@ Gorodnichenko, Yuriy, Tho Pham, and Oleksandr Talavera. 2023. <span>“<span cla
 Kaji, Tetsuya, Elena Manresa, and Guillaume Pouliot. 2023. <span>“<span class="nocase">An Adversarial Approach to Structural Estimation</span>.”</span> <em>Econometrica</em> 91 (6): 2041–63. <a href="https://doi.org/10.3982/ecta18707">https://doi.org/10.3982/ecta18707</a>.
 </div>
 <div id="ref-Kase2022" class="csl-entry" role="listitem">
-Kase, Hanno, Leonardo Melosi, and Matthias Rottner. 2022. <span>“<span class="nocase">Estimating Nonlinear Heterogeneous Agents Models with Neural Networks</span>.”</span> Federal Reserve Bank of Chicago. <a href="https://doi.org/10.21033/wp-2022-26">https://doi.org/10.21033/wp-2022-26</a>.
+Kase, Hanno, Leonardo Melosi, and Matthias Rottner. 2022. <em><span class="nocase">Estimating Nonlinear Heterogeneous Agents Models with Neural Networks</span></em>. Federal Reserve Bank of Chicago. <a href="https://doi.org/10.21033/wp-2022-26">https://doi.org/10.21033/wp-2022-26</a>.
 </div>
 <div id="ref-Korinek2023" class="csl-entry" role="listitem">
-Korinek, Anton. 2023. <span>“<span class="nocase">Generative AI for Economic Research: Use Cases and Implications for Economists</span>.”</span> <em>Journal of Economic Literature</em> 61 (4): 1281–1317. <a href="https://doi.org/10.1257/jel.20231736">https://doi.org/10.1257/jel.20231736</a>.
+Korinek, Anton. 2023. <span>“<span class="nocase">Generative AI for Economic Research: Use Cases and Implications for Economists</span>.”</span> <em>Journal of Economic Literature</em> 61 (4): 1281–317. <a href="https://doi.org/10.1257/jel.20231736">https://doi.org/10.1257/jel.20231736</a>.
 </div>
 <div id="ref-Laney2001" class="csl-entry" role="listitem">
-Laney, Doug. 2001. <span>“<span class="nocase">3D Data Management: Controlling Data Volume, Velocity, and Variety</span>.”</span> Research Note G00158589. Meta Group.
+Laney, Doug. 2001. <em><span class="nocase">3D Data Management: Controlling Data Volume, Velocity, and Variety</span></em>. Research Note No. G00158589. Meta Group.
 </div>
 <div id="ref-Maliar2021" class="csl-entry" role="listitem">
 Maliar, Lilia, Serguei Maliar, and Pablo Winant. 2021. <span>“<span class="nocase">Deep learning for solving dynamic economic models.</span>”</span> <em>Journal of Monetary Economics</em> 122 (September): 76–101. <a href="https://doi.org/10.1016/j.jmoneco.2021.07.004">https://doi.org/10.1016/j.jmoneco.2021.07.004</a>.
@@ -910,22 +925,22 @@ Maliar, Lilia, Serguei Maliar, and Pablo Winant. 2021. <span>“<span class="noc
 McCulloch, Warren S., and Walter Pitts. 1943. <span>“<span class="nocase">A logical calculus of the ideas immanent in nervous activity</span>.”</span> <em>The Bulletin of Mathematical Biophysics</em> 5 (4): 115–33. <a href="https://doi.org/10.1007/bf02478259">https://doi.org/10.1007/bf02478259</a>.
 </div>
 <div id="ref-Microsoft2024" class="csl-entry" role="listitem">
-Microsoft. 2024. <span>“<span class="nocase">Deep learning vs. machine learning in Azure Machine Learning</span>.”</span> Website. <a href="https://learn.microsoft.com/en-us/azure/machine-learning/concept-deep-learning-vs-machine-learning?view=azureml-api-2">https://learn.microsoft.com/en-us/azure/machine-learning/concept-deep-learning-vs-machine-learning?view=azureml-api-2</a>.
+Microsoft. 2024. <em><span class="nocase">Deep learning vs. machine learning in Azure Machine Learning</span></em>. Website. <a href="https://learn.microsoft.com/en-us/azure/machine-learning/concept-deep-learning-vs-machine-learning?view=azureml-api-2">https://learn.microsoft.com/en-us/azure/machine-learning/concept-deep-learning-vs-machine-learning?view=azureml-api-2</a>.
 </div>
 <div id="ref-Mitchell1997" class="csl-entry" role="listitem">
 Mitchell, Tom. 1997. <em><span>Machine Learning</span></em>. McGraw Hill. <a href="https://www.cs.cmu.edu/~tom/mlbook.html">https://www.cs.cmu.edu/~tom/mlbook.html</a>.
 </div>
 <div id="ref-Murphy2012" class="csl-entry" role="listitem">
-Murphy, Kevin P. 2012. <em><span>Machine Learning: A Probabilistic Perspective</span></em>. Cambridge: MIT Press. <a href="https://probml.github.io/pml-book/book0.html">https://probml.github.io/pml-book/book0.html</a>.
+Murphy, Kevin P. 2012. <em><span>Machine Learning: A Probabilistic Perspective</span></em>. MIT Press. <a href="https://probml.github.io/pml-book/book0.html">https://probml.github.io/pml-book/book0.html</a>.
 </div>
 <div id="ref-Murphy2022" class="csl-entry" role="listitem">
-———. 2022. <em><span>Probabilistic Machine Learning: An Introduction</span></em>. MIT Press. <a href="https://probml.github.io/pml-book/book1.html">https://probml.github.io/pml-book/book1.html</a>.
+Murphy, Kevin P. 2022. <em><span>Probabilistic Machine Learning: An Introduction</span></em>. MIT Press. <a href="https://probml.github.io/pml-book/book1.html">https://probml.github.io/pml-book/book1.html</a>.
 </div>
 <div id="ref-Rosenblatt1958" class="csl-entry" role="listitem">
 Rosenblatt, F. 1958. <span>“<span class="nocase">The perceptron: A probabilistic model for information storage and organization in the brain.</span>”</span> <em>Psychological Review</em> 65 (6): 386–408. <a href="https://doi.org/10.1037/h0042519">https://doi.org/10.1037/h0042519</a>.
 </div>
 <div id="ref-Schmidhuber2022" class="csl-entry" role="listitem">
-Schmidhuber, Jürgen. 2022. <span>“<span class="nocase">Annotated History of Modern AI and Deep Learning</span>.”</span> Technical Report IDSIA-22-22. <a href="https://doi.org/10.48550/arXiv.2212.11279">https://doi.org/10.48550/arXiv.2212.11279</a>.
+Schmidhuber, Jürgen. 2022. <em><span class="nocase">Annotated History of Modern AI and Deep Learning</span></em>. Technical Report IDSIA-22-22. <a href="https://doi.org/10.48550/arXiv.2212.11279">https://doi.org/10.48550/arXiv.2212.11279</a>.
 </div>
 <div id="ref-Varian2014" class="csl-entry" role="listitem">
 Varian, Hal R. 2014. <span>“<span class="nocase">Big Data: New Tricks for Econometrics</span>.”</span> <em>Journal of Economic Perspectives</em> 28 (2): 3–28. <a href="https://doi.org/10.1257/jep.28.2.3">https://doi.org/10.1257/jep.28.2.3</a>.

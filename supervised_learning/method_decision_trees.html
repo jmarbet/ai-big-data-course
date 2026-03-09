@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.9.30">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>4&nbsp; Decision Trees – Artificial Intelligence and Big Data</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -59,7 +62,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -89,15 +91,14 @@ div.csl-indent {
 <link href="../supervised_learning/intro_supervised_learning.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-b6a8276bf55561bdbc268162d41bd1f7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-504e8940ed4094e617457e906eda6e48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-fc36a7dc8636c74dd87d83e9462854b0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -127,7 +128,7 @@ div.csl-indent {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -568,7 +569,7 @@ Table&nbsp;4.1: (Made-up) Data for Classification Problem (Bank Default Predicti
 </figcaption>
 <div aria-describedby="tbl-decision-tree-classification-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table class="cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Default</th>
@@ -628,7 +629,7 @@ Table&nbsp;4.2: Gini Impurities for Different CET1 Thresholds
 </figcaption>
 <div aria-describedby="tbl-decision-tree-classification-example-impurity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table class="cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">CET1 Ratio Threshold</th>
@@ -721,7 +722,7 @@ Figure&nbsp;4.6: Classification Tree for <a href="#tbl-decision-tree-classificat
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="method_decision_trees_files/figure-html/unnamed-chunk-5-5.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="method_decision_trees_files/figure-html/unnamed-chunk-3-5.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -804,7 +805,7 @@ Figure&nbsp;4.8: Random Forests - Ensemble of Decision Trees with Majority Decis
 <li><strong>Repeat</strong>: Repeat steps 1 and 2 <span class="math inline">\(B\)</span> times to grow <span class="math inline">\(B\)</span> trees.</li>
 <li><strong>Prediction</strong>: To get the prediction for a new data point, average the predictions of all trees in the case of regression or use a majority vote in the case of classification.</li>
 </ol>
-<p>Note that because we draw samples with replacement, some samples will not be included in the bootstrap sample. These samples are called <strong>out-of-bag (OOB) samples</strong>. The OOB samples can be used to estimate the performance of the model without the need for cross-validation since it is “performed along the way” (<span class="citation" data-cites="Hastie2009">Hastie, Tibshirani, and Friedman (<a href="../references.html#ref-Hastie2009" role="doc-biblioref">2009</a>)</span>). The OOB error is almost identical to the error obtained through k-fold cross-validation.</p>
+<p>Note that because we draw samples with replacement, some samples will not be included in the bootstrap sample. These samples are called <strong>out-of-bag (OOB) samples</strong>. The OOB samples can be used to estimate the performance of the model without the need for cross-validation since it is “performed along the way” (<span class="citation" data-cites="Hastie2009">Hastie et al. (<a href="../references.html#ref-Hastie2009" role="doc-biblioref">2009</a>)</span>). The OOB error is almost identical to the error obtained through k-fold cross-validation.</p>
 </section>
 <section id="boosting" class="level3" data-number="4.5.2">
 <h3 data-number="4.5.2" class="anchored" data-anchor-id="boosting"><span class="header-section-number">4.5.2</span> Boosting</h3>
@@ -1054,7 +1055,7 @@ memory usage: 61.0 MB</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="method_decision_trees_files/figure-html/unnamed-chunk-13-7.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="method_decision_trees_files/figure-html/unnamed-chunk-11-7.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1066,7 +1067,7 @@ memory usage: 61.0 MB</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="method_decision_trees_files/figure-html/unnamed-chunk-14-9.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="method_decision_trees_files/figure-html/unnamed-chunk-12-9.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1109,7 +1110,7 @@ memory usage: 61.0 MB</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="method_decision_trees_files/figure-html/unnamed-chunk-16-11.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="method_decision_trees_files/figure-html/unnamed-chunk-14-11.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1124,7 +1125,7 @@ memory usage: 61.0 MB</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="method_decision_trees_files/figure-html/unnamed-chunk-17-13.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="method_decision_trees_files/figure-html/unnamed-chunk-15-13.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1156,7 +1157,7 @@ memory usage: 61.0 MB</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"ROC AUC: </span><span class="sc">{</span>roc_auc_score(y_test, y_proba_rf[:, <span class="dv">1</span>])<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>ROC AUC: 0.999999999164201</code></pre>
+<pre><code>ROC AUC: 0.9999999993035008</code></pre>
 </div>
 </div>
 <p>As expected, the Random Forest performs better than the Decision Tree in the metrics we have used. Now, let’s also check the confusion matrix to see where we still make mistakes</p>
@@ -1169,7 +1170,7 @@ memory usage: 61.0 MB</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="method_decision_trees_files/figure-html/unnamed-chunk-20-15.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="method_decision_trees_files/figure-html/unnamed-chunk-18-15.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1213,7 +1214,7 @@ memory usage: 61.0 MB</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="method_decision_trees_files/figure-html/unnamed-chunk-23-17.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="method_decision_trees_files/figure-html/unnamed-chunk-21-17.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1237,7 +1238,7 @@ memory usage: 61.0 MB</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="method_decision_trees_files/figure-html/unnamed-chunk-24-19.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="method_decision_trees_files/figure-html/unnamed-chunk-22-19.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1258,7 +1259,7 @@ memory usage: 61.0 MB</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="method_decision_trees_files/figure-html/unnamed-chunk-25-21.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="method_decision_trees_files/figure-html/unnamed-chunk-23-21.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1278,7 +1279,7 @@ memory usage: 61.0 MB</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="method_decision_trees_files/figure-html/unnamed-chunk-26-23.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="method_decision_trees_files/figure-html/unnamed-chunk-24-23.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1304,7 +1305,7 @@ memory usage: 61.0 MB</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="method_decision_trees_files/figure-html/unnamed-chunk-27-25.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="method_decision_trees_files/figure-html/unnamed-chunk-25-25.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1327,7 +1328,7 @@ memory usage: 61.0 MB</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="method_decision_trees_files/figure-html/unnamed-chunk-28-27.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="method_decision_trees_files/figure-html/unnamed-chunk-26-27.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1350,7 +1351,7 @@ memory usage: 61.0 MB</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="method_decision_trees_files/figure-html/unnamed-chunk-29-29.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="method_decision_trees_files/figure-html/unnamed-chunk-27-29.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1362,7 +1363,7 @@ memory usage: 61.0 MB</code></pre>
 <p>In this section, we have seen how to implement decision trees, random forests, and XGBoost classifiers in Python. We have also seen how to evaluate the performance of these models using metrics such as accuracy, precision, recall, and ROC AUC. We have seen that the Random Forest and XGBoost models perform better than the Decision Tree model. Furthermore, we looked at the feature and permutation importance of each model to see which features are most important for determining whether a transaction is fraudulent or not.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-Hastie2009" class="csl-entry" role="listitem">
 Hastie, Trevor, Robert Tibshirani, and Jerome Friedman. 2009. <em><span class="nocase">The Elements of Statistical Learning - Data Mining, Inference, and Prediction</span></em>. Second Edition. Springer.
 </div>

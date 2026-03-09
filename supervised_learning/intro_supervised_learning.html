@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.9.30">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>3&nbsp; Basic Concepts in Supervised Learning – Artificial Intelligence and Big Data</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -59,7 +62,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -89,15 +91,14 @@ div.csl-indent {
 <link href="../foundations/intro_python.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-b6a8276bf55561bdbc268162d41bd1f7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-504e8940ed4094e617457e906eda6e48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-fc36a7dc8636c74dd87d83e9462854b0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -129,7 +130,7 @@ div.csl-indent {
 <link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -1102,115 +1103,115 @@ Figure&nbsp;3.11: Examples of Overfitting and Underfitting
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-overfitting-interactive-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="915" data-source-offset="-38"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 914;"><span id="cb7-915"><a href="#cb7-915" aria-hidden="true" tabindex="-1"></a>ML <span class="op">=</span> <span class="pp">require</span>(<span class="st">"https://www.lactame.com/lib/ml/6.0.0/ml.min.js"</span>)</span>
-<span id="cb7-916"><a href="#cb7-916" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-917"><a href="#cb7-917" aria-hidden="true" tabindex="-1"></a><span class="co">// Parameters (defined outside to be accessible)</span></span>
-<span id="cb7-918"><a href="#cb7-918" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">0</span>  <span class="co">// Parameter for true DGP: (x-p)^2</span></span>
-<span id="cb7-919"><a href="#cb7-919" aria-hidden="true" tabindex="-1"></a>K <span class="op">=</span> <span class="dv">5</span>  <span class="co">// Number of data points</span></span>
-<span id="cb7-920"><a href="#cb7-920" aria-hidden="true" tabindex="-1"></a>nTest <span class="op">=</span> <span class="dv">50</span>  <span class="co">// Number of test data points</span></span>
-<span id="cb7-921"><a href="#cb7-921" aria-hidden="true" tabindex="-1"></a>xRange <span class="op">=</span> [<span class="op">-</span><span class="dv">6</span><span class="op">,</span> <span class="dv">6</span>]</span>
-<span id="cb7-922"><a href="#cb7-922" aria-hidden="true" tabindex="-1"></a>yRange <span class="op">=</span> [<span class="op">-</span><span class="dv">5</span><span class="op">,</span> <span class="dv">30</span>]</span>
-<span id="cb7-923"><a href="#cb7-923" aria-hidden="true" tabindex="-1"></a>noiseLevel <span class="op">=</span> <span class="fl">2.0</span></span>
-<span id="cb7-924"><a href="#cb7-924" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-925"><a href="#cb7-925" aria-hidden="true" tabindex="-1"></a><span class="co">// True data generating process: f(x) = (x - p)^2</span></span>
-<span id="cb7-926"><a href="#cb7-926" aria-hidden="true" tabindex="-1"></a>trueDGP <span class="op">=</span> (x) <span class="kw">=&gt;</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span>(x <span class="op">-</span> p<span class="op">,</span> <span class="dv">2</span>)</span>
-<span id="cb7-927"><a href="#cb7-927" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-928"><a href="#cb7-928" aria-hidden="true" tabindex="-1"></a><span class="co">// Generate training data with seeded RNG (seed = 42)</span></span>
-<span id="cb7-929"><a href="#cb7-929" aria-hidden="true" tabindex="-1"></a>trainingSeed <span class="op">=</span> <span class="dv">42</span> <span class="op">/</span> <span class="dv">2147483647</span></span>
-<span id="cb7-930"><a href="#cb7-930" aria-hidden="true" tabindex="-1"></a>trainingSource <span class="op">=</span> d3<span class="op">.</span><span class="fu">randomLcg</span>(trainingSeed)</span>
-<span id="cb7-931"><a href="#cb7-931" aria-hidden="true" tabindex="-1"></a>trainingRandn <span class="op">=</span> d3<span class="op">.</span><span class="at">randomNormal</span><span class="op">.</span><span class="fu">source</span>(trainingSource)(<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>)</span>
-<span id="cb7-932"><a href="#cb7-932" aria-hidden="true" tabindex="-1"></a>trainingRandUniform <span class="op">=</span> d3<span class="op">.</span><span class="at">randomUniform</span><span class="op">.</span><span class="fu">source</span>(trainingSource)(xRange[<span class="dv">0</span>]<span class="op">,</span> xRange[<span class="dv">1</span>])</span>
-<span id="cb7-933"><a href="#cb7-933" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-934"><a href="#cb7-934" aria-hidden="true" tabindex="-1"></a><span class="co">// Generate K training data points</span></span>
-<span id="cb7-935"><a href="#cb7-935" aria-hidden="true" tabindex="-1"></a>xTrainUnsorted <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({<span class="dt">length</span><span class="op">:</span> K}<span class="op">,</span> () <span class="kw">=&gt;</span> <span class="fu">trainingRandUniform</span>())</span>
-<span id="cb7-936"><a href="#cb7-936" aria-hidden="true" tabindex="-1"></a>noiseTrainBase <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({<span class="dt">length</span><span class="op">:</span> K}<span class="op">,</span> () <span class="kw">=&gt;</span> <span class="fu">trainingRandn</span>())</span>
-<span id="cb7-937"><a href="#cb7-937" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-938"><a href="#cb7-938" aria-hidden="true" tabindex="-1"></a><span class="co">// Create paired training data and sort by x</span></span>
-<span id="cb7-939"><a href="#cb7-939" aria-hidden="true" tabindex="-1"></a>pairedTrainData <span class="op">=</span> xTrainUnsorted<span class="op">.</span><span class="fu">map</span>((x<span class="op">,</span> i) <span class="kw">=&gt;</span> ({<span class="dt">x</span><span class="op">:</span> x<span class="op">,</span> <span class="dt">noiseBase</span><span class="op">:</span> noiseTrainBase[i]}))<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a<span class="op">.</span><span class="at">x</span> <span class="op">-</span> b<span class="op">.</span><span class="at">x</span>)</span>
-<span id="cb7-940"><a href="#cb7-940" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-941"><a href="#cb7-941" aria-hidden="true" tabindex="-1"></a>xTrain <span class="op">=</span> pairedTrainData<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span>)</span>
-<span id="cb7-942"><a href="#cb7-942" aria-hidden="true" tabindex="-1"></a>yTrain <span class="op">=</span> pairedTrainData<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> <span class="fu">trueDGP</span>(d<span class="op">.</span><span class="at">x</span>) <span class="op">+</span> d<span class="op">.</span><span class="at">noiseBase</span> <span class="op">*</span> noiseLevel)</span>
-<span id="cb7-943"><a href="#cb7-943" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-944"><a href="#cb7-944" aria-hidden="true" tabindex="-1"></a><span class="co">// Create training data array for plotting</span></span>
-<span id="cb7-945"><a href="#cb7-945" aria-hidden="true" tabindex="-1"></a>sampleData <span class="op">=</span> xTrain<span class="op">.</span><span class="fu">map</span>((x<span class="op">,</span> i) <span class="kw">=&gt;</span> ({<span class="dt">x</span><span class="op">:</span> x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> yTrain[i]}))</span>
-<span id="cb7-946"><a href="#cb7-946" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-947"><a href="#cb7-947" aria-hidden="true" tabindex="-1"></a><span class="co">// Generate test data with different seed (seed = 43)</span></span>
-<span id="cb7-948"><a href="#cb7-948" aria-hidden="true" tabindex="-1"></a>testSeed <span class="op">=</span> <span class="dv">43</span> <span class="op">/</span> <span class="dv">2147483647</span></span>
-<span id="cb7-949"><a href="#cb7-949" aria-hidden="true" tabindex="-1"></a>testSource <span class="op">=</span> d3<span class="op">.</span><span class="fu">randomLcg</span>(testSeed)</span>
-<span id="cb7-950"><a href="#cb7-950" aria-hidden="true" tabindex="-1"></a>testRandn <span class="op">=</span> d3<span class="op">.</span><span class="at">randomNormal</span><span class="op">.</span><span class="fu">source</span>(testSource)(<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>)</span>
-<span id="cb7-951"><a href="#cb7-951" aria-hidden="true" tabindex="-1"></a>testRandUniform <span class="op">=</span> d3<span class="op">.</span><span class="at">randomUniform</span><span class="op">.</span><span class="fu">source</span>(testSource)(xRange[<span class="dv">0</span>]<span class="op">,</span> xRange[<span class="dv">1</span>])</span>
-<span id="cb7-952"><a href="#cb7-952" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-953"><a href="#cb7-953" aria-hidden="true" tabindex="-1"></a><span class="co">// Generate test data points</span></span>
-<span id="cb7-954"><a href="#cb7-954" aria-hidden="true" tabindex="-1"></a>xTestUnsorted <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({<span class="dt">length</span><span class="op">:</span> nTest}<span class="op">,</span> () <span class="kw">=&gt;</span> <span class="fu">testRandUniform</span>())</span>
-<span id="cb7-955"><a href="#cb7-955" aria-hidden="true" tabindex="-1"></a>noiseTestBase <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({<span class="dt">length</span><span class="op">:</span> nTest}<span class="op">,</span> () <span class="kw">=&gt;</span> <span class="fu">testRandn</span>())</span>
-<span id="cb7-956"><a href="#cb7-956" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-957"><a href="#cb7-957" aria-hidden="true" tabindex="-1"></a><span class="co">// Create paired test data and sort by x</span></span>
-<span id="cb7-958"><a href="#cb7-958" aria-hidden="true" tabindex="-1"></a>pairedTestData <span class="op">=</span> xTestUnsorted<span class="op">.</span><span class="fu">map</span>((x<span class="op">,</span> i) <span class="kw">=&gt;</span> ({<span class="dt">x</span><span class="op">:</span> x<span class="op">,</span> <span class="dt">noiseBase</span><span class="op">:</span> noiseTestBase[i]}))<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a<span class="op">.</span><span class="at">x</span> <span class="op">-</span> b<span class="op">.</span><span class="at">x</span>)</span>
-<span id="cb7-959"><a href="#cb7-959" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-960"><a href="#cb7-960" aria-hidden="true" tabindex="-1"></a>xTest <span class="op">=</span> pairedTestData<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span>)</span>
-<span id="cb7-961"><a href="#cb7-961" aria-hidden="true" tabindex="-1"></a>yTest <span class="op">=</span> pairedTestData<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> <span class="fu">trueDGP</span>(d<span class="op">.</span><span class="at">x</span>) <span class="op">+</span> d<span class="op">.</span><span class="at">noiseBase</span> <span class="op">*</span> noiseLevel)</span>
-<span id="cb7-962"><a href="#cb7-962" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-963"><a href="#cb7-963" aria-hidden="true" tabindex="-1"></a><span class="co">// Generate true DGP curve for plotting</span></span>
-<span id="cb7-964"><a href="#cb7-964" aria-hidden="true" tabindex="-1"></a>trueCurveData <span class="op">=</span> {</span>
-<span id="cb7-965"><a href="#cb7-965" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> data <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb7-966"><a href="#cb7-966" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;=</span> <span class="dv">100</span><span class="op">;</span> i<span class="op">++</span>) {</span>
-<span id="cb7-967"><a href="#cb7-967" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> x <span class="op">=</span> xRange[<span class="dv">0</span>] <span class="op">+</span> i <span class="op">*</span> (xRange[<span class="dv">1</span>] <span class="op">-</span> xRange[<span class="dv">0</span>]) <span class="op">/</span> <span class="dv">100</span><span class="op">;</span></span>
-<span id="cb7-968"><a href="#cb7-968" aria-hidden="true" tabindex="-1"></a>        data<span class="op">.</span><span class="fu">push</span>({<span class="dt">x</span><span class="op">:</span> x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fu">trueDGP</span>(x)})<span class="op">;</span></span>
-<span id="cb7-969"><a href="#cb7-969" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb7-970"><a href="#cb7-970" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data<span class="op">;</span></span>
-<span id="cb7-971"><a href="#cb7-971" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb7-972"><a href="#cb7-972" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-973"><a href="#cb7-973" aria-hidden="true" tabindex="-1"></a><span class="co">// Fit polynomial using ml.js PolynomialRegression</span></span>
-<span id="cb7-974"><a href="#cb7-974" aria-hidden="true" tabindex="-1"></a>fitPoly <span class="op">=</span> (degree) <span class="kw">=&gt;</span> {</span>
-<span id="cb7-975"><a href="#cb7-975" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> powers <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb7-976"><a href="#cb7-976" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> d <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> d <span class="op">&lt;=</span> degree<span class="op">;</span> d<span class="op">++</span>) {</span>
-<span id="cb7-977"><a href="#cb7-977" aria-hidden="true" tabindex="-1"></a>        powers<span class="op">.</span><span class="fu">push</span>(d)<span class="op">;</span></span>
-<span id="cb7-978"><a href="#cb7-978" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb7-979"><a href="#cb7-979" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="kw">new</span> ML<span class="op">.</span><span class="fu">PolynomialRegression</span>(xTrain<span class="op">,</span> yTrain<span class="op">,</span> powers)<span class="op">;</span></span>
-<span id="cb7-980"><a href="#cb7-980" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb7-981"><a href="#cb7-981" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-982"><a href="#cb7-982" aria-hidden="true" tabindex="-1"></a><span class="co">// Compute MSE</span></span>
-<span id="cb7-983"><a href="#cb7-983" aria-hidden="true" tabindex="-1"></a>computeMSE <span class="op">=</span> (yTrue<span class="op">,</span> yPred) <span class="kw">=&gt;</span> {</span>
-<span id="cb7-984"><a href="#cb7-984" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> mse <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb7-985"><a href="#cb7-985" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> yTrue<span class="op">.</span><span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) {</span>
-<span id="cb7-986"><a href="#cb7-986" aria-hidden="true" tabindex="-1"></a>        mse <span class="op">+=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span>(yTrue[i] <span class="op">-</span> yPred[i]<span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></span>
-<span id="cb7-987"><a href="#cb7-987" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb7-988"><a href="#cb7-988" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mse <span class="op">/</span> yTrue<span class="op">.</span><span class="at">length</span><span class="op">;</span></span>
-<span id="cb7-989"><a href="#cb7-989" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb7-990"><a href="#cb7-990" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-991"><a href="#cb7-991" aria-hidden="true" tabindex="-1"></a><span class="co">// Compute RMSE for all polynomial orders (training and test)</span></span>
-<span id="cb7-992"><a href="#cb7-992" aria-hidden="true" tabindex="-1"></a>rmseData <span class="op">=</span> {</span>
-<span id="cb7-993"><a href="#cb7-993" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> data <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb7-994"><a href="#cb7-994" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> degree <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> degree <span class="op">&lt;</span> K<span class="op">;</span> degree<span class="op">++</span>) {</span>
-<span id="cb7-995"><a href="#cb7-995" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> model <span class="op">=</span> <span class="fu">fitPoly</span>(degree)<span class="op">;</span></span>
-<span id="cb7-996"><a href="#cb7-996" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> yPredTrain <span class="op">=</span> xTrain<span class="op">.</span><span class="fu">map</span>(x <span class="kw">=&gt;</span> model<span class="op">.</span><span class="fu">predict</span>(x))<span class="op">;</span></span>
-<span id="cb7-997"><a href="#cb7-997" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> yPredTest <span class="op">=</span> xTest<span class="op">.</span><span class="fu">map</span>(x <span class="kw">=&gt;</span> model<span class="op">.</span><span class="fu">predict</span>(x))<span class="op">;</span></span>
-<span id="cb7-998"><a href="#cb7-998" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> mseTrain <span class="op">=</span> <span class="fu">computeMSE</span>(yTrain<span class="op">,</span> yPredTrain)<span class="op">;</span></span>
-<span id="cb7-999"><a href="#cb7-999" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> mseTest <span class="op">=</span> <span class="fu">computeMSE</span>(yTest<span class="op">,</span> yPredTest)<span class="op">;</span></span>
-<span id="cb7-1000"><a href="#cb7-1000" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Compute RMSE (square root of MSE)</span></span>
-<span id="cb7-1001"><a href="#cb7-1001" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> rmseTrain <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(mseTrain)<span class="op">;</span></span>
-<span id="cb7-1002"><a href="#cb7-1002" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> rmseTest <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(mseTest)<span class="op">;</span></span>
-<span id="cb7-1003"><a href="#cb7-1003" aria-hidden="true" tabindex="-1"></a>        data<span class="op">.</span><span class="fu">push</span>({<span class="dt">k</span><span class="op">:</span> degree<span class="op">,</span> <span class="dt">rmseTrain</span><span class="op">:</span> rmseTrain<span class="op">,</span> <span class="dt">rmseTest</span><span class="op">:</span> rmseTest})<span class="op">;</span></span>
-<span id="cb7-1004"><a href="#cb7-1004" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb7-1005"><a href="#cb7-1005" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data<span class="op">;</span></span>
-<span id="cb7-1006"><a href="#cb7-1006" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb7-1007"><a href="#cb7-1007" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-1008"><a href="#cb7-1008" aria-hidden="true" tabindex="-1"></a><span class="co">// Compute max RMSE for y-axis scaling (separate for train and test)</span></span>
-<span id="cb7-1009"><a href="#cb7-1009" aria-hidden="true" tabindex="-1"></a>maxRMSETrain <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="op">...</span>rmseData<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">rmseTrain</span>))</span>
-<span id="cb7-1010"><a href="#cb7-1010" aria-hidden="true" tabindex="-1"></a>maxRMSETest <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="op">...</span>rmseData<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">rmseTest</span>))</span>
-<span id="cb7-1011"><a href="#cb7-1011" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-1012"><a href="#cb7-1012" aria-hidden="true" tabindex="-1"></a><span class="co">// Fit polynomial of current order k (reactive to polyOrder)</span></span>
-<span id="cb7-1013"><a href="#cb7-1013" aria-hidden="true" tabindex="-1"></a>currentModel <span class="op">=</span> <span class="fu">fitPoly</span>(polyOrder)</span>
-<span id="cb7-1014"><a href="#cb7-1014" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-1015"><a href="#cb7-1015" aria-hidden="true" tabindex="-1"></a><span class="co">// Generate fitted curve (reactive to polyOrder)</span></span>
-<span id="cb7-1016"><a href="#cb7-1016" aria-hidden="true" tabindex="-1"></a>fittedCurveData <span class="op">=</span> {</span>
-<span id="cb7-1017"><a href="#cb7-1017" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> data <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb7-1018"><a href="#cb7-1018" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;=</span> <span class="dv">200</span><span class="op">;</span> i<span class="op">++</span>) {</span>
-<span id="cb7-1019"><a href="#cb7-1019" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> x <span class="op">=</span> xRange[<span class="dv">0</span>] <span class="op">+</span> i <span class="op">*</span> (xRange[<span class="dv">1</span>] <span class="op">-</span> xRange[<span class="dv">0</span>]) <span class="op">/</span> <span class="dv">200</span><span class="op">;</span></span>
-<span id="cb7-1020"><a href="#cb7-1020" aria-hidden="true" tabindex="-1"></a>        data<span class="op">.</span><span class="fu">push</span>({<span class="dt">x</span><span class="op">:</span> x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> currentModel<span class="op">.</span><span class="fu">predict</span>(x)})<span class="op">;</span></span>
-<span id="cb7-1021"><a href="#cb7-1021" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb7-1022"><a href="#cb7-1022" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data<span class="op">;</span></span>
-<span id="cb7-1023"><a href="#cb7-1023" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="916" data-source-offset="-38"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 915;"><span id="cb7-916"><a href="#cb7-916" aria-hidden="true" tabindex="-1"></a>ML <span class="op">=</span> <span class="pp">require</span>(<span class="st">"https://www.lactame.com/lib/ml/6.0.0/ml.min.js"</span>)</span>
+<span id="cb7-917"><a href="#cb7-917" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-918"><a href="#cb7-918" aria-hidden="true" tabindex="-1"></a><span class="co">// Parameters (defined outside to be accessible)</span></span>
+<span id="cb7-919"><a href="#cb7-919" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">0</span>  <span class="co">// Parameter for true DGP: (x-p)^2</span></span>
+<span id="cb7-920"><a href="#cb7-920" aria-hidden="true" tabindex="-1"></a>K <span class="op">=</span> <span class="dv">5</span>  <span class="co">// Number of data points</span></span>
+<span id="cb7-921"><a href="#cb7-921" aria-hidden="true" tabindex="-1"></a>nTest <span class="op">=</span> <span class="dv">50</span>  <span class="co">// Number of test data points</span></span>
+<span id="cb7-922"><a href="#cb7-922" aria-hidden="true" tabindex="-1"></a>xRange <span class="op">=</span> [<span class="op">-</span><span class="dv">6</span><span class="op">,</span> <span class="dv">6</span>]</span>
+<span id="cb7-923"><a href="#cb7-923" aria-hidden="true" tabindex="-1"></a>yRange <span class="op">=</span> [<span class="op">-</span><span class="dv">5</span><span class="op">,</span> <span class="dv">30</span>]</span>
+<span id="cb7-924"><a href="#cb7-924" aria-hidden="true" tabindex="-1"></a>noiseLevel <span class="op">=</span> <span class="fl">2.0</span></span>
+<span id="cb7-925"><a href="#cb7-925" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-926"><a href="#cb7-926" aria-hidden="true" tabindex="-1"></a><span class="co">// True data generating process: f(x) = (x - p)^2</span></span>
+<span id="cb7-927"><a href="#cb7-927" aria-hidden="true" tabindex="-1"></a>trueDGP <span class="op">=</span> (x) <span class="kw">=&gt;</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span>(x <span class="op">-</span> p<span class="op">,</span> <span class="dv">2</span>)</span>
+<span id="cb7-928"><a href="#cb7-928" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-929"><a href="#cb7-929" aria-hidden="true" tabindex="-1"></a><span class="co">// Generate training data with seeded RNG (seed = 42)</span></span>
+<span id="cb7-930"><a href="#cb7-930" aria-hidden="true" tabindex="-1"></a>trainingSeed <span class="op">=</span> <span class="dv">42</span> <span class="op">/</span> <span class="dv">2147483647</span></span>
+<span id="cb7-931"><a href="#cb7-931" aria-hidden="true" tabindex="-1"></a>trainingSource <span class="op">=</span> d3<span class="op">.</span><span class="fu">randomLcg</span>(trainingSeed)</span>
+<span id="cb7-932"><a href="#cb7-932" aria-hidden="true" tabindex="-1"></a>trainingRandn <span class="op">=</span> d3<span class="op">.</span><span class="at">randomNormal</span><span class="op">.</span><span class="fu">source</span>(trainingSource)(<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>)</span>
+<span id="cb7-933"><a href="#cb7-933" aria-hidden="true" tabindex="-1"></a>trainingRandUniform <span class="op">=</span> d3<span class="op">.</span><span class="at">randomUniform</span><span class="op">.</span><span class="fu">source</span>(trainingSource)(xRange[<span class="dv">0</span>]<span class="op">,</span> xRange[<span class="dv">1</span>])</span>
+<span id="cb7-934"><a href="#cb7-934" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-935"><a href="#cb7-935" aria-hidden="true" tabindex="-1"></a><span class="co">// Generate K training data points</span></span>
+<span id="cb7-936"><a href="#cb7-936" aria-hidden="true" tabindex="-1"></a>xTrainUnsorted <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({<span class="dt">length</span><span class="op">:</span> K}<span class="op">,</span> () <span class="kw">=&gt;</span> <span class="fu">trainingRandUniform</span>())</span>
+<span id="cb7-937"><a href="#cb7-937" aria-hidden="true" tabindex="-1"></a>noiseTrainBase <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({<span class="dt">length</span><span class="op">:</span> K}<span class="op">,</span> () <span class="kw">=&gt;</span> <span class="fu">trainingRandn</span>())</span>
+<span id="cb7-938"><a href="#cb7-938" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-939"><a href="#cb7-939" aria-hidden="true" tabindex="-1"></a><span class="co">// Create paired training data and sort by x</span></span>
+<span id="cb7-940"><a href="#cb7-940" aria-hidden="true" tabindex="-1"></a>pairedTrainData <span class="op">=</span> xTrainUnsorted<span class="op">.</span><span class="fu">map</span>((x<span class="op">,</span> i) <span class="kw">=&gt;</span> ({<span class="dt">x</span><span class="op">:</span> x<span class="op">,</span> <span class="dt">noiseBase</span><span class="op">:</span> noiseTrainBase[i]}))<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a<span class="op">.</span><span class="at">x</span> <span class="op">-</span> b<span class="op">.</span><span class="at">x</span>)</span>
+<span id="cb7-941"><a href="#cb7-941" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-942"><a href="#cb7-942" aria-hidden="true" tabindex="-1"></a>xTrain <span class="op">=</span> pairedTrainData<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span>)</span>
+<span id="cb7-943"><a href="#cb7-943" aria-hidden="true" tabindex="-1"></a>yTrain <span class="op">=</span> pairedTrainData<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> <span class="fu">trueDGP</span>(d<span class="op">.</span><span class="at">x</span>) <span class="op">+</span> d<span class="op">.</span><span class="at">noiseBase</span> <span class="op">*</span> noiseLevel)</span>
+<span id="cb7-944"><a href="#cb7-944" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-945"><a href="#cb7-945" aria-hidden="true" tabindex="-1"></a><span class="co">// Create training data array for plotting</span></span>
+<span id="cb7-946"><a href="#cb7-946" aria-hidden="true" tabindex="-1"></a>sampleData <span class="op">=</span> xTrain<span class="op">.</span><span class="fu">map</span>((x<span class="op">,</span> i) <span class="kw">=&gt;</span> ({<span class="dt">x</span><span class="op">:</span> x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> yTrain[i]}))</span>
+<span id="cb7-947"><a href="#cb7-947" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-948"><a href="#cb7-948" aria-hidden="true" tabindex="-1"></a><span class="co">// Generate test data with different seed (seed = 43)</span></span>
+<span id="cb7-949"><a href="#cb7-949" aria-hidden="true" tabindex="-1"></a>testSeed <span class="op">=</span> <span class="dv">43</span> <span class="op">/</span> <span class="dv">2147483647</span></span>
+<span id="cb7-950"><a href="#cb7-950" aria-hidden="true" tabindex="-1"></a>testSource <span class="op">=</span> d3<span class="op">.</span><span class="fu">randomLcg</span>(testSeed)</span>
+<span id="cb7-951"><a href="#cb7-951" aria-hidden="true" tabindex="-1"></a>testRandn <span class="op">=</span> d3<span class="op">.</span><span class="at">randomNormal</span><span class="op">.</span><span class="fu">source</span>(testSource)(<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>)</span>
+<span id="cb7-952"><a href="#cb7-952" aria-hidden="true" tabindex="-1"></a>testRandUniform <span class="op">=</span> d3<span class="op">.</span><span class="at">randomUniform</span><span class="op">.</span><span class="fu">source</span>(testSource)(xRange[<span class="dv">0</span>]<span class="op">,</span> xRange[<span class="dv">1</span>])</span>
+<span id="cb7-953"><a href="#cb7-953" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-954"><a href="#cb7-954" aria-hidden="true" tabindex="-1"></a><span class="co">// Generate test data points</span></span>
+<span id="cb7-955"><a href="#cb7-955" aria-hidden="true" tabindex="-1"></a>xTestUnsorted <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({<span class="dt">length</span><span class="op">:</span> nTest}<span class="op">,</span> () <span class="kw">=&gt;</span> <span class="fu">testRandUniform</span>())</span>
+<span id="cb7-956"><a href="#cb7-956" aria-hidden="true" tabindex="-1"></a>noiseTestBase <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({<span class="dt">length</span><span class="op">:</span> nTest}<span class="op">,</span> () <span class="kw">=&gt;</span> <span class="fu">testRandn</span>())</span>
+<span id="cb7-957"><a href="#cb7-957" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-958"><a href="#cb7-958" aria-hidden="true" tabindex="-1"></a><span class="co">// Create paired test data and sort by x</span></span>
+<span id="cb7-959"><a href="#cb7-959" aria-hidden="true" tabindex="-1"></a>pairedTestData <span class="op">=</span> xTestUnsorted<span class="op">.</span><span class="fu">map</span>((x<span class="op">,</span> i) <span class="kw">=&gt;</span> ({<span class="dt">x</span><span class="op">:</span> x<span class="op">,</span> <span class="dt">noiseBase</span><span class="op">:</span> noiseTestBase[i]}))<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a<span class="op">.</span><span class="at">x</span> <span class="op">-</span> b<span class="op">.</span><span class="at">x</span>)</span>
+<span id="cb7-960"><a href="#cb7-960" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-961"><a href="#cb7-961" aria-hidden="true" tabindex="-1"></a>xTest <span class="op">=</span> pairedTestData<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span>)</span>
+<span id="cb7-962"><a href="#cb7-962" aria-hidden="true" tabindex="-1"></a>yTest <span class="op">=</span> pairedTestData<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> <span class="fu">trueDGP</span>(d<span class="op">.</span><span class="at">x</span>) <span class="op">+</span> d<span class="op">.</span><span class="at">noiseBase</span> <span class="op">*</span> noiseLevel)</span>
+<span id="cb7-963"><a href="#cb7-963" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-964"><a href="#cb7-964" aria-hidden="true" tabindex="-1"></a><span class="co">// Generate true DGP curve for plotting</span></span>
+<span id="cb7-965"><a href="#cb7-965" aria-hidden="true" tabindex="-1"></a>trueCurveData <span class="op">=</span> {</span>
+<span id="cb7-966"><a href="#cb7-966" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> data <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb7-967"><a href="#cb7-967" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;=</span> <span class="dv">100</span><span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb7-968"><a href="#cb7-968" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> x <span class="op">=</span> xRange[<span class="dv">0</span>] <span class="op">+</span> i <span class="op">*</span> (xRange[<span class="dv">1</span>] <span class="op">-</span> xRange[<span class="dv">0</span>]) <span class="op">/</span> <span class="dv">100</span><span class="op">;</span></span>
+<span id="cb7-969"><a href="#cb7-969" aria-hidden="true" tabindex="-1"></a>        data<span class="op">.</span><span class="fu">push</span>({<span class="dt">x</span><span class="op">:</span> x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fu">trueDGP</span>(x)})<span class="op">;</span></span>
+<span id="cb7-970"><a href="#cb7-970" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb7-971"><a href="#cb7-971" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data<span class="op">;</span></span>
+<span id="cb7-972"><a href="#cb7-972" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-973"><a href="#cb7-973" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-974"><a href="#cb7-974" aria-hidden="true" tabindex="-1"></a><span class="co">// Fit polynomial using ml.js PolynomialRegression</span></span>
+<span id="cb7-975"><a href="#cb7-975" aria-hidden="true" tabindex="-1"></a>fitPoly <span class="op">=</span> (degree) <span class="kw">=&gt;</span> {</span>
+<span id="cb7-976"><a href="#cb7-976" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> powers <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb7-977"><a href="#cb7-977" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> d <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> d <span class="op">&lt;=</span> degree<span class="op">;</span> d<span class="op">++</span>) {</span>
+<span id="cb7-978"><a href="#cb7-978" aria-hidden="true" tabindex="-1"></a>        powers<span class="op">.</span><span class="fu">push</span>(d)<span class="op">;</span></span>
+<span id="cb7-979"><a href="#cb7-979" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb7-980"><a href="#cb7-980" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="kw">new</span> ML<span class="op">.</span><span class="fu">PolynomialRegression</span>(xTrain<span class="op">,</span> yTrain<span class="op">,</span> powers)<span class="op">;</span></span>
+<span id="cb7-981"><a href="#cb7-981" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-982"><a href="#cb7-982" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-983"><a href="#cb7-983" aria-hidden="true" tabindex="-1"></a><span class="co">// Compute MSE</span></span>
+<span id="cb7-984"><a href="#cb7-984" aria-hidden="true" tabindex="-1"></a>computeMSE <span class="op">=</span> (yTrue<span class="op">,</span> yPred) <span class="kw">=&gt;</span> {</span>
+<span id="cb7-985"><a href="#cb7-985" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> mse <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb7-986"><a href="#cb7-986" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> yTrue<span class="op">.</span><span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb7-987"><a href="#cb7-987" aria-hidden="true" tabindex="-1"></a>        mse <span class="op">+=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span>(yTrue[i] <span class="op">-</span> yPred[i]<span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb7-988"><a href="#cb7-988" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb7-989"><a href="#cb7-989" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mse <span class="op">/</span> yTrue<span class="op">.</span><span class="at">length</span><span class="op">;</span></span>
+<span id="cb7-990"><a href="#cb7-990" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-991"><a href="#cb7-991" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-992"><a href="#cb7-992" aria-hidden="true" tabindex="-1"></a><span class="co">// Compute RMSE for all polynomial orders (training and test)</span></span>
+<span id="cb7-993"><a href="#cb7-993" aria-hidden="true" tabindex="-1"></a>rmseData <span class="op">=</span> {</span>
+<span id="cb7-994"><a href="#cb7-994" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> data <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb7-995"><a href="#cb7-995" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> degree <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> degree <span class="op">&lt;</span> K<span class="op">;</span> degree<span class="op">++</span>) {</span>
+<span id="cb7-996"><a href="#cb7-996" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> model <span class="op">=</span> <span class="fu">fitPoly</span>(degree)<span class="op">;</span></span>
+<span id="cb7-997"><a href="#cb7-997" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> yPredTrain <span class="op">=</span> xTrain<span class="op">.</span><span class="fu">map</span>(x <span class="kw">=&gt;</span> model<span class="op">.</span><span class="fu">predict</span>(x))<span class="op">;</span></span>
+<span id="cb7-998"><a href="#cb7-998" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> yPredTest <span class="op">=</span> xTest<span class="op">.</span><span class="fu">map</span>(x <span class="kw">=&gt;</span> model<span class="op">.</span><span class="fu">predict</span>(x))<span class="op">;</span></span>
+<span id="cb7-999"><a href="#cb7-999" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> mseTrain <span class="op">=</span> <span class="fu">computeMSE</span>(yTrain<span class="op">,</span> yPredTrain)<span class="op">;</span></span>
+<span id="cb7-1000"><a href="#cb7-1000" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> mseTest <span class="op">=</span> <span class="fu">computeMSE</span>(yTest<span class="op">,</span> yPredTest)<span class="op">;</span></span>
+<span id="cb7-1001"><a href="#cb7-1001" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Compute RMSE (square root of MSE)</span></span>
+<span id="cb7-1002"><a href="#cb7-1002" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> rmseTrain <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(mseTrain)<span class="op">;</span></span>
+<span id="cb7-1003"><a href="#cb7-1003" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> rmseTest <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(mseTest)<span class="op">;</span></span>
+<span id="cb7-1004"><a href="#cb7-1004" aria-hidden="true" tabindex="-1"></a>        data<span class="op">.</span><span class="fu">push</span>({<span class="dt">k</span><span class="op">:</span> degree<span class="op">,</span> <span class="dt">rmseTrain</span><span class="op">:</span> rmseTrain<span class="op">,</span> <span class="dt">rmseTest</span><span class="op">:</span> rmseTest})<span class="op">;</span></span>
+<span id="cb7-1005"><a href="#cb7-1005" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb7-1006"><a href="#cb7-1006" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data<span class="op">;</span></span>
+<span id="cb7-1007"><a href="#cb7-1007" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-1008"><a href="#cb7-1008" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-1009"><a href="#cb7-1009" aria-hidden="true" tabindex="-1"></a><span class="co">// Compute max RMSE for y-axis scaling (separate for train and test)</span></span>
+<span id="cb7-1010"><a href="#cb7-1010" aria-hidden="true" tabindex="-1"></a>maxRMSETrain <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="op">...</span>rmseData<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">rmseTrain</span>))</span>
+<span id="cb7-1011"><a href="#cb7-1011" aria-hidden="true" tabindex="-1"></a>maxRMSETest <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="op">...</span>rmseData<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">rmseTest</span>))</span>
+<span id="cb7-1012"><a href="#cb7-1012" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-1013"><a href="#cb7-1013" aria-hidden="true" tabindex="-1"></a><span class="co">// Fit polynomial of current order k (reactive to polyOrder)</span></span>
+<span id="cb7-1014"><a href="#cb7-1014" aria-hidden="true" tabindex="-1"></a>currentModel <span class="op">=</span> <span class="fu">fitPoly</span>(polyOrder)</span>
+<span id="cb7-1015"><a href="#cb7-1015" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-1016"><a href="#cb7-1016" aria-hidden="true" tabindex="-1"></a><span class="co">// Generate fitted curve (reactive to polyOrder)</span></span>
+<span id="cb7-1017"><a href="#cb7-1017" aria-hidden="true" tabindex="-1"></a>fittedCurveData <span class="op">=</span> {</span>
+<span id="cb7-1018"><a href="#cb7-1018" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> data <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb7-1019"><a href="#cb7-1019" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;=</span> <span class="dv">200</span><span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb7-1020"><a href="#cb7-1020" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> x <span class="op">=</span> xRange[<span class="dv">0</span>] <span class="op">+</span> i <span class="op">*</span> (xRange[<span class="dv">1</span>] <span class="op">-</span> xRange[<span class="dv">0</span>]) <span class="op">/</span> <span class="dv">200</span><span class="op">;</span></span>
+<span id="cb7-1021"><a href="#cb7-1021" aria-hidden="true" tabindex="-1"></a>        data<span class="op">.</span><span class="fu">push</span>({<span class="dt">x</span><span class="op">:</span> x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> currentModel<span class="op">.</span><span class="fu">predict</span>(x)})<span class="op">;</span></span>
+<span id="cb7-1022"><a href="#cb7-1022" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb7-1023"><a href="#cb7-1023" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data<span class="op">;</span></span>
+<span id="cb7-1024"><a href="#cb7-1024" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-4-1" data-nodetype="declaration">
@@ -1458,136 +1459,136 @@ Figure&nbsp;3.11: Examples of Overfitting and Underfitting
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="1031" data-source-offset="-40"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 1030;"><span id="cb8-1031"><a href="#cb8-1031" aria-hidden="true" tabindex="-1"></a>plot1 <span class="op">=</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb8-1032"><a href="#cb8-1032" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">50</span><span class="op">,</span></span>
-<span id="cb8-1033"><a href="#cb8-1033" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginTop</span><span class="op">:</span> <span class="dv">35</span><span class="op">,</span></span>
-<span id="cb8-1034"><a href="#cb8-1034" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">45</span><span class="op">,</span></span>
-<span id="cb8-1035"><a href="#cb8-1035" aria-hidden="true" tabindex="-1"></a>    <span class="dt">width</span><span class="op">:</span> width <span class="op">/</span> <span class="dv">2</span> <span class="op">-</span> <span class="dv">20</span><span class="op">,</span></span>
-<span id="cb8-1036"><a href="#cb8-1036" aria-hidden="true" tabindex="-1"></a>    <span class="dt">height</span><span class="op">:</span> width <span class="op">/</span> <span class="dv">3</span><span class="op">,</span></span>
-<span id="cb8-1037"><a href="#cb8-1037" aria-hidden="true" tabindex="-1"></a>    <span class="dt">x</span><span class="op">:</span> {</span>
-<span id="cb8-1038"><a href="#cb8-1038" aria-hidden="true" tabindex="-1"></a>        <span class="dt">domain</span><span class="op">:</span> xRange<span class="op">,</span></span>
-<span id="cb8-1039"><a href="#cb8-1039" aria-hidden="true" tabindex="-1"></a>        <span class="dt">label</span><span class="op">:</span> <span class="st">"x"</span></span>
-<span id="cb8-1040"><a href="#cb8-1040" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
-<span id="cb8-1041"><a href="#cb8-1041" aria-hidden="true" tabindex="-1"></a>    <span class="dt">y</span><span class="op">:</span> {</span>
-<span id="cb8-1042"><a href="#cb8-1042" aria-hidden="true" tabindex="-1"></a>        <span class="dt">domain</span><span class="op">:</span> yRange<span class="op">,</span></span>
-<span id="cb8-1043"><a href="#cb8-1043" aria-hidden="true" tabindex="-1"></a>        <span class="dt">label</span><span class="op">:</span> <span class="st">"y"</span></span>
-<span id="cb8-1044"><a href="#cb8-1044" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
-<span id="cb8-1045"><a href="#cb8-1045" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb8-1046"><a href="#cb8-1046" aria-hidden="true" tabindex="-1"></a>        Plot<span class="op">.</span><span class="fu">frame</span>()<span class="op">,</span></span>
-<span id="cb8-1047"><a href="#cb8-1047" aria-hidden="true" tabindex="-1"></a>        <span class="co">// True DGP curve (dashed gray)</span></span>
-<span id="cb8-1048"><a href="#cb8-1048" aria-hidden="true" tabindex="-1"></a>        Plot<span class="op">.</span><span class="fu">line</span>(trueCurveData<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#888"</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"5,5"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span>})<span class="op">,</span></span>
-<span id="cb8-1049"><a href="#cb8-1049" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Fitted polynomial (orange)</span></span>
-<span id="cb8-1050"><a href="#cb8-1050" aria-hidden="true" tabindex="-1"></a>        Plot<span class="op">.</span><span class="fu">line</span>(fittedCurveData<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"orange"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">2.5</span>})<span class="op">,</span></span>
-<span id="cb8-1051"><a href="#cb8-1051" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Sample data points (blue)</span></span>
-<span id="cb8-1052"><a href="#cb8-1052" aria-hidden="true" tabindex="-1"></a>        Plot<span class="op">.</span><span class="fu">dot</span>(sampleData<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"steelblue"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="dv">6</span>})<span class="op">,</span></span>
-<span id="cb8-1053"><a href="#cb8-1053" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Title</span></span>
-<span id="cb8-1054"><a href="#cb8-1054" aria-hidden="true" tabindex="-1"></a>        Plot<span class="op">.</span><span class="fu">text</span>([<span class="vs">`Data &amp; Fitted Polynomial (k=</span><span class="sc">${</span>polyOrder<span class="sc">}</span><span class="vs">)`</span>]<span class="op">,</span> {</span>
-<span id="cb8-1055"><a href="#cb8-1055" aria-hidden="true" tabindex="-1"></a>            <span class="dt">x</span><span class="op">:</span> (xRange[<span class="dv">1</span>] <span class="op">+</span> xRange[<span class="dv">0</span>])<span class="op">/</span><span class="dv">2</span><span class="op">,</span></span>
-<span id="cb8-1056"><a href="#cb8-1056" aria-hidden="true" tabindex="-1"></a>            <span class="dt">y</span><span class="op">:</span> yRange[<span class="dv">1</span>] <span class="op">*</span> <span class="fl">1.1</span><span class="op">,</span></span>
-<span id="cb8-1057"><a href="#cb8-1057" aria-hidden="true" tabindex="-1"></a>            <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"middle"</span><span class="op">,</span></span>
-<span id="cb8-1058"><a href="#cb8-1058" aria-hidden="true" tabindex="-1"></a>            <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span><span class="op">,</span></span>
-<span id="cb8-1059"><a href="#cb8-1059" aria-hidden="true" tabindex="-1"></a>            <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">14</span></span>
-<span id="cb8-1060"><a href="#cb8-1060" aria-hidden="true" tabindex="-1"></a>        })</span>
-<span id="cb8-1061"><a href="#cb8-1061" aria-hidden="true" tabindex="-1"></a>    ]<span class="op">,</span></span>
-<span id="cb8-1062"><a href="#cb8-1062" aria-hidden="true" tabindex="-1"></a>    <span class="co">//clip: true</span></span>
-<span id="cb8-1063"><a href="#cb8-1063" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb8-1064"><a href="#cb8-1064" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-1065"><a href="#cb8-1065" aria-hidden="true" tabindex="-1"></a><span class="co">// Panel 2: RMSE by polynomial order (separate axes for training and test)</span></span>
-<span id="cb8-1066"><a href="#cb8-1066" aria-hidden="true" tabindex="-1"></a>rmseDataWithHighlight <span class="op">=</span> rmseData<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> ({<span class="op">...</span>d<span class="op">,</span> <span class="dt">highlight</span><span class="op">:</span> d<span class="op">.</span><span class="at">k</span> <span class="op">===</span> polyOrder}))</span>
-<span id="cb8-1067"><a href="#cb8-1067" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-1068"><a href="#cb8-1068" aria-hidden="true" tabindex="-1"></a><span class="co">// Panel 2a: Training RMSE</span></span>
-<span id="cb8-1069"><a href="#cb8-1069" aria-hidden="true" tabindex="-1"></a>plot2a <span class="op">=</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb8-1070"><a href="#cb8-1070" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">50</span><span class="op">,</span></span>
-<span id="cb8-1071"><a href="#cb8-1071" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginTop</span><span class="op">:</span> <span class="dv">35</span><span class="op">,</span></span>
-<span id="cb8-1072"><a href="#cb8-1072" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">45</span><span class="op">,</span></span>
-<span id="cb8-1073"><a href="#cb8-1073" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginRight</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span></span>
-<span id="cb8-1074"><a href="#cb8-1074" aria-hidden="true" tabindex="-1"></a>    <span class="dt">width</span><span class="op">:</span> width <span class="op">/</span> <span class="dv">4</span> <span class="op">-</span> <span class="dv">10</span><span class="op">,</span></span>
-<span id="cb8-1075"><a href="#cb8-1075" aria-hidden="true" tabindex="-1"></a>    <span class="dt">height</span><span class="op">:</span> width <span class="op">/</span> <span class="dv">3</span><span class="op">,</span></span>
-<span id="cb8-1076"><a href="#cb8-1076" aria-hidden="true" tabindex="-1"></a>    <span class="dt">x</span><span class="op">:</span> {</span>
-<span id="cb8-1077"><a href="#cb8-1077" aria-hidden="true" tabindex="-1"></a>        <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> K<span class="op">-</span><span class="dv">1</span>]<span class="op">,</span></span>
-<span id="cb8-1078"><a href="#cb8-1078" aria-hidden="true" tabindex="-1"></a>        <span class="dt">label</span><span class="op">:</span> <span class="st">"Polynomial Order (k)"</span><span class="op">,</span></span>
-<span id="cb8-1079"><a href="#cb8-1079" aria-hidden="true" tabindex="-1"></a>        <span class="dt">ticks</span><span class="op">:</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">0</span><span class="op">,</span> K)</span>
-<span id="cb8-1080"><a href="#cb8-1080" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
-<span id="cb8-1081"><a href="#cb8-1081" aria-hidden="true" tabindex="-1"></a>    <span class="dt">y</span><span class="op">:</span> {</span>
-<span id="cb8-1082"><a href="#cb8-1082" aria-hidden="true" tabindex="-1"></a>        <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> maxRMSETrain <span class="op">*</span> <span class="fl">1.15</span>]<span class="op">,</span></span>
-<span id="cb8-1083"><a href="#cb8-1083" aria-hidden="true" tabindex="-1"></a>        <span class="dt">label</span><span class="op">:</span> <span class="st">"Training RMSE"</span></span>
-<span id="cb8-1084"><a href="#cb8-1084" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
-<span id="cb8-1085"><a href="#cb8-1085" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb8-1086"><a href="#cb8-1086" aria-hidden="true" tabindex="-1"></a>        Plot<span class="op">.</span><span class="fu">frame</span>()<span class="op">,</span></span>
-<span id="cb8-1087"><a href="#cb8-1087" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Training RMSE line</span></span>
-<span id="cb8-1088"><a href="#cb8-1088" aria-hidden="true" tabindex="-1"></a>        Plot<span class="op">.</span><span class="fu">line</span>(rmseData<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"k"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"rmseTrain"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"steelblue"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span>})<span class="op">,</span></span>
-<span id="cb8-1089"><a href="#cb8-1089" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Training RMSE points</span></span>
-<span id="cb8-1090"><a href="#cb8-1090" aria-hidden="true" tabindex="-1"></a>        Plot<span class="op">.</span><span class="fu">dot</span>(rmseDataWithHighlight<span class="op">,</span> {</span>
-<span id="cb8-1091"><a href="#cb8-1091" aria-hidden="true" tabindex="-1"></a>            <span class="dt">x</span><span class="op">:</span> <span class="st">"k"</span><span class="op">,</span></span>
-<span id="cb8-1092"><a href="#cb8-1092" aria-hidden="true" tabindex="-1"></a>            <span class="dt">y</span><span class="op">:</span> <span class="st">"rmseTrain"</span><span class="op">,</span></span>
-<span id="cb8-1093"><a href="#cb8-1093" aria-hidden="true" tabindex="-1"></a>            <span class="dt">fill</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">highlight</span> <span class="op">?</span> <span class="st">"orange"</span> <span class="op">:</span> <span class="st">"steelblue"</span><span class="op">,</span></span>
-<span id="cb8-1094"><a href="#cb8-1094" aria-hidden="true" tabindex="-1"></a>            <span class="dt">r</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">highlight</span> <span class="op">?</span> <span class="dv">8</span> <span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
-<span id="cb8-1095"><a href="#cb8-1095" aria-hidden="true" tabindex="-1"></a>            <span class="dt">stroke</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">highlight</span> <span class="op">?</span> <span class="st">"orange"</span> <span class="op">:</span> <span class="st">"steelblue"</span><span class="op">,</span></span>
-<span id="cb8-1096"><a href="#cb8-1096" aria-hidden="true" tabindex="-1"></a>            <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span></span>
-<span id="cb8-1097"><a href="#cb8-1097" aria-hidden="true" tabindex="-1"></a>        })<span class="op">,</span></span>
-<span id="cb8-1098"><a href="#cb8-1098" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Title</span></span>
-<span id="cb8-1099"><a href="#cb8-1099" aria-hidden="true" tabindex="-1"></a>        Plot<span class="op">.</span><span class="fu">text</span>([<span class="st">"Training RMSE"</span>]<span class="op">,</span> {</span>
-<span id="cb8-1100"><a href="#cb8-1100" aria-hidden="true" tabindex="-1"></a>            <span class="dt">x</span><span class="op">:</span> (K <span class="op">-</span> <span class="dv">1</span>)<span class="op">/</span><span class="dv">2</span><span class="op">,</span></span>
-<span id="cb8-1101"><a href="#cb8-1101" aria-hidden="true" tabindex="-1"></a>            <span class="dt">y</span><span class="op">:</span> maxRMSETrain <span class="op">*</span> <span class="fl">1.25</span><span class="op">,</span></span>
-<span id="cb8-1102"><a href="#cb8-1102" aria-hidden="true" tabindex="-1"></a>            <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"middle"</span><span class="op">,</span></span>
-<span id="cb8-1103"><a href="#cb8-1103" aria-hidden="true" tabindex="-1"></a>            <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span><span class="op">,</span></span>
-<span id="cb8-1104"><a href="#cb8-1104" aria-hidden="true" tabindex="-1"></a>            <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">14</span></span>
-<span id="cb8-1105"><a href="#cb8-1105" aria-hidden="true" tabindex="-1"></a>        })</span>
-<span id="cb8-1106"><a href="#cb8-1106" aria-hidden="true" tabindex="-1"></a>    ]</span>
-<span id="cb8-1107"><a href="#cb8-1107" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb8-1108"><a href="#cb8-1108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-1109"><a href="#cb8-1109" aria-hidden="true" tabindex="-1"></a><span class="co">// Panel 2b: Test RMSE</span></span>
-<span id="cb8-1110"><a href="#cb8-1110" aria-hidden="true" tabindex="-1"></a>plot2b <span class="op">=</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb8-1111"><a href="#cb8-1111" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">50</span><span class="op">,</span></span>
-<span id="cb8-1112"><a href="#cb8-1112" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginTop</span><span class="op">:</span> <span class="dv">35</span><span class="op">,</span></span>
-<span id="cb8-1113"><a href="#cb8-1113" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">45</span><span class="op">,</span></span>
-<span id="cb8-1114"><a href="#cb8-1114" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginRight</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span></span>
-<span id="cb8-1115"><a href="#cb8-1115" aria-hidden="true" tabindex="-1"></a>    <span class="dt">width</span><span class="op">:</span> width <span class="op">/</span> <span class="dv">4</span> <span class="op">-</span> <span class="dv">10</span><span class="op">,</span></span>
-<span id="cb8-1116"><a href="#cb8-1116" aria-hidden="true" tabindex="-1"></a>    <span class="dt">height</span><span class="op">:</span> width <span class="op">/</span> <span class="dv">3</span><span class="op">,</span></span>
-<span id="cb8-1117"><a href="#cb8-1117" aria-hidden="true" tabindex="-1"></a>    <span class="dt">x</span><span class="op">:</span> {</span>
-<span id="cb8-1118"><a href="#cb8-1118" aria-hidden="true" tabindex="-1"></a>        <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> K<span class="op">-</span><span class="dv">1</span>]<span class="op">,</span></span>
-<span id="cb8-1119"><a href="#cb8-1119" aria-hidden="true" tabindex="-1"></a>        <span class="dt">label</span><span class="op">:</span> <span class="st">"Polynomial Order (k)"</span><span class="op">,</span></span>
-<span id="cb8-1120"><a href="#cb8-1120" aria-hidden="true" tabindex="-1"></a>        <span class="dt">ticks</span><span class="op">:</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">0</span><span class="op">,</span> K)</span>
-<span id="cb8-1121"><a href="#cb8-1121" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
-<span id="cb8-1122"><a href="#cb8-1122" aria-hidden="true" tabindex="-1"></a>    <span class="dt">y</span><span class="op">:</span> {</span>
-<span id="cb8-1123"><a href="#cb8-1123" aria-hidden="true" tabindex="-1"></a>        <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> maxRMSETest <span class="op">*</span> <span class="fl">1.15</span>]<span class="op">,</span></span>
-<span id="cb8-1124"><a href="#cb8-1124" aria-hidden="true" tabindex="-1"></a>        <span class="dt">label</span><span class="op">:</span> <span class="st">"Test RMSE"</span></span>
-<span id="cb8-1125"><a href="#cb8-1125" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
-<span id="cb8-1126"><a href="#cb8-1126" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb8-1127"><a href="#cb8-1127" aria-hidden="true" tabindex="-1"></a>        Plot<span class="op">.</span><span class="fu">frame</span>()<span class="op">,</span></span>
-<span id="cb8-1128"><a href="#cb8-1128" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Test RMSE line</span></span>
-<span id="cb8-1129"><a href="#cb8-1129" aria-hidden="true" tabindex="-1"></a>        Plot<span class="op">.</span><span class="fu">line</span>(rmseData<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"k"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"rmseTest"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"steelblue"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span>})<span class="op">,</span></span>
-<span id="cb8-1130"><a href="#cb8-1130" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Test RMSE points</span></span>
-<span id="cb8-1131"><a href="#cb8-1131" aria-hidden="true" tabindex="-1"></a>        Plot<span class="op">.</span><span class="fu">dot</span>(rmseDataWithHighlight<span class="op">,</span> {</span>
-<span id="cb8-1132"><a href="#cb8-1132" aria-hidden="true" tabindex="-1"></a>            <span class="dt">x</span><span class="op">:</span> <span class="st">"k"</span><span class="op">,</span></span>
-<span id="cb8-1133"><a href="#cb8-1133" aria-hidden="true" tabindex="-1"></a>            <span class="dt">y</span><span class="op">:</span> <span class="st">"rmseTest"</span><span class="op">,</span></span>
-<span id="cb8-1134"><a href="#cb8-1134" aria-hidden="true" tabindex="-1"></a>            <span class="dt">fill</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">highlight</span> <span class="op">?</span> <span class="st">"orange"</span> <span class="op">:</span> <span class="st">"steelblue"</span><span class="op">,</span></span>
-<span id="cb8-1135"><a href="#cb8-1135" aria-hidden="true" tabindex="-1"></a>            <span class="dt">r</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">highlight</span> <span class="op">?</span> <span class="dv">8</span> <span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
-<span id="cb8-1136"><a href="#cb8-1136" aria-hidden="true" tabindex="-1"></a>            <span class="dt">stroke</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">highlight</span> <span class="op">?</span> <span class="st">"orange"</span> <span class="op">:</span> <span class="st">"steelblue"</span><span class="op">,</span></span>
-<span id="cb8-1137"><a href="#cb8-1137" aria-hidden="true" tabindex="-1"></a>            <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span></span>
-<span id="cb8-1138"><a href="#cb8-1138" aria-hidden="true" tabindex="-1"></a>        })<span class="op">,</span></span>
-<span id="cb8-1139"><a href="#cb8-1139" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Title</span></span>
-<span id="cb8-1140"><a href="#cb8-1140" aria-hidden="true" tabindex="-1"></a>        Plot<span class="op">.</span><span class="fu">text</span>([<span class="st">"Test RMSE"</span>]<span class="op">,</span> {</span>
-<span id="cb8-1141"><a href="#cb8-1141" aria-hidden="true" tabindex="-1"></a>            <span class="dt">x</span><span class="op">:</span> (K <span class="op">-</span> <span class="dv">1</span>)<span class="op">/</span><span class="dv">2</span><span class="op">,</span></span>
-<span id="cb8-1142"><a href="#cb8-1142" aria-hidden="true" tabindex="-1"></a>            <span class="dt">y</span><span class="op">:</span> maxRMSETest <span class="op">*</span> <span class="fl">1.25</span><span class="op">,</span></span>
-<span id="cb8-1143"><a href="#cb8-1143" aria-hidden="true" tabindex="-1"></a>            <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"middle"</span><span class="op">,</span></span>
-<span id="cb8-1144"><a href="#cb8-1144" aria-hidden="true" tabindex="-1"></a>            <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span><span class="op">,</span></span>
-<span id="cb8-1145"><a href="#cb8-1145" aria-hidden="true" tabindex="-1"></a>            <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">14</span></span>
-<span id="cb8-1146"><a href="#cb8-1146" aria-hidden="true" tabindex="-1"></a>        })</span>
-<span id="cb8-1147"><a href="#cb8-1147" aria-hidden="true" tabindex="-1"></a>    ]</span>
-<span id="cb8-1148"><a href="#cb8-1148" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb8-1149"><a href="#cb8-1149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-1150"><a href="#cb8-1150" aria-hidden="true" tabindex="-1"></a><span class="co">// Combine plots side by side</span></span>
-<span id="cb8-1151"><a href="#cb8-1151" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;"&gt;</span></span>
-<span id="cb8-1152"><a href="#cb8-1152" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span><span class="sc">${</span>plot1<span class="sc">}</span></span>
-<span id="cb8-1153"><a href="#cb8-1153" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span><span class="sc">${</span>plot2a<span class="sc">}</span></span>
-<span id="cb8-1154"><a href="#cb8-1154" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span><span class="sc">${</span>plot2b<span class="sc">}</span></span>
-<span id="cb8-1155"><a href="#cb8-1155" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;</span></span>
-<span id="cb8-1156"><a href="#cb8-1156" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;div style="text-align: center; margin-top: 10px; font-size: 0.9em; color: #555;"&gt;</span></span>
-<span id="cb8-1157"><a href="#cb8-1157" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;span style="display: inline-block; width: 20px; height: 0; border-top: 2px dashed #888; margin-right: 5px; vertical-align: middle;"&gt;&lt;/span&gt; True DGP: f(x) = x²</span></span>
-<span id="cb8-1158"><a href="#cb8-1158" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;span style="margin-left: 20px; display: inline-block; width: 20px; height: 3px; background: orange; margin-right: 5px; vertical-align: middle;"&gt;&lt;/span&gt; Fitted Polynomial</span></span>
-<span id="cb8-1159"><a href="#cb8-1159" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;span style="margin-left: 20px; display: inline-block; width: 10px; height: 10px; background: steelblue; border-radius: 50%; margin-right: 5px; vertical-align: middle;"&gt;&lt;/span&gt; Training Data (n=</span><span class="sc">${</span>K<span class="sc">}</span><span class="vs">)</span></span>
-<span id="cb8-1160"><a href="#cb8-1160" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="1032" data-source-offset="-40"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 1031;"><span id="cb8-1032"><a href="#cb8-1032" aria-hidden="true" tabindex="-1"></a>plot1 <span class="op">=</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb8-1033"><a href="#cb8-1033" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">50</span><span class="op">,</span></span>
+<span id="cb8-1034"><a href="#cb8-1034" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginTop</span><span class="op">:</span> <span class="dv">35</span><span class="op">,</span></span>
+<span id="cb8-1035"><a href="#cb8-1035" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">45</span><span class="op">,</span></span>
+<span id="cb8-1036"><a href="#cb8-1036" aria-hidden="true" tabindex="-1"></a>    <span class="dt">width</span><span class="op">:</span> width <span class="op">/</span> <span class="dv">2</span> <span class="op">-</span> <span class="dv">20</span><span class="op">,</span></span>
+<span id="cb8-1037"><a href="#cb8-1037" aria-hidden="true" tabindex="-1"></a>    <span class="dt">height</span><span class="op">:</span> width <span class="op">/</span> <span class="dv">3</span><span class="op">,</span></span>
+<span id="cb8-1038"><a href="#cb8-1038" aria-hidden="true" tabindex="-1"></a>    <span class="dt">x</span><span class="op">:</span> {</span>
+<span id="cb8-1039"><a href="#cb8-1039" aria-hidden="true" tabindex="-1"></a>        <span class="dt">domain</span><span class="op">:</span> xRange<span class="op">,</span></span>
+<span id="cb8-1040"><a href="#cb8-1040" aria-hidden="true" tabindex="-1"></a>        <span class="dt">label</span><span class="op">:</span> <span class="st">"x"</span></span>
+<span id="cb8-1041"><a href="#cb8-1041" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb8-1042"><a href="#cb8-1042" aria-hidden="true" tabindex="-1"></a>    <span class="dt">y</span><span class="op">:</span> {</span>
+<span id="cb8-1043"><a href="#cb8-1043" aria-hidden="true" tabindex="-1"></a>        <span class="dt">domain</span><span class="op">:</span> yRange<span class="op">,</span></span>
+<span id="cb8-1044"><a href="#cb8-1044" aria-hidden="true" tabindex="-1"></a>        <span class="dt">label</span><span class="op">:</span> <span class="st">"y"</span></span>
+<span id="cb8-1045"><a href="#cb8-1045" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb8-1046"><a href="#cb8-1046" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb8-1047"><a href="#cb8-1047" aria-hidden="true" tabindex="-1"></a>        Plot<span class="op">.</span><span class="fu">frame</span>()<span class="op">,</span></span>
+<span id="cb8-1048"><a href="#cb8-1048" aria-hidden="true" tabindex="-1"></a>        <span class="co">// True DGP curve (dashed gray)</span></span>
+<span id="cb8-1049"><a href="#cb8-1049" aria-hidden="true" tabindex="-1"></a>        Plot<span class="op">.</span><span class="fu">line</span>(trueCurveData<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#888"</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"5,5"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span>})<span class="op">,</span></span>
+<span id="cb8-1050"><a href="#cb8-1050" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Fitted polynomial (orange)</span></span>
+<span id="cb8-1051"><a href="#cb8-1051" aria-hidden="true" tabindex="-1"></a>        Plot<span class="op">.</span><span class="fu">line</span>(fittedCurveData<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"orange"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">2.5</span>})<span class="op">,</span></span>
+<span id="cb8-1052"><a href="#cb8-1052" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Sample data points (blue)</span></span>
+<span id="cb8-1053"><a href="#cb8-1053" aria-hidden="true" tabindex="-1"></a>        Plot<span class="op">.</span><span class="fu">dot</span>(sampleData<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"steelblue"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="dv">6</span>})<span class="op">,</span></span>
+<span id="cb8-1054"><a href="#cb8-1054" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Title</span></span>
+<span id="cb8-1055"><a href="#cb8-1055" aria-hidden="true" tabindex="-1"></a>        Plot<span class="op">.</span><span class="fu">text</span>([<span class="vs">`Data &amp; Fitted Polynomial (k=</span><span class="sc">${</span>polyOrder<span class="sc">}</span><span class="vs">)`</span>]<span class="op">,</span> {</span>
+<span id="cb8-1056"><a href="#cb8-1056" aria-hidden="true" tabindex="-1"></a>            <span class="dt">x</span><span class="op">:</span> (xRange[<span class="dv">1</span>] <span class="op">+</span> xRange[<span class="dv">0</span>])<span class="op">/</span><span class="dv">2</span><span class="op">,</span></span>
+<span id="cb8-1057"><a href="#cb8-1057" aria-hidden="true" tabindex="-1"></a>            <span class="dt">y</span><span class="op">:</span> yRange[<span class="dv">1</span>] <span class="op">*</span> <span class="fl">1.1</span><span class="op">,</span></span>
+<span id="cb8-1058"><a href="#cb8-1058" aria-hidden="true" tabindex="-1"></a>            <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"middle"</span><span class="op">,</span></span>
+<span id="cb8-1059"><a href="#cb8-1059" aria-hidden="true" tabindex="-1"></a>            <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span><span class="op">,</span></span>
+<span id="cb8-1060"><a href="#cb8-1060" aria-hidden="true" tabindex="-1"></a>            <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">14</span></span>
+<span id="cb8-1061"><a href="#cb8-1061" aria-hidden="true" tabindex="-1"></a>        })</span>
+<span id="cb8-1062"><a href="#cb8-1062" aria-hidden="true" tabindex="-1"></a>    ]<span class="op">,</span></span>
+<span id="cb8-1063"><a href="#cb8-1063" aria-hidden="true" tabindex="-1"></a>    <span class="co">//clip: true</span></span>
+<span id="cb8-1064"><a href="#cb8-1064" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb8-1065"><a href="#cb8-1065" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-1066"><a href="#cb8-1066" aria-hidden="true" tabindex="-1"></a><span class="co">// Panel 2: RMSE by polynomial order (separate axes for training and test)</span></span>
+<span id="cb8-1067"><a href="#cb8-1067" aria-hidden="true" tabindex="-1"></a>rmseDataWithHighlight <span class="op">=</span> rmseData<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> ({<span class="op">...</span>d<span class="op">,</span> <span class="dt">highlight</span><span class="op">:</span> d<span class="op">.</span><span class="at">k</span> <span class="op">===</span> polyOrder}))</span>
+<span id="cb8-1068"><a href="#cb8-1068" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-1069"><a href="#cb8-1069" aria-hidden="true" tabindex="-1"></a><span class="co">// Panel 2a: Training RMSE</span></span>
+<span id="cb8-1070"><a href="#cb8-1070" aria-hidden="true" tabindex="-1"></a>plot2a <span class="op">=</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb8-1071"><a href="#cb8-1071" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">50</span><span class="op">,</span></span>
+<span id="cb8-1072"><a href="#cb8-1072" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginTop</span><span class="op">:</span> <span class="dv">35</span><span class="op">,</span></span>
+<span id="cb8-1073"><a href="#cb8-1073" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">45</span><span class="op">,</span></span>
+<span id="cb8-1074"><a href="#cb8-1074" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginRight</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span></span>
+<span id="cb8-1075"><a href="#cb8-1075" aria-hidden="true" tabindex="-1"></a>    <span class="dt">width</span><span class="op">:</span> width <span class="op">/</span> <span class="dv">4</span> <span class="op">-</span> <span class="dv">10</span><span class="op">,</span></span>
+<span id="cb8-1076"><a href="#cb8-1076" aria-hidden="true" tabindex="-1"></a>    <span class="dt">height</span><span class="op">:</span> width <span class="op">/</span> <span class="dv">3</span><span class="op">,</span></span>
+<span id="cb8-1077"><a href="#cb8-1077" aria-hidden="true" tabindex="-1"></a>    <span class="dt">x</span><span class="op">:</span> {</span>
+<span id="cb8-1078"><a href="#cb8-1078" aria-hidden="true" tabindex="-1"></a>        <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> K<span class="op">-</span><span class="dv">1</span>]<span class="op">,</span></span>
+<span id="cb8-1079"><a href="#cb8-1079" aria-hidden="true" tabindex="-1"></a>        <span class="dt">label</span><span class="op">:</span> <span class="st">"Polynomial Order (k)"</span><span class="op">,</span></span>
+<span id="cb8-1080"><a href="#cb8-1080" aria-hidden="true" tabindex="-1"></a>        <span class="dt">ticks</span><span class="op">:</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">0</span><span class="op">,</span> K)</span>
+<span id="cb8-1081"><a href="#cb8-1081" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb8-1082"><a href="#cb8-1082" aria-hidden="true" tabindex="-1"></a>    <span class="dt">y</span><span class="op">:</span> {</span>
+<span id="cb8-1083"><a href="#cb8-1083" aria-hidden="true" tabindex="-1"></a>        <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> maxRMSETrain <span class="op">*</span> <span class="fl">1.15</span>]<span class="op">,</span></span>
+<span id="cb8-1084"><a href="#cb8-1084" aria-hidden="true" tabindex="-1"></a>        <span class="dt">label</span><span class="op">:</span> <span class="st">"Training RMSE"</span></span>
+<span id="cb8-1085"><a href="#cb8-1085" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb8-1086"><a href="#cb8-1086" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb8-1087"><a href="#cb8-1087" aria-hidden="true" tabindex="-1"></a>        Plot<span class="op">.</span><span class="fu">frame</span>()<span class="op">,</span></span>
+<span id="cb8-1088"><a href="#cb8-1088" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Training RMSE line</span></span>
+<span id="cb8-1089"><a href="#cb8-1089" aria-hidden="true" tabindex="-1"></a>        Plot<span class="op">.</span><span class="fu">line</span>(rmseData<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"k"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"rmseTrain"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"steelblue"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span>})<span class="op">,</span></span>
+<span id="cb8-1090"><a href="#cb8-1090" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Training RMSE points</span></span>
+<span id="cb8-1091"><a href="#cb8-1091" aria-hidden="true" tabindex="-1"></a>        Plot<span class="op">.</span><span class="fu">dot</span>(rmseDataWithHighlight<span class="op">,</span> {</span>
+<span id="cb8-1092"><a href="#cb8-1092" aria-hidden="true" tabindex="-1"></a>            <span class="dt">x</span><span class="op">:</span> <span class="st">"k"</span><span class="op">,</span></span>
+<span id="cb8-1093"><a href="#cb8-1093" aria-hidden="true" tabindex="-1"></a>            <span class="dt">y</span><span class="op">:</span> <span class="st">"rmseTrain"</span><span class="op">,</span></span>
+<span id="cb8-1094"><a href="#cb8-1094" aria-hidden="true" tabindex="-1"></a>            <span class="dt">fill</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">highlight</span> <span class="op">?</span> <span class="st">"orange"</span> <span class="op">:</span> <span class="st">"steelblue"</span><span class="op">,</span></span>
+<span id="cb8-1095"><a href="#cb8-1095" aria-hidden="true" tabindex="-1"></a>            <span class="dt">r</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">highlight</span> <span class="op">?</span> <span class="dv">8</span> <span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb8-1096"><a href="#cb8-1096" aria-hidden="true" tabindex="-1"></a>            <span class="dt">stroke</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">highlight</span> <span class="op">?</span> <span class="st">"orange"</span> <span class="op">:</span> <span class="st">"steelblue"</span><span class="op">,</span></span>
+<span id="cb8-1097"><a href="#cb8-1097" aria-hidden="true" tabindex="-1"></a>            <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span></span>
+<span id="cb8-1098"><a href="#cb8-1098" aria-hidden="true" tabindex="-1"></a>        })<span class="op">,</span></span>
+<span id="cb8-1099"><a href="#cb8-1099" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Title</span></span>
+<span id="cb8-1100"><a href="#cb8-1100" aria-hidden="true" tabindex="-1"></a>        Plot<span class="op">.</span><span class="fu">text</span>([<span class="st">"Training RMSE"</span>]<span class="op">,</span> {</span>
+<span id="cb8-1101"><a href="#cb8-1101" aria-hidden="true" tabindex="-1"></a>            <span class="dt">x</span><span class="op">:</span> (K <span class="op">-</span> <span class="dv">1</span>)<span class="op">/</span><span class="dv">2</span><span class="op">,</span></span>
+<span id="cb8-1102"><a href="#cb8-1102" aria-hidden="true" tabindex="-1"></a>            <span class="dt">y</span><span class="op">:</span> maxRMSETrain <span class="op">*</span> <span class="fl">1.25</span><span class="op">,</span></span>
+<span id="cb8-1103"><a href="#cb8-1103" aria-hidden="true" tabindex="-1"></a>            <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"middle"</span><span class="op">,</span></span>
+<span id="cb8-1104"><a href="#cb8-1104" aria-hidden="true" tabindex="-1"></a>            <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span><span class="op">,</span></span>
+<span id="cb8-1105"><a href="#cb8-1105" aria-hidden="true" tabindex="-1"></a>            <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">14</span></span>
+<span id="cb8-1106"><a href="#cb8-1106" aria-hidden="true" tabindex="-1"></a>        })</span>
+<span id="cb8-1107"><a href="#cb8-1107" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb8-1108"><a href="#cb8-1108" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb8-1109"><a href="#cb8-1109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-1110"><a href="#cb8-1110" aria-hidden="true" tabindex="-1"></a><span class="co">// Panel 2b: Test RMSE</span></span>
+<span id="cb8-1111"><a href="#cb8-1111" aria-hidden="true" tabindex="-1"></a>plot2b <span class="op">=</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb8-1112"><a href="#cb8-1112" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">50</span><span class="op">,</span></span>
+<span id="cb8-1113"><a href="#cb8-1113" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginTop</span><span class="op">:</span> <span class="dv">35</span><span class="op">,</span></span>
+<span id="cb8-1114"><a href="#cb8-1114" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">45</span><span class="op">,</span></span>
+<span id="cb8-1115"><a href="#cb8-1115" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginRight</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span></span>
+<span id="cb8-1116"><a href="#cb8-1116" aria-hidden="true" tabindex="-1"></a>    <span class="dt">width</span><span class="op">:</span> width <span class="op">/</span> <span class="dv">4</span> <span class="op">-</span> <span class="dv">10</span><span class="op">,</span></span>
+<span id="cb8-1117"><a href="#cb8-1117" aria-hidden="true" tabindex="-1"></a>    <span class="dt">height</span><span class="op">:</span> width <span class="op">/</span> <span class="dv">3</span><span class="op">,</span></span>
+<span id="cb8-1118"><a href="#cb8-1118" aria-hidden="true" tabindex="-1"></a>    <span class="dt">x</span><span class="op">:</span> {</span>
+<span id="cb8-1119"><a href="#cb8-1119" aria-hidden="true" tabindex="-1"></a>        <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> K<span class="op">-</span><span class="dv">1</span>]<span class="op">,</span></span>
+<span id="cb8-1120"><a href="#cb8-1120" aria-hidden="true" tabindex="-1"></a>        <span class="dt">label</span><span class="op">:</span> <span class="st">"Polynomial Order (k)"</span><span class="op">,</span></span>
+<span id="cb8-1121"><a href="#cb8-1121" aria-hidden="true" tabindex="-1"></a>        <span class="dt">ticks</span><span class="op">:</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">0</span><span class="op">,</span> K)</span>
+<span id="cb8-1122"><a href="#cb8-1122" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb8-1123"><a href="#cb8-1123" aria-hidden="true" tabindex="-1"></a>    <span class="dt">y</span><span class="op">:</span> {</span>
+<span id="cb8-1124"><a href="#cb8-1124" aria-hidden="true" tabindex="-1"></a>        <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> maxRMSETest <span class="op">*</span> <span class="fl">1.15</span>]<span class="op">,</span></span>
+<span id="cb8-1125"><a href="#cb8-1125" aria-hidden="true" tabindex="-1"></a>        <span class="dt">label</span><span class="op">:</span> <span class="st">"Test RMSE"</span></span>
+<span id="cb8-1126"><a href="#cb8-1126" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb8-1127"><a href="#cb8-1127" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb8-1128"><a href="#cb8-1128" aria-hidden="true" tabindex="-1"></a>        Plot<span class="op">.</span><span class="fu">frame</span>()<span class="op">,</span></span>
+<span id="cb8-1129"><a href="#cb8-1129" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Test RMSE line</span></span>
+<span id="cb8-1130"><a href="#cb8-1130" aria-hidden="true" tabindex="-1"></a>        Plot<span class="op">.</span><span class="fu">line</span>(rmseData<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"k"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"rmseTest"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"steelblue"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span>})<span class="op">,</span></span>
+<span id="cb8-1131"><a href="#cb8-1131" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Test RMSE points</span></span>
+<span id="cb8-1132"><a href="#cb8-1132" aria-hidden="true" tabindex="-1"></a>        Plot<span class="op">.</span><span class="fu">dot</span>(rmseDataWithHighlight<span class="op">,</span> {</span>
+<span id="cb8-1133"><a href="#cb8-1133" aria-hidden="true" tabindex="-1"></a>            <span class="dt">x</span><span class="op">:</span> <span class="st">"k"</span><span class="op">,</span></span>
+<span id="cb8-1134"><a href="#cb8-1134" aria-hidden="true" tabindex="-1"></a>            <span class="dt">y</span><span class="op">:</span> <span class="st">"rmseTest"</span><span class="op">,</span></span>
+<span id="cb8-1135"><a href="#cb8-1135" aria-hidden="true" tabindex="-1"></a>            <span class="dt">fill</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">highlight</span> <span class="op">?</span> <span class="st">"orange"</span> <span class="op">:</span> <span class="st">"steelblue"</span><span class="op">,</span></span>
+<span id="cb8-1136"><a href="#cb8-1136" aria-hidden="true" tabindex="-1"></a>            <span class="dt">r</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">highlight</span> <span class="op">?</span> <span class="dv">8</span> <span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb8-1137"><a href="#cb8-1137" aria-hidden="true" tabindex="-1"></a>            <span class="dt">stroke</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">highlight</span> <span class="op">?</span> <span class="st">"orange"</span> <span class="op">:</span> <span class="st">"steelblue"</span><span class="op">,</span></span>
+<span id="cb8-1138"><a href="#cb8-1138" aria-hidden="true" tabindex="-1"></a>            <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span></span>
+<span id="cb8-1139"><a href="#cb8-1139" aria-hidden="true" tabindex="-1"></a>        })<span class="op">,</span></span>
+<span id="cb8-1140"><a href="#cb8-1140" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Title</span></span>
+<span id="cb8-1141"><a href="#cb8-1141" aria-hidden="true" tabindex="-1"></a>        Plot<span class="op">.</span><span class="fu">text</span>([<span class="st">"Test RMSE"</span>]<span class="op">,</span> {</span>
+<span id="cb8-1142"><a href="#cb8-1142" aria-hidden="true" tabindex="-1"></a>            <span class="dt">x</span><span class="op">:</span> (K <span class="op">-</span> <span class="dv">1</span>)<span class="op">/</span><span class="dv">2</span><span class="op">,</span></span>
+<span id="cb8-1143"><a href="#cb8-1143" aria-hidden="true" tabindex="-1"></a>            <span class="dt">y</span><span class="op">:</span> maxRMSETest <span class="op">*</span> <span class="fl">1.25</span><span class="op">,</span></span>
+<span id="cb8-1144"><a href="#cb8-1144" aria-hidden="true" tabindex="-1"></a>            <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"middle"</span><span class="op">,</span></span>
+<span id="cb8-1145"><a href="#cb8-1145" aria-hidden="true" tabindex="-1"></a>            <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span><span class="op">,</span></span>
+<span id="cb8-1146"><a href="#cb8-1146" aria-hidden="true" tabindex="-1"></a>            <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">14</span></span>
+<span id="cb8-1147"><a href="#cb8-1147" aria-hidden="true" tabindex="-1"></a>        })</span>
+<span id="cb8-1148"><a href="#cb8-1148" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb8-1149"><a href="#cb8-1149" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb8-1150"><a href="#cb8-1150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-1151"><a href="#cb8-1151" aria-hidden="true" tabindex="-1"></a><span class="co">// Combine plots side by side</span></span>
+<span id="cb8-1152"><a href="#cb8-1152" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;"&gt;</span></span>
+<span id="cb8-1153"><a href="#cb8-1153" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span><span class="sc">${</span>plot1<span class="sc">}</span></span>
+<span id="cb8-1154"><a href="#cb8-1154" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span><span class="sc">${</span>plot2a<span class="sc">}</span></span>
+<span id="cb8-1155"><a href="#cb8-1155" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span><span class="sc">${</span>plot2b<span class="sc">}</span></span>
+<span id="cb8-1156"><a href="#cb8-1156" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb8-1157"><a href="#cb8-1157" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;div style="text-align: center; margin-top: 10px; font-size: 0.9em; color: #555;"&gt;</span></span>
+<span id="cb8-1158"><a href="#cb8-1158" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;span style="display: inline-block; width: 20px; height: 0; border-top: 2px dashed #888; margin-right: 5px; vertical-align: middle;"&gt;&lt;/span&gt; True DGP: f(x) = x²</span></span>
+<span id="cb8-1159"><a href="#cb8-1159" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;span style="margin-left: 20px; display: inline-block; width: 20px; height: 3px; background: orange; margin-right: 5px; vertical-align: middle;"&gt;&lt;/span&gt; Fitted Polynomial</span></span>
+<span id="cb8-1160"><a href="#cb8-1160" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;span style="margin-left: 20px; display: inline-block; width: 10px; height: 10px; background: steelblue; border-radius: 50%; margin-right: 5px; vertical-align: middle;"&gt;&lt;/span&gt; Training Data (n=</span><span class="sc">${</span>K<span class="sc">}</span><span class="vs">)</span></span>
+<span id="cb8-1161"><a href="#cb8-1161" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-5-1" data-nodetype="declaration">
@@ -1623,7 +1624,7 @@ Figure&nbsp;3.11: Examples of Overfitting and Underfitting
 </div>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb9" data-startfrom="1163" data-source-offset="-3515"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 1162;"><span id="cb9-1163"><a href="#cb9-1163" aria-hidden="true" tabindex="-1"></a>viewof polyOrder <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> K<span class="op">-</span><span class="dv">1</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Polynomial Order (k)"</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">2</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb9" data-startfrom="1164" data-source-offset="-3515"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 1163;"><span id="cb9-1164"><a href="#cb9-1164" aria-hidden="true" tabindex="-1"></a>viewof polyOrder <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> K<span class="op">-</span><span class="dv">1</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Polynomial Order (k)"</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">2</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-5-6" data-nodetype="declaration">
@@ -1662,7 +1663,7 @@ Figure&nbsp;3.12: Interactive Overfitting Example
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-generalization-error-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.14: Model Complexity and Generalization Error <span class="citation" data-cites="Hastie2009">(adapted from <a href="../references.html#ref-Hastie2009" role="doc-biblioref">Hastie, Tibshirani, and Friedman 2009</a>)</span>
+Figure&nbsp;3.14: Model Complexity and Generalization Error <span class="citation" data-cites="Hastie2009">(adapted from <a href="../references.html#ref-Hastie2009" role="doc-biblioref">Hastie et al. 2009</a>)</span>
 </figcaption>
 </figure>
 </div>
@@ -2269,7 +2270,7 @@ https://www.kaggle.com/discussions/getting-started/196714
 -->
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-Hastie2009" class="csl-entry" role="listitem">
 Hastie, Trevor, Robert Tibshirani, and Jerome Friedman. 2009. <em><span class="nocase">The Elements of Statistical Learning - Data Mining, Inference, and Prediction</span></em>. Second Edition. Springer.
 </div>
