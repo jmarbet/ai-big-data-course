@@ -2342,22 +2342,22 @@ Tip
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb335"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb335-1"><a href="#cb335-1" aria-hidden="true" tabindex="-1"></a>np.random.rand(<span class="dv">2</span>, <span class="dv">3</span>)  <span class="co"># Creates a 2x3 array of random floats between 0 and 1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>array([[0.09909399, 0.61079612, 0.78603008],
-       [0.34953515, 0.08814097, 0.00230883]])</code></pre>
+<pre><code>array([[0.18550615, 0.79357203, 0.41634416],
+       [0.31147317, 0.83796518, 0.55395366]])</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb337"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb337-1"><a href="#cb337-1" aria-hidden="true" tabindex="-1"></a>np.random.randint(<span class="dv">0</span>, <span class="dv">10</span>, size<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">3</span>))  <span class="co"># Creates a 2x3 array of random integers between 0 and 9</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>array([[1, 1, 2],
-       [2, 7, 5]])</code></pre>
+<pre><code>array([[7, 5, 5],
+       [6, 5, 4]])</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb339"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb339-1"><a href="#cb339-1" aria-hidden="true" tabindex="-1"></a>np.random.randn(<span class="dv">2</span>, <span class="dv">3</span>)  <span class="co"># Creates a 2x3 array of random floats from a standard normal distribution</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>array([[-2.07811598,  1.27767798, -0.52494358],
-       [ 0.94069098,  0.84084859, -0.64677103]])</code></pre>
+<pre><code>array([[ 1.04634892,  0.38204574, -0.73551072],
+       [-0.52579536,  1.39025727,  0.13976402]])</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -4249,7 +4249,7 @@ Note
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb529"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb529-1"><a href="#cb529-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(df[<span class="st">'total_bill'</span>], df[<span class="st">'tip'</span>], color<span class="op">=</span><span class="st">'blue'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;matplotlib.collections.PathCollection object at 0x1377d6ad0&gt;</code></pre>
+<pre><code>&lt;matplotlib.collections.PathCollection object at 0x12a96ead0&gt;</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb531"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb531-1"><a href="#cb531-1" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Total Bill vs Tip'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -4285,11 +4285,11 @@ Note
 <span id="cb540-3"><a href="#cb540-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb540-4"><a href="#cb540-4" aria-hidden="true" tabindex="-1"></a>plt.scatter(smokers[<span class="st">'total_bill'</span>], smokers[<span class="st">'tip'</span>], color<span class="op">=</span><span class="st">'red'</span>, label<span class="op">=</span><span class="st">'Smokers'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;matplotlib.collections.PathCollection object at 0x13776f250&gt;</code></pre>
+<pre><code>&lt;matplotlib.collections.PathCollection object at 0x12a93ead0&gt;</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb542"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb542-1"><a href="#cb542-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(non_smokers[<span class="st">'total_bill'</span>], non_smokers[<span class="st">'tip'</span>], color<span class="op">=</span><span class="st">'blue'</span>, label<span class="op">=</span><span class="st">'Non-Smokers'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;matplotlib.collections.PathCollection object at 0x13776f110&gt;</code></pre>
+<pre><code>&lt;matplotlib.collections.PathCollection object at 0x12a93ec10&gt;</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb544"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb544-1"><a href="#cb544-1" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Total Bill vs Tip by Smoking Status'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -4305,7 +4305,7 @@ Note
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb550"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb550-1"><a href="#cb550-1" aria-hidden="true" tabindex="-1"></a>plt.legend()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;matplotlib.legend.Legend object at 0x13776efd0&gt;</code></pre>
+<pre><code>&lt;matplotlib.legend.Legend object at 0x12a93ed50&gt;</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb552"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb552-1"><a href="#cb552-1" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
 <span id="cb552-2"><a href="#cb552-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -4322,7 +4322,7 @@ Note
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb553"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb553-1"><a href="#cb553-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">6</span>))</span>
 <span id="cb553-2"><a href="#cb553-2" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].scatter(smokers[<span class="st">'total_bill'</span>], smokers[<span class="st">'tip'</span>], color<span class="op">=</span><span class="st">'red'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;matplotlib.collections.PathCollection object at 0x1378b82d0&gt;</code></pre>
+<pre><code>&lt;matplotlib.collections.PathCollection object at 0x12aa542d0&gt;</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb555"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb555-1"><a href="#cb555-1" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_title(<span class="st">'Smokers'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -4338,7 +4338,7 @@ Note
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb561"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb561-1"><a href="#cb561-1" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].scatter(non_smokers[<span class="st">'total_bill'</span>], non_smokers[<span class="st">'tip'</span>], color<span class="op">=</span><span class="st">'blue'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;matplotlib.collections.PathCollection object at 0x1378b8410&gt;</code></pre>
+<pre><code>&lt;matplotlib.collections.PathCollection object at 0x12aa54410&gt;</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb563"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb563-1"><a href="#cb563-1" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_title(<span class="st">'Non-Smokers'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -4369,7 +4369,7 @@ Note
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb572"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb572-1"><a href="#cb572-1" aria-hidden="true" tabindex="-1"></a>sns.relplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"total_bill"</span>, y<span class="op">=</span><span class="st">"tip"</span>, hue<span class="op">=</span><span class="st">"time"</span>, col<span class="op">=</span><span class="st">"day"</span>, col_wrap<span class="op">=</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;seaborn.axisgrid.FacetGrid object at 0x13762b380&gt;</code></pre>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid object at 0x12a753380&gt;</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
@@ -4432,7 +4432,7 @@ Note
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb588"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb588-1"><a href="#cb588-1" aria-hidden="true" tabindex="-1"></a>sns.lmplot(x<span class="op">=</span><span class="st">'total_bill'</span>, y<span class="op">=</span><span class="st">'tip'</span>, data<span class="op">=</span>df, hue<span class="op">=</span><span class="st">'smoker'</span>, markers<span class="op">=</span>[<span class="st">'o'</span>, <span class="st">'x'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;seaborn.axisgrid.FacetGrid object at 0x137b6cb90&gt;</code></pre>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid object at 0x12ad10b90&gt;</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb590"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb590-1"><a href="#cb590-1" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Total Bill vs Tip with Regression Lines'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -4637,11 +4637,11 @@ TIME_PERIOD FREQ REF_AREA ADJUSTMENT ICP_ITEM STS_INSTITUTION ICP_SUFFIX
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb610"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb610-1"><a href="#cb610-1" aria-hidden="true" tabindex="-1"></a>df.tail()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    realtime_start realtime_end       date      value
-315     2026-02-20   2026-02-20 2024-10-01  29825.182
-316     2026-02-20   2026-02-20 2025-01-01  30042.113
-317     2026-02-20   2026-02-20 2025-04-01  30485.729
-318     2026-02-20   2026-02-20 2025-07-01  31098.027
-319     2026-02-20   2026-02-20 2025-10-01  31490.070</code></pre>
+315     2026-03-13   2026-03-13 2024-10-01  29825.182
+316     2026-03-13   2026-03-13 2025-01-01  30042.113
+317     2026-03-13   2026-03-13 2025-04-01  30485.729
+318     2026-03-13   2026-03-13 2025-07-01  31098.027
+319     2026-03-13   2026-03-13 2025-10-01  31442.483</code></pre>
 </div>
 </div>
 <p>Cleaning up the DataFrame a bit</p>
@@ -4661,7 +4661,7 @@ date
 2025-01-01  30042.113
 2025-04-01  30485.729
 2025-07-01  31098.027
-2025-10-01  31490.070</code></pre>
+2025-10-01  31442.483</code></pre>
 </div>
 </div>
 <p>and to plot it, we can simply do</p>

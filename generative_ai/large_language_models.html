@@ -2989,7 +2989,7 @@ Confidence score: 0.8404
 <span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>response<span class="sc">.</span>choices[<span class="dv">0</span>]<span class="sc">.</span>message<span class="sc">.</span>role<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>response<span class="sc">.</span>choices[<span class="dv">0</span>]<span class="sc">.</span>message<span class="sc">.</span>content<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>assistant: Inflation is the increase in the price level of goods and services over a period of time. It's a natural and inevitable process of economic changes driven by factors beyond the control of the central bank.</code></pre>
+<pre><code>assistant: Inflation is a sustained increase in the price level of goods and services in a country or economy over a prolonged period. It's often described as a "tipping point" where the cost of production increases, leading to a decrease in the purchasing power of the money circulating in the economy.</code></pre>
 </div>
 </div>
 <p>In this example, we are sending a chat completion request to the LLM API using the “gemma3:270m” model, which is the smallest version of Gemma 3, an open-source model by Google, that can run on a local machine without requiring a GPU. The request includes a system message that sets the context for the conversation and a user message that asks the question “What is inflation?”. The response from the API includes a message from the assistant role that provides an answer to the user’s question.</p>
@@ -2997,7 +2997,7 @@ Confidence score: 0.8404
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Tokens used: </span><span class="sc">{</span>response<span class="sc">.</span>usage<span class="sc">.</span>total_tokens<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tokens used: 63</code></pre>
+<pre><code>Tokens used: 81</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Input tokens: </span><span class="sc">{</span>response<span class="sc">.</span>usage<span class="sc">.</span>prompt_tokens<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -3005,7 +3005,7 @@ Confidence score: 0.8404
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Output tokens: </span><span class="sc">{</span>response<span class="sc">.</span>usage<span class="sc">.</span>completion_tokens<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Output tokens: 42</code></pre>
+<pre><code>Output tokens: 60</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -3043,23 +3043,23 @@ Confidence score: 0.8404
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ii <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Run </span><span class="sc">{</span>ii <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>city_question()<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Run 1: Eiffel
+<pre><code>Run 1: Paris
 
-Run 2: Florence
+Run 2: Rome
 
-Run 3: Oud
+Run 3: Paris
 
 Run 4: Paris
 
-Run 5: Florence
+Run 5: Paris
 
-Run 6: Paris
+Run 6: Barcelona
 
-Run 7: Paris
+Run 7: Rome
 
-Run 8: Paris
+Run 8: Luxembourg
 
-Run 9: **Paris**
+Run 9: Paris
 
 Run 10: Paris</code></pre>
 </div>
@@ -3122,10 +3122,10 @@ Temperature = 2.0 (Even more random output):</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ii <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
 <span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Run </span><span class="sc">{</span>ii <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>ask_question(question, temperature<span class="op">=</span><span class="fl">2.0</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Run 1: Alice Burke
+<pre><code>Run 1: Simone Biles
 
-Run 2: Simone de Ceiça
-Run 3: Michael Phelps</code></pre>
+Run 2: Winston Gomberg
+Run 3: Olympic medalist</code></pre>
 </div>
 </div>
 <p>Similarly, we can also specify the top_p parameter, which controls the nucleus sampling of the model’s output. For example, we can set top_p to 0.9, which means that the model will only consider the top 90% of the probability mass when generating the output. Thus, a lower top_p will result in more focused output, while a higher top_p will result in more diverse output.</p>
@@ -3151,11 +3151,11 @@ Top-p = 0.9 (More diverse output):</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ii <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
 <span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Run </span><span class="sc">{</span>ii <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>ask_question(question, top_p<span class="op">=</span><span class="fl">0.9</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Run 1: Michael Phelps
+<pre><code>Run 1: Simone Biles
 
-Run 2: Michael Phelps
+Run 2: Simone Biles
 
-Run 3: Michael Phelps</code></pre>
+Run 3: Simone Biles</code></pre>
 </div>
 </div>
 <p>Note that if neither temperature nor top_p is specified, the model will use the default values. These default values may differ between models and providers.</p>
@@ -3251,9 +3251,9 @@ Run 3: Michael Phelps</code></pre>
 949  47 in any case economic interdependence will i...  ...             negative
 950  over the last 15 years the financial sector ha...  ...             negative
 951  first the integration of our economies and wit...  ...             negative
-952  we expect that further deregulation as well as...  ...             negative
+952  we expect that further deregulation as well as...  ...             positive
 953  output growth has been gathering pace througho...  ...             negative
-954  in this regard the crisis has uncovered four s...  ...             negative
+954  in this regard the crisis has uncovered four s...  ...             positive
 955  the second challenge concerns another aspect o...  ...             negative
 956  6 such differences in institutional quality ar...  ...             negative
 957  third a number of other factors show up in an ...  ...             negative
@@ -3293,11 +3293,7 @@ Run 3: Michael Phelps</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>llm_output <span class="op">=</span> extract_information(<span class="st">"The economy is expected to grow by 1.4</span><span class="sc">% i</span><span class="st">n the next quarter."</span>)</span>
 <span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(llm_output)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>```json
-{
-  "growth_rate": 1.4
-}
-```</code></pre>
+<pre><code>Okay, I understand. I will extract the growth rate from the provided sentence. I will respond with a JSON object that represents the growth rate, formatted as described in the question.</code></pre>
 </div>
 </div>
 <p>Unfortunately, the LLM also outputs json code fences, e.g., <code>json ...</code>, which prevents us from parsing the output directly as JSON. Thus, we need to remove the code fences from the output before we can parse it as JSON.</p>
@@ -3305,9 +3301,7 @@ Run 3: Michael Phelps</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb99"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>llm_output <span class="op">=</span> llm_output.replace(<span class="st">"```json"</span>, <span class="st">""</span>).replace(<span class="st">"```"</span>, <span class="st">""</span>).strip()</span>
 <span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(llm_output)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>{
-  "growth_rate": 1.4
-}</code></pre>
+<pre><code>Okay, I understand. I will extract the growth rate from the provided sentence. I will respond with a JSON object that represents the growth rate, formatted as described in the question.</code></pre>
 </div>
 </div>
 <p>Now we can parse the output as JSON and validate it using Pydantic to ensure that it has the correct structure and data types. First, we need to define a Pydantic model that specifies the expected structure of the output.</p>
@@ -3321,17 +3315,11 @@ Run 3: Michael Phelps</code></pre>
 <span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>    parsed <span class="op">=</span> json.loads(llm_output)</span>
 <span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a>    validated <span class="op">=</span> GrowthRate(<span class="op">**</span>parsed)</span>
 <span id="cb102-4"><a href="#cb102-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(validated)</span>
-<span id="cb102-5"><a href="#cb102-5" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> (json.JSONDecodeError, ValidationError) <span class="im">as</span> e:</span>
-<span id="cb102-6"><a href="#cb102-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Validation failed:"</span>, e)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb102-5"><a href="#cb102-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Extracted growth rate: </span><span class="sc">{</span>validated<span class="sc">.</span>growth_rate<span class="sc">}</span><span class="ss">%"</span>)</span>
+<span id="cb102-6"><a href="#cb102-6" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> (json.JSONDecodeError, ValidationError) <span class="im">as</span> e:</span>
+<span id="cb102-7"><a href="#cb102-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Validation failed:"</span>, e)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>growth_rate=1.4</code></pre>
-</div>
-</div>
-<p>We can access the growth rate from the validated output using the attributes of the Pydantic model.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Extracted growth rate: </span><span class="sc">{</span>validated<span class="sc">.</span>growth_rate<span class="sc">}</span><span class="ss">%"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Extracted growth rate: 1.4%</code></pre>
+<pre><code>Validation failed: Expecting value: line 1 column 1 (char 0)</code></pre>
 </div>
 </div>
 </section>
@@ -3339,170 +3327,134 @@ Run 3: Michael Phelps</code></pre>
 <h3 data-number="11.5.4" class="anchored" data-anchor-id="expanding-capabilities-of-llms-with-tools"><span class="header-section-number">11.5.4</span> Expanding Capabilities of LLMs with Tools</h3>
 <p>LLMs can also be used in combination with external tools to perform tasks that require capabilities beyond text generation. Suppose we want our LLM to generate random numbers as part of its output. A naive approach would be to ask the LLM to generate a random number directly in its response.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_random_number():</span>
-<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> client.chat.completions.create(</span>
-<span id="cb106-4"><a href="#cb106-4" aria-hidden="true" tabindex="-1"></a>        model <span class="op">=</span> model,</span>
-<span id="cb106-5"><a href="#cb106-5" aria-hidden="true" tabindex="-1"></a>        messages <span class="op">=</span> [</span>
-<span id="cb106-6"><a href="#cb106-6" aria-hidden="true" tabindex="-1"></a>            {<span class="st">"role"</span>: <span class="st">"system"</span>, <span class="st">"content"</span>: <span class="st">"You are a professional random number generator. You only reply with a uniformly distributed random number between 1 and 100. Do not provide any explanations or additional text."</span>},</span>
-<span id="cb106-7"><a href="#cb106-7" aria-hidden="true" tabindex="-1"></a>            {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="st">"Generate a random number now."</span>},</span>
-<span id="cb106-8"><a href="#cb106-8" aria-hidden="true" tabindex="-1"></a>        ]</span>
-<span id="cb106-9"><a href="#cb106-9" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb106-10"><a href="#cb106-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-11"><a href="#cb106-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> response.choices[<span class="dv">0</span>].message.content</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_random_number():</span>
+<span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-3"><a href="#cb104-3" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> client.chat.completions.create(</span>
+<span id="cb104-4"><a href="#cb104-4" aria-hidden="true" tabindex="-1"></a>        model <span class="op">=</span> model,</span>
+<span id="cb104-5"><a href="#cb104-5" aria-hidden="true" tabindex="-1"></a>        messages <span class="op">=</span> [</span>
+<span id="cb104-6"><a href="#cb104-6" aria-hidden="true" tabindex="-1"></a>            {<span class="st">"role"</span>: <span class="st">"system"</span>, <span class="st">"content"</span>: <span class="st">"You are a professional random number generator. You only reply with a uniformly distributed random number between 1 and 100. Do not provide any explanations or additional text."</span>},</span>
+<span id="cb104-7"><a href="#cb104-7" aria-hidden="true" tabindex="-1"></a>            {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="st">"Generate a random number now."</span>},</span>
+<span id="cb104-8"><a href="#cb104-8" aria-hidden="true" tabindex="-1"></a>        ]</span>
+<span id="cb104-9"><a href="#cb104-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb104-10"><a href="#cb104-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-11"><a href="#cb104-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> response.choices[<span class="dv">0</span>].message.content</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We can then call this function to get a random number from the LLM.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb107"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>random_numbers <span class="op">=</span> []</span>
-<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">1000</span></span>
-<span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb107-4"><a href="#cb107-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ii <span class="kw">in</span> <span class="bu">range</span>(N):</span>
-<span id="cb107-5"><a href="#cb107-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb107-6"><a href="#cb107-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generate a random number</span></span>
-<span id="cb107-7"><a href="#cb107-7" aria-hidden="true" tabindex="-1"></a>    random_number <span class="op">=</span> generate_random_number()</span>
-<span id="cb107-8"><a href="#cb107-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb107-9"><a href="#cb107-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if the response is a valid number between 1 and 100</span></span>
-<span id="cb107-10"><a href="#cb107-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb107-11"><a href="#cb107-11" aria-hidden="true" tabindex="-1"></a>        random_number <span class="op">=</span> <span class="bu">int</span>(random_number)</span>
-<span id="cb107-12"><a href="#cb107-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="dv">1</span> <span class="op">&lt;=</span> random_number <span class="op">&lt;=</span> <span class="dv">100</span>:</span>
-<span id="cb107-13"><a href="#cb107-13" aria-hidden="true" tabindex="-1"></a>            random_numbers.append(random_number)</span>
-<span id="cb107-14"><a href="#cb107-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb107-15"><a href="#cb107-15" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Invalid number generated: </span><span class="sc">{</span>random_number<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb107-16"><a href="#cb107-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">ValueError</span>:</span>
-<span id="cb107-17"><a href="#cb107-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Non-numeric response generated: </span><span class="sc">{</span>random_number<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb107-18"><a href="#cb107-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb107-19"><a href="#cb107-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (ii <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> <span class="dv">25</span> <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb107-20"><a href="#cb107-20" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>ii <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss"> of </span><span class="sc">{</span>N<span class="sc">}</span><span class="ss">..."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb105"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a>random_numbers <span class="op">=</span> []</span>
+<span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-4"><a href="#cb105-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ii <span class="kw">in</span> <span class="bu">range</span>(N):</span>
+<span id="cb105-5"><a href="#cb105-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-6"><a href="#cb105-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generate a random number</span></span>
+<span id="cb105-7"><a href="#cb105-7" aria-hidden="true" tabindex="-1"></a>    random_number <span class="op">=</span> generate_random_number()</span>
+<span id="cb105-8"><a href="#cb105-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-9"><a href="#cb105-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if the response is a valid number between 1 and 100</span></span>
+<span id="cb105-10"><a href="#cb105-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb105-11"><a href="#cb105-11" aria-hidden="true" tabindex="-1"></a>        random_number <span class="op">=</span> <span class="bu">int</span>(random_number)</span>
+<span id="cb105-12"><a href="#cb105-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="dv">1</span> <span class="op">&lt;=</span> random_number <span class="op">&lt;=</span> <span class="dv">100</span>:</span>
+<span id="cb105-13"><a href="#cb105-13" aria-hidden="true" tabindex="-1"></a>            random_numbers.append(random_number)</span>
+<span id="cb105-14"><a href="#cb105-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb105-15"><a href="#cb105-15" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Invalid number generated: </span><span class="sc">{</span>random_number<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb105-16"><a href="#cb105-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">ValueError</span>:</span>
+<span id="cb105-17"><a href="#cb105-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Non-numeric response generated: </span><span class="sc">{</span>random_number<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb105-18"><a href="#cb105-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-19"><a href="#cb105-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (ii <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> <span class="dv">25</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb105-20"><a href="#cb105-20" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>ii <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss"> of </span><span class="sc">{</span>N<span class="sc">}</span><span class="ss">..."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Invalid number generated: 0
-Invalid number generated: 0
-Invalid number generated: 0
-Invalid number generated: 0
+<pre><code>Non-numeric response generated: random
+
 Invalid number generated: 0
 25 of 1000...
 Invalid number generated: 0
 Invalid number generated: 0
+Invalid number generated: 0
+Invalid number generated: 0
+Invalid number generated: 0
 50 of 1000...
+Non-numeric response generated: ```
+1
+```
+
 Invalid number generated: 0
 Invalid number generated: 0
 Non-numeric response generated: ```
 0
 ```
+
 Invalid number generated: 0
 75 of 1000...
-Non-numeric response generated: ```
-3
-```
-Invalid number generated: 0
 Invalid number generated: 0
 Invalid number generated: 0
 Invalid number generated: 0
 100 of 1000...
-Non-numeric response generated: ```python
-import random
-```
-Invalid number generated: 0
-Invalid number generated: 0
-Invalid number generated: 0
 Invalid number generated: 0
 125 of 1000...
-Non-numeric response generated: ```python
-import random
-
-random_number = random.random()
-print(random_number)
-```
+Invalid number generated: 0
+Non-numeric response generated: 1.
 
 Invalid number generated: 0
 150 of 1000...
-Non-numeric response generated: abc
-
 Invalid number generated: 0
+Invalid number generated: 0
+Non-numeric response generated: ...1
+
+Non-numeric response generated: ...1
+
 175 of 1000...
 200 of 1000...
-Non-numeric response generated: ```
-2
-```
-Invalid number generated: 0
-Non-numeric response generated: ```python
-import random
-```
-
-Invalid number generated: 0
-Invalid number generated: 0
 225 of 1000...
 Invalid number generated: 0
+Non-numeric response generated: ```
+1
+```
+Invalid number generated: 0
+Invalid number generated: 0
+Invalid number generated: 0
+Invalid number generated: 0
 250 of 1000...
-Non-numeric response generated: Random number 1
-
-Invalid number generated: 0
-Invalid number generated: 0
 Invalid number generated: 0
 275 of 1000...
 Invalid number generated: 0
 Invalid number generated: 0
-Invalid number generated: 0
-Invalid number generated: 0
 300 of 1000...
-Invalid number generated: 0
-Invalid number generated: 0
-Invalid number generated: 0
-Invalid number generated: 0
+Non-numeric response generated: ```
+2
+```
+
 325 of 1000...
 Invalid number generated: 0
 350 of 1000...
 Invalid number generated: 0
 Invalid number generated: 0
-Invalid number generated: 0
-Invalid number generated: 0
 375 of 1000...
-Non-numeric response generated: ```
-0
-```
 Invalid number generated: 0
-Non-numeric response generated: ```
-0
-```
-
+Invalid number generated: 0
 Invalid number generated: 0
 400 of 1000...
-Invalid number generated: 0
-Invalid number generated: 0
-425 of 1000...
-Invalid number generated: 0
-Non-numeric response generated: Random
+Non-numeric response generated: ```
+72
+```
 
-Invalid number generated: 0
-450 of 1000...
 Invalid number generated: 0
 Non-numeric response generated: ```
 0
 ```
-
-Invalid number generated: 0
+425 of 1000...
 Invalid number generated: 0
 Non-numeric response generated: ```
 1
 ```
-
+Invalid number generated: 0
+450 of 1000...
+Invalid number generated: 0
+Invalid number generated: 0
 475 of 1000...
-Invalid number generated: 0
-Invalid number generated: 0
-Invalid number generated: 0
 Invalid number generated: 0
 Invalid number generated: 0
 500 of 1000...
 Invalid number generated: 0
-Invalid number generated: 0
 525 of 1000...
-Invalid number generated: 0
-Invalid number generated: 0
-Non-numeric response generated: ```python
-import random
-
-random_number = random.random()
-print(random_number)
-```
 Invalid number generated: 0
 Invalid number generated: 0
 Invalid number generated: 0
@@ -3510,27 +3462,38 @@ Invalid number generated: 0
 Invalid number generated: 0
 Invalid number generated: 0
 Invalid number generated: 0
+Invalid number generated: 0
+Invalid number generated: 0
 575 of 1000...
+Invalid number generated: 0
+Invalid number generated: 0
 Non-numeric response generated: ```
 1
 ```
-
+Invalid number generated: 0
+Invalid number generated: 0
 600 of 1000...
-Non-numeric response generated: ```
-2
-```
+Invalid number generated: 0
 Invalid number generated: 0
 625 of 1000...
+Invalid number generated: 0
 Invalid number generated: 0
 Invalid number generated: 0
 650 of 1000...
 Non-numeric response generated: ```python
 import random
+print(random.randint(1, 100))
 ```
+Non-numeric response generated: Just a single number between 1 and 100.
 
+Non-numeric response generated: ```
+2
+```
 Invalid number generated: 0
+Non-numeric response generated: ```
+42
+```
 675 of 1000...
-Invalid number generated: 0
 Invalid number generated: 0
 Invalid number generated: 0
 Invalid number generated: 0
@@ -3543,52 +3506,47 @@ Invalid number generated: 0
 Invalid number generated: 0
 Invalid number generated: 0
 Invalid number generated: 0
-Invalid number generated: 0
-Invalid number generated: 0
-Invalid number generated: 0
-Invalid number generated: 0
+Invalid number generated: 101
 750 of 1000...
-Invalid number generated: 0
-Invalid number generated: 0
-775 of 1000...
-Invalid number generated: 0
-Non-numeric response generated: ```
-1
-```
+Non-numeric response generated: ...1
 
-Non-numeric response generated: ```
-0
-```
-Invalid number generated: 0
+775 of 1000...
 Invalid number generated: 0
 Invalid number generated: 0
 Invalid number generated: 0
 800 of 1000...
-Invalid number generated: 0
 825 of 1000...
-Invalid number generated: 0
-Invalid number generated: 0
-850 of 1000...
 Non-numeric response generated: ```python
 import random
 ```
+Invalid number generated: 0
+Invalid number generated: 0
+Invalid number generated: 0
+Invalid number generated: 0
+Invalid number generated: 0
+850 of 1000...
+Invalid number generated: 0
+Invalid number generated: 0
+Invalid number generated: 0
 875 of 1000...
 Invalid number generated: 0
-Invalid number generated: 0
+Non-numeric response generated: **5**
+
 Invalid number generated: 0
 Non-numeric response generated: ```
 0
 ```
 900 of 1000...
 Invalid number generated: 0
-Invalid number generated: 0
-Invalid number generated: 0
 925 of 1000...
 Invalid number generated: 0
-Invalid number generated: 0
-Invalid number generated: 0
 950 of 1000...
+Invalid number generated: 0
+Invalid number generated: 0
 975 of 1000...
+Invalid number generated: 0
+Non-numeric response generated: 1. 0
+
 Invalid number generated: 0
 Invalid number generated: 0
 Invalid number generated: 0
@@ -3597,15 +3555,15 @@ Invalid number generated: 0
 </div>
 <p>And we can plot a histogram of the generated random numbers to see if they are uniformly distributed between 1 and 100.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb109"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>plt.hist(random_numbers, bins<span class="op">=</span><span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">101</span>), edgecolor<span class="op">=</span><span class="st">'black'</span>)</span>
-<span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Random Number'</span>)</span>
-<span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Frequency'</span>)</span>
-<span id="cb109-4"><a href="#cb109-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Histogram of Generated Random Numbers'</span>)</span>
-<span id="cb109-5"><a href="#cb109-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb107"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>plt.hist(random_numbers, bins<span class="op">=</span><span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">101</span>), edgecolor<span class="op">=</span><span class="st">'black'</span>)</span>
+<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Random Number'</span>)</span>
+<span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Frequency'</span>)</span>
+<span id="cb107-4"><a href="#cb107-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Histogram of Generated Random Numbers'</span>)</span>
+<span id="cb107-5"><a href="#cb107-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="large_language_models_files/figure-html/unnamed-chunk-56-3.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="large_language_models_files/figure-html/unnamed-chunk-55-3.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -3625,68 +3583,68 @@ Note
 <p>Note: we show the following code for illustration only, as the small model we use does not support tool calling.</p>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb110"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
-<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The actual Python function that generates a random number</span></span>
-<span id="cb110-4"><a href="#cb110-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> random_number_tool():</span>
-<span id="cb110-5"><a href="#cb110-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> random.randint(<span class="dv">1</span>, <span class="dv">100</span>)</span>
-<span id="cb110-6"><a href="#cb110-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb110-7"><a href="#cb110-7" aria-hidden="true" tabindex="-1"></a><span class="co"># The tool schema that tells the LLM what tools are available and how to call them</span></span>
-<span id="cb110-8"><a href="#cb110-8" aria-hidden="true" tabindex="-1"></a>tools <span class="op">=</span> [</span>
-<span id="cb110-9"><a href="#cb110-9" aria-hidden="true" tabindex="-1"></a>    {</span>
-<span id="cb110-10"><a href="#cb110-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"type"</span>: <span class="st">"function"</span>,</span>
-<span id="cb110-11"><a href="#cb110-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"function"</span>: {</span>
-<span id="cb110-12"><a href="#cb110-12" aria-hidden="true" tabindex="-1"></a>            <span class="st">"name"</span>: <span class="st">"random_number_tool"</span>,</span>
-<span id="cb110-13"><a href="#cb110-13" aria-hidden="true" tabindex="-1"></a>            <span class="st">"description"</span>: <span class="st">"Generate a uniformly distributed random number between 1 and 100"</span>,</span>
-<span id="cb110-14"><a href="#cb110-14" aria-hidden="true" tabindex="-1"></a>            <span class="st">"parameters"</span>: {</span>
-<span id="cb110-15"><a href="#cb110-15" aria-hidden="true" tabindex="-1"></a>                <span class="st">"type"</span>: <span class="st">"object"</span>,</span>
-<span id="cb110-16"><a href="#cb110-16" aria-hidden="true" tabindex="-1"></a>                <span class="st">"properties"</span>: {},</span>
-<span id="cb110-17"><a href="#cb110-17" aria-hidden="true" tabindex="-1"></a>                <span class="st">"required"</span>: []</span>
-<span id="cb110-18"><a href="#cb110-18" aria-hidden="true" tabindex="-1"></a>            }</span>
-<span id="cb110-19"><a href="#cb110-19" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb110-20"><a href="#cb110-20" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb110-21"><a href="#cb110-21" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb108"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The actual Python function that generates a random number</span></span>
+<span id="cb108-4"><a href="#cb108-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> random_number_tool():</span>
+<span id="cb108-5"><a href="#cb108-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> random.randint(<span class="dv">1</span>, <span class="dv">100</span>)</span>
+<span id="cb108-6"><a href="#cb108-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb108-7"><a href="#cb108-7" aria-hidden="true" tabindex="-1"></a><span class="co"># The tool schema that tells the LLM what tools are available and how to call them</span></span>
+<span id="cb108-8"><a href="#cb108-8" aria-hidden="true" tabindex="-1"></a>tools <span class="op">=</span> [</span>
+<span id="cb108-9"><a href="#cb108-9" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb108-10"><a href="#cb108-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"type"</span>: <span class="st">"function"</span>,</span>
+<span id="cb108-11"><a href="#cb108-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"function"</span>: {</span>
+<span id="cb108-12"><a href="#cb108-12" aria-hidden="true" tabindex="-1"></a>            <span class="st">"name"</span>: <span class="st">"random_number_tool"</span>,</span>
+<span id="cb108-13"><a href="#cb108-13" aria-hidden="true" tabindex="-1"></a>            <span class="st">"description"</span>: <span class="st">"Generate a uniformly distributed random number between 1 and 100"</span>,</span>
+<span id="cb108-14"><a href="#cb108-14" aria-hidden="true" tabindex="-1"></a>            <span class="st">"parameters"</span>: {</span>
+<span id="cb108-15"><a href="#cb108-15" aria-hidden="true" tabindex="-1"></a>                <span class="st">"type"</span>: <span class="st">"object"</span>,</span>
+<span id="cb108-16"><a href="#cb108-16" aria-hidden="true" tabindex="-1"></a>                <span class="st">"properties"</span>: {},</span>
+<span id="cb108-17"><a href="#cb108-17" aria-hidden="true" tabindex="-1"></a>                <span class="st">"required"</span>: []</span>
+<span id="cb108-18"><a href="#cb108-18" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb108-19"><a href="#cb108-19" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb108-20"><a href="#cb108-20" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb108-21"><a href="#cb108-21" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Note that the tool schema only describes the tool to the LLM. It does not contain the actual Python function. It is the LLM that decides whether to call the tool based on the schema, and it is up to our code to execute the actual function and return the result to the LLM. We can now define a function that sends a request to the LLM API, checks if the model wants to call a tool, executes the tool if needed, and sends the result back to the LLM to generate the final response.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb111"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_random_number_with_tool():</span>
-<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a>    messages <span class="op">=</span> [</span>
-<span id="cb111-4"><a href="#cb111-4" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"role"</span>: <span class="st">"system"</span>, <span class="st">"content"</span>: <span class="st">"You are a professional random number generator. Use the random_number_tool to generate a uniformly distributed random number between 1 and 100. Only reply with the number."</span>},</span>
-<span id="cb111-5"><a href="#cb111-5" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="st">"Generate a random number now."</span>},</span>
-<span id="cb111-6"><a href="#cb111-6" aria-hidden="true" tabindex="-1"></a>    ]</span>
-<span id="cb111-7"><a href="#cb111-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-8"><a href="#cb111-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># First API call: the model sees the available tools and decides whether to use one</span></span>
-<span id="cb111-9"><a href="#cb111-9" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> client.chat.completions.create(</span>
-<span id="cb111-10"><a href="#cb111-10" aria-hidden="true" tabindex="-1"></a>        model <span class="op">=</span> model,</span>
-<span id="cb111-11"><a href="#cb111-11" aria-hidden="true" tabindex="-1"></a>        messages <span class="op">=</span> messages,</span>
-<span id="cb111-12"><a href="#cb111-12" aria-hidden="true" tabindex="-1"></a>        tools <span class="op">=</span> tools</span>
-<span id="cb111-13"><a href="#cb111-13" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb111-14"><a href="#cb111-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-15"><a href="#cb111-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if the model requested a tool call</span></span>
-<span id="cb111-16"><a href="#cb111-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> response.choices[<span class="dv">0</span>].message.tool_calls:</span>
-<span id="cb111-17"><a href="#cb111-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-18"><a href="#cb111-18" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Model requested a tool call. Executing the tool..."</span>)</span>
-<span id="cb111-19"><a href="#cb111-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-20"><a href="#cb111-20" aria-hidden="true" tabindex="-1"></a>        tool_call <span class="op">=</span> response.choices[<span class="dv">0</span>].message.tool_calls[<span class="dv">0</span>]</span>
-<span id="cb111-21"><a href="#cb111-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-22"><a href="#cb111-22" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Execute the actual Python function</span></span>
-<span id="cb111-23"><a href="#cb111-23" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> random_number_tool()</span>
-<span id="cb111-24"><a href="#cb111-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-25"><a href="#cb111-25" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Append the assistant's tool request and the tool result to the conversation</span></span>
-<span id="cb111-26"><a href="#cb111-26" aria-hidden="true" tabindex="-1"></a>        messages.append(response.choices[<span class="dv">0</span>].message)</span>
-<span id="cb111-27"><a href="#cb111-27" aria-hidden="true" tabindex="-1"></a>        messages.append({</span>
-<span id="cb111-28"><a href="#cb111-28" aria-hidden="true" tabindex="-1"></a>            <span class="st">"role"</span>: <span class="st">"tool"</span>,</span>
-<span id="cb111-29"><a href="#cb111-29" aria-hidden="true" tabindex="-1"></a>            <span class="st">"tool_call_id"</span>: tool_call.<span class="bu">id</span>,</span>
-<span id="cb111-30"><a href="#cb111-30" aria-hidden="true" tabindex="-1"></a>            <span class="st">"content"</span>: <span class="bu">str</span>(result)</span>
-<span id="cb111-31"><a href="#cb111-31" aria-hidden="true" tabindex="-1"></a>        })</span>
-<span id="cb111-32"><a href="#cb111-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-33"><a href="#cb111-33" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Second API call: the model generates a final response using the tool result</span></span>
-<span id="cb111-34"><a href="#cb111-34" aria-hidden="true" tabindex="-1"></a>        response <span class="op">=</span> client.chat.completions.create(</span>
-<span id="cb111-35"><a href="#cb111-35" aria-hidden="true" tabindex="-1"></a>            model <span class="op">=</span> model,</span>
-<span id="cb111-36"><a href="#cb111-36" aria-hidden="true" tabindex="-1"></a>            messages <span class="op">=</span> messages,</span>
-<span id="cb111-37"><a href="#cb111-37" aria-hidden="true" tabindex="-1"></a>            tools <span class="op">=</span> tools</span>
-<span id="cb111-38"><a href="#cb111-38" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb111-39"><a href="#cb111-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-40"><a href="#cb111-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> response.choices[<span class="dv">0</span>].message.content</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb109"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_random_number_with_tool():</span>
+<span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a>    messages <span class="op">=</span> [</span>
+<span id="cb109-4"><a href="#cb109-4" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"role"</span>: <span class="st">"system"</span>, <span class="st">"content"</span>: <span class="st">"You are a professional random number generator. Use the random_number_tool to generate a uniformly distributed random number between 1 and 100. Only reply with the number."</span>},</span>
+<span id="cb109-5"><a href="#cb109-5" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="st">"Generate a random number now."</span>},</span>
+<span id="cb109-6"><a href="#cb109-6" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb109-7"><a href="#cb109-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-8"><a href="#cb109-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># First API call: the model sees the available tools and decides whether to use one</span></span>
+<span id="cb109-9"><a href="#cb109-9" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> client.chat.completions.create(</span>
+<span id="cb109-10"><a href="#cb109-10" aria-hidden="true" tabindex="-1"></a>        model <span class="op">=</span> model,</span>
+<span id="cb109-11"><a href="#cb109-11" aria-hidden="true" tabindex="-1"></a>        messages <span class="op">=</span> messages,</span>
+<span id="cb109-12"><a href="#cb109-12" aria-hidden="true" tabindex="-1"></a>        tools <span class="op">=</span> tools</span>
+<span id="cb109-13"><a href="#cb109-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb109-14"><a href="#cb109-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-15"><a href="#cb109-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if the model requested a tool call</span></span>
+<span id="cb109-16"><a href="#cb109-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> response.choices[<span class="dv">0</span>].message.tool_calls:</span>
+<span id="cb109-17"><a href="#cb109-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-18"><a href="#cb109-18" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Model requested a tool call. Executing the tool..."</span>)</span>
+<span id="cb109-19"><a href="#cb109-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-20"><a href="#cb109-20" aria-hidden="true" tabindex="-1"></a>        tool_call <span class="op">=</span> response.choices[<span class="dv">0</span>].message.tool_calls[<span class="dv">0</span>]</span>
+<span id="cb109-21"><a href="#cb109-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-22"><a href="#cb109-22" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Execute the actual Python function</span></span>
+<span id="cb109-23"><a href="#cb109-23" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> random_number_tool()</span>
+<span id="cb109-24"><a href="#cb109-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-25"><a href="#cb109-25" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Append the assistant's tool request and the tool result to the conversation</span></span>
+<span id="cb109-26"><a href="#cb109-26" aria-hidden="true" tabindex="-1"></a>        messages.append(response.choices[<span class="dv">0</span>].message)</span>
+<span id="cb109-27"><a href="#cb109-27" aria-hidden="true" tabindex="-1"></a>        messages.append({</span>
+<span id="cb109-28"><a href="#cb109-28" aria-hidden="true" tabindex="-1"></a>            <span class="st">"role"</span>: <span class="st">"tool"</span>,</span>
+<span id="cb109-29"><a href="#cb109-29" aria-hidden="true" tabindex="-1"></a>            <span class="st">"tool_call_id"</span>: tool_call.<span class="bu">id</span>,</span>
+<span id="cb109-30"><a href="#cb109-30" aria-hidden="true" tabindex="-1"></a>            <span class="st">"content"</span>: <span class="bu">str</span>(result)</span>
+<span id="cb109-31"><a href="#cb109-31" aria-hidden="true" tabindex="-1"></a>        })</span>
+<span id="cb109-32"><a href="#cb109-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-33"><a href="#cb109-33" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Second API call: the model generates a final response using the tool result</span></span>
+<span id="cb109-34"><a href="#cb109-34" aria-hidden="true" tabindex="-1"></a>        response <span class="op">=</span> client.chat.completions.create(</span>
+<span id="cb109-35"><a href="#cb109-35" aria-hidden="true" tabindex="-1"></a>            model <span class="op">=</span> model,</span>
+<span id="cb109-36"><a href="#cb109-36" aria-hidden="true" tabindex="-1"></a>            messages <span class="op">=</span> messages,</span>
+<span id="cb109-37"><a href="#cb109-37" aria-hidden="true" tabindex="-1"></a>            tools <span class="op">=</span> tools</span>
+<span id="cb109-38"><a href="#cb109-38" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb109-39"><a href="#cb109-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-40"><a href="#cb109-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> response.choices[<span class="dv">0</span>].message.content</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>With this setup, the LLM can now generate truly random numbers by calling the external tool, while still leveraging its natural language understanding and generation capabilities for the rest of the conversation. Unfortunately, Gemma 3 (270m) is not able to use tools, but larger and more powerful models can learn to use tools effectively, which can significantly expand their capabilities and allow them to perform a wider range of tasks.</p>
 
 
