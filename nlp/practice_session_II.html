@@ -385,7 +385,7 @@ div.csl-indent {
 <section id="setting-up-the-environment" class="level2" data-number="9.4">
 <h2 data-number="9.4" class="anchored" data-anchor-id="setting-up-the-environment"><span class="header-section-number">9.4</span> Setting up the Environment</h2>
 <p>Let’s initialize our environment by importing the necessary libraries</p>
-<div id="6802591a" class="cell" data-execution_count="1">
+<div id="6802591a" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -394,7 +394,7 @@ div.csl-indent {
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> spacy</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Let’s load the dataset for this practice session. You can change the <code>central_bank</code> variable to load the dataset for FED or BIS speeches instead of ECB speeches if you want to work with a different central bank</p>
-<div id="049fc43b" class="cell" data-execution_count="2">
+<div id="049fc43b" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>central_bank <span class="op">=</span> <span class="st">"FED"</span> <span class="co"># Change this to "FED" or "BIS" if you want to use the dataset for FED or BIS speeches instead</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="ss">f"hf://datasets/Moritz-Pfeifer/CentralBankCommunication/Sentiment/</span><span class="sc">{</span>central_bank<span class="sc">}</span><span class="ss">_prelabelled_sent.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -418,7 +418,7 @@ div.csl-indent {
 <li><code>.info()</code> shows column types and non-null counts</li>
 <li>Use <code>.sample(n)</code> to randomly select a few rows for inspection</li>
 </ul>
-<div id="56e5366d" class="cell" data-execution_count="3">
+<div id="56e5366d" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -437,7 +437,7 @@ div.csl-indent {
 <li>Use <code>df['sentiment'].value_counts()</code> and plot with <code>.plot(kind='bar')</code></li>
 <li>Consider what would happen if 90% of sentences were positive</li>
 </ul>
-<div id="718f2936" class="cell" data-execution_count="4">
+<div id="718f2936" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -464,7 +464,7 @@ div.csl-indent {
 <li>Filter tokens with: <code>not token.is_stop and not token.is_punct and not token.is_space and not token.like_num</code></li>
 <li>Join tokens back: <code>" ".join(tokens)</code></li>
 </ul>
-<div id="9178f951" class="cell" data-execution_count="5">
+<div id="9178f951" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -485,7 +485,7 @@ div.csl-indent {
 <li>Fit only on training data: <code>vectorizer.fit(X_train)</code>, then transform: <code>X_train_vec = vectorizer.transform(X_train)</code></li>
 <li>Never fit on test data (data leakage!)</li>
 </ul>
-<div id="61957112" class="cell" data-execution_count="6">
+<div id="61957112" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -512,7 +512,7 @@ div.csl-indent {
 <li>For ROC AUC with binary classification, use the probability of the positive class: <code>y_proba[:, 1]</code></li>
 <li>Transpose the confusion matrix if needed to match lecture conventions</li>
 </ul>
-<div id="102477cd" class="cell" data-execution_count="7">
+<div id="102477cd" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -532,7 +532,7 @@ div.csl-indent {
 <li>Compare train vs test metrics - large gaps suggest overfitting</li>
 <li>Decision trees tend to overfit without constraints</li>
 </ul>
-<div id="efcb5fe3" class="cell" data-execution_count="8">
+<div id="efcb5fe3" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -553,7 +553,7 @@ div.csl-indent {
 <li>Ensemble methods typically reduce overfitting compared to single models</li>
 <li>Compare the gap between train and test metrics across all three models</li>
 </ul>
-<div id="1bfb009d" class="cell" data-execution_count="9">
+<div id="1bfb009d" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -574,7 +574,7 @@ div.csl-indent {
 <li>You should end up with 6 total model-vectorizer combinations (3 models × 2 vectorizers)</li>
 <li>TF-IDF often performs better than counts for text classification</li>
 </ul>
-<div id="0142e788" class="cell" data-execution_count="10">
+<div id="0142e788" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -599,7 +599,7 @@ div.csl-indent {
 <li>To predict on new sentences: preprocess → vectorize → predict</li>
 <li>Create a small function to make prediction testing easier</li>
 </ul>
-<div id="ffeb9aae" class="cell" data-execution_count="11">
+<div id="ffeb9aae" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here. Add additional code cells as needed.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -629,7 +629,7 @@ div.csl-indent {
 <li>Think about the trade-offs between model complexity and interpretability</li>
 <li>Consider real-world deployment challenges</li>
 </ul>
-<div id="45574cde" class="cell" data-execution_count="12">
+<div id="45574cde" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your reflections here (as comments or markdown)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 

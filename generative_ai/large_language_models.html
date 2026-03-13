@@ -2989,7 +2989,7 @@ Confidence score: 0.8404
 <span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>response<span class="sc">.</span>choices[<span class="dv">0</span>]<span class="sc">.</span>message<span class="sc">.</span>role<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>response<span class="sc">.</span>choices[<span class="dv">0</span>]<span class="sc">.</span>message<span class="sc">.</span>content<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>assistant: Inflation is a sustained increase in the price level of goods and services in a country or economy over a prolonged period. It's often described as a "tipping point" where the cost of production increases, leading to a decrease in the purchasing power of the money circulating in the economy.</code></pre>
+<pre><code>assistant: Inflation is the increase in prices of goods and services over a period of time. It's a natural consequence of the overall increase in the money supply, which in turn increases the money supply.</code></pre>
 </div>
 </div>
 <p>In this example, we are sending a chat completion request to the LLM API using the “gemma3:270m” model, which is the smallest version of Gemma 3, an open-source model by Google, that can run on a local machine without requiring a GPU. The request includes a system message that sets the context for the conversation and a user message that asks the question “What is inflation?”. The response from the API includes a message from the assistant role that provides an answer to the user’s question.</p>
@@ -2997,7 +2997,7 @@ Confidence score: 0.8404
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Tokens used: </span><span class="sc">{</span>response<span class="sc">.</span>usage<span class="sc">.</span>total_tokens<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tokens used: 81</code></pre>
+<pre><code>Tokens used: 62</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Input tokens: </span><span class="sc">{</span>response<span class="sc">.</span>usage<span class="sc">.</span>prompt_tokens<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -3005,7 +3005,7 @@ Confidence score: 0.8404
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Output tokens: </span><span class="sc">{</span>response<span class="sc">.</span>usage<span class="sc">.</span>completion_tokens<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Output tokens: 60</code></pre>
+<pre><code>Output tokens: 41</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -3045,22 +3045,19 @@ Confidence score: 0.8404
 <div class="cell-output cell-output-stdout">
 <pre><code>Run 1: Paris
 
-Run 2: Rome
-
+Run 2: **Rome**
 Run 3: Paris
 
 Run 4: Paris
 
-Run 5: Paris
+Run 5: **Paris**
 
-Run 6: Barcelona
+Run 6: Paris
 
-Run 7: Rome
+Run 7: Paris
 
-Run 8: Luxembourg
-
-Run 9: Paris
-
+Run 8: **Luxembourg**
+Run 9: Granada
 Run 10: Paris</code></pre>
 </div>
 </div>
@@ -3122,10 +3119,11 @@ Temperature = 2.0 (Even more random output):</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ii <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
 <span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Run </span><span class="sc">{</span>ii <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>ask_question(question, temperature<span class="op">=</span><span class="fl">2.0</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Run 1: Simone Biles
+<pre><code>Run 1: Michael Phelps
 
-Run 2: Winston Gomberg
-Run 3: Olympic medalist</code></pre>
+Run 2: Simone나이로 리치몬드 리페르네이드
+
+Run 3: Simone Biles</code></pre>
 </div>
 </div>
 <p>Similarly, we can also specify the top_p parameter, which controls the nucleus sampling of the model’s output. For example, we can set top_p to 0.9, which means that the model will only consider the top 90% of the probability mass when generating the output. Thus, a lower top_p will result in more focused output, while a higher top_p will result in more diverse output.</p>
@@ -3153,7 +3151,7 @@ Top-p = 0.9 (More diverse output):</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>Run 1: Simone Biles
 
-Run 2: Simone Biles
+Run 2: Michael Phelps
 
 Run 3: Simone Biles</code></pre>
 </div>
@@ -3251,9 +3249,9 @@ Run 3: Simone Biles</code></pre>
 949  47 in any case economic interdependence will i...  ...             negative
 950  over the last 15 years the financial sector ha...  ...             negative
 951  first the integration of our economies and wit...  ...             negative
-952  we expect that further deregulation as well as...  ...             positive
+952  we expect that further deregulation as well as...  ...             negative
 953  output growth has been gathering pace througho...  ...             negative
-954  in this regard the crisis has uncovered four s...  ...             positive
+954  in this regard the crisis has uncovered four s...  ...             negative
 955  the second challenge concerns another aspect o...  ...             negative
 956  6 such differences in institutional quality ar...  ...             negative
 957  third a number of other factors show up in an ...  ...             negative
@@ -3293,7 +3291,11 @@ Run 3: Simone Biles</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>llm_output <span class="op">=</span> extract_information(<span class="st">"The economy is expected to grow by 1.4</span><span class="sc">% i</span><span class="st">n the next quarter."</span>)</span>
 <span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(llm_output)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Okay, I understand. I will extract the growth rate from the provided sentence. I will respond with a JSON object that represents the growth rate, formatted as described in the question.</code></pre>
+<pre><code>```json
+{
+  "growth_rate": 1.4
+}
+```</code></pre>
 </div>
 </div>
 <p>Unfortunately, the LLM also outputs json code fences, e.g., <code>json ...</code>, which prevents us from parsing the output directly as JSON. Thus, we need to remove the code fences from the output before we can parse it as JSON.</p>
@@ -3301,7 +3303,9 @@ Run 3: Simone Biles</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb99"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>llm_output <span class="op">=</span> llm_output.replace(<span class="st">"```json"</span>, <span class="st">""</span>).replace(<span class="st">"```"</span>, <span class="st">""</span>).strip()</span>
 <span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(llm_output)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Okay, I understand. I will extract the growth rate from the provided sentence. I will respond with a JSON object that represents the growth rate, formatted as described in the question.</code></pre>
+<pre><code>{
+  "growth_rate": 1.4
+}</code></pre>
 </div>
 </div>
 <p>Now we can parse the output as JSON and validate it using Pydantic to ensure that it has the correct structure and data types. First, we need to define a Pydantic model that specifies the expected structure of the output.</p>
@@ -3319,7 +3323,8 @@ Run 3: Simone Biles</code></pre>
 <span id="cb102-6"><a href="#cb102-6" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> (json.JSONDecodeError, ValidationError) <span class="im">as</span> e:</span>
 <span id="cb102-7"><a href="#cb102-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Validation failed:"</span>, e)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Validation failed: Expecting value: line 1 column 1 (char 0)</code></pre>
+<pre><code>growth_rate=1.4
+Extracted growth rate: 1.4%</code></pre>
 </div>
 </div>
 </section>
@@ -3362,137 +3367,138 @@ Run 3: Simone Biles</code></pre>
 <span id="cb105-19"><a href="#cb105-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (ii <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> <span class="dv">25</span> <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb105-20"><a href="#cb105-20" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>ii <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss"> of </span><span class="sc">{</span>N<span class="sc">}</span><span class="ss">..."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Non-numeric response generated: random
+<pre><code>Invalid number generated: 0
+Invalid number generated: 0
+Non-numeric response generated: ```
+0
+```
 
 Invalid number generated: 0
 25 of 1000...
 Invalid number generated: 0
 Invalid number generated: 0
 Invalid number generated: 0
-Invalid number generated: 0
-Invalid number generated: 0
 50 of 1000...
-Non-numeric response generated: ```
-1
-```
+Invalid number generated: 0
+Invalid number generated: 0
+Invalid number generated: 0
+Invalid number generated: 0
+Non-numeric response generated: random
 
 Invalid number generated: 0
 Invalid number generated: 0
-Non-numeric response generated: ```
-0
-```
-
 Invalid number generated: 0
 75 of 1000...
 Invalid number generated: 0
 Invalid number generated: 0
-Invalid number generated: 0
+Non-numeric response generated: ```
+1
+```
+Non-numeric response generated: ```python
+import random
+
+random_number = random.random()
+print(random_number)
+```
 100 of 1000...
+Non-numeric response generated: 1. 0
+
 Invalid number generated: 0
 125 of 1000...
 Invalid number generated: 0
-Non-numeric response generated: 1.
-
-Invalid number generated: 0
 150 of 1000...
-Invalid number generated: 0
-Invalid number generated: 0
-Non-numeric response generated: ...1
-
-Non-numeric response generated: ...1
-
-175 of 1000...
-200 of 1000...
-225 of 1000...
 Invalid number generated: 0
 Non-numeric response generated: ```
 1
 ```
+Invalid number generated: 0
+Invalid number generated: 0
+175 of 1000...
+Invalid number generated: 0
+200 of 1000...
+Non-numeric response generated: 
+Non-numeric response generated: ```
+2
+```
+
+225 of 1000...
+Non-numeric response generated: ```
+0
+```
+Invalid number generated: 0
 Invalid number generated: 0
 Invalid number generated: 0
 Invalid number generated: 0
 Invalid number generated: 0
 250 of 1000...
-Invalid number generated: 0
 275 of 1000...
 Invalid number generated: 0
-Invalid number generated: 0
-300 of 1000...
-Non-numeric response generated: ```
-2
-```
-
-325 of 1000...
-Invalid number generated: 0
-350 of 1000...
-Invalid number generated: 0
-Invalid number generated: 0
-375 of 1000...
-Invalid number generated: 0
-Invalid number generated: 0
-Invalid number generated: 0
-400 of 1000...
-Non-numeric response generated: ```
-72
-```
-
 Invalid number generated: 0
 Non-numeric response generated: ```
 0
 ```
-425 of 1000...
+
+300 of 1000...
+325 of 1000...
+Invalid number generated: 0
+Non-numeric response generated: ```python
+import random
+```
+350 of 1000...
+Invalid number generated: 0
+Invalid number generated: 0
+Invalid number generated: 0
+375 of 1000...
 Invalid number generated: 0
 Non-numeric response generated: ```
-1
+2
 ```
+
+400 of 1000...
+Invalid number generated: 0
+Invalid number generated: 0
+Non-numeric response generated: ```
+0
+```
+
+Invalid number generated: 0
+425 of 1000...
 Invalid number generated: 0
 450 of 1000...
 Invalid number generated: 0
-Invalid number generated: 0
 475 of 1000...
-Invalid number generated: 0
 Invalid number generated: 0
 500 of 1000...
 Invalid number generated: 0
-525 of 1000...
 Invalid number generated: 0
+Invalid number generated: 0
+Invalid number generated: 0
+Non-numeric response generated: ```
+2
+```
+Invalid number generated: 0
+525 of 1000...
 Invalid number generated: 0
 Invalid number generated: 0
 550 of 1000...
 Invalid number generated: 0
 Invalid number generated: 0
-Invalid number generated: 0
-Invalid number generated: 0
-Invalid number generated: 0
 575 of 1000...
 Invalid number generated: 0
 Invalid number generated: 0
-Non-numeric response generated: ```
-1
-```
-Invalid number generated: 0
-Invalid number generated: 0
 600 of 1000...
-Invalid number generated: 0
-Invalid number generated: 0
+Non-numeric response generated: ...1
+
+Non-numeric response generated: ```
+0
+```
 625 of 1000...
 Invalid number generated: 0
 Invalid number generated: 0
-Invalid number generated: 0
 650 of 1000...
-Non-numeric response generated: ```python
-import random
-print(random.randint(1, 100))
-```
-Non-numeric response generated: Just a single number between 1 and 100.
-
-Non-numeric response generated: ```
-2
-```
 Invalid number generated: 0
-Non-numeric response generated: ```
-42
-```
+Invalid number generated: 0
+Invalid number generated: 0
 675 of 1000...
 Invalid number generated: 0
 Invalid number generated: 0
@@ -3505,49 +3511,72 @@ Invalid number generated: 0
 725 of 1000...
 Invalid number generated: 0
 Invalid number generated: 0
-Invalid number generated: 0
-Invalid number generated: 101
 750 of 1000...
-Non-numeric response generated: ...1
-
+Invalid number generated: 0
 775 of 1000...
 Invalid number generated: 0
-Invalid number generated: 0
-Invalid number generated: 0
 800 of 1000...
-825 of 1000...
-Non-numeric response generated: ```python
-import random
+Invalid number generated: 0
+Invalid number generated: 0
+Invalid number generated: 0
+Invalid number generated: 0
+Non-numeric response generated: ```
+0
 ```
-Invalid number generated: 0
-Invalid number generated: 0
-Invalid number generated: 0
+825 of 1000...
 Invalid number generated: 0
 Invalid number generated: 0
 850 of 1000...
+Non-numeric response generated: ```
+52
+```
+Non-numeric response generated: ```
+2
+```
 Invalid number generated: 0
 Invalid number generated: 0
 Invalid number generated: 0
 875 of 1000...
 Invalid number generated: 0
-Non-numeric response generated: **5**
+900 of 1000...
+Non-numeric response generated: ```python
+import random
 
+random_number = random.uniform(1, 100)
+print(random_number)
+```
+Invalid number generated: 0
+925 of 1000...
+Non-numeric response generated: ```python
+import random
+
+random_number = random.randint(1, 100)
+print(random_number)
+```
+Invalid number generated: 0
+Non-numeric response generated: ```
+1
+```
+
+950 of 1000...
+Invalid number generated: 0
+Non-numeric response generated: ```
+2
+```
+
+Non-numeric response generated: ```python
+import random
+
+random_number = random.uniform(1, 100)
+print(random_number)
+```
+
+975 of 1000...
 Invalid number generated: 0
 Non-numeric response generated: ```
 0
 ```
-900 of 1000...
-Invalid number generated: 0
-925 of 1000...
-Invalid number generated: 0
-950 of 1000...
-Invalid number generated: 0
-Invalid number generated: 0
-975 of 1000...
-Invalid number generated: 0
-Non-numeric response generated: 1. 0
 
-Invalid number generated: 0
 Invalid number generated: 0
 Invalid number generated: 0
 1000 of 1000...</code></pre>
